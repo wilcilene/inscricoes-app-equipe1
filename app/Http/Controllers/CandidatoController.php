@@ -66,4 +66,29 @@ class CandidatoController extends Controller
 
         return redirect('/')->with('success', 'Cadastro realizado com sucesso!');
     }
+
+    public function inscricao()
+    {
+        return view('candidato.inscricao');
+    }
+
+    public function enviarInscricao(Request $request)
+    {
+        $request->validate([
+            'vaga' => 'required|string',
+
+            'ficha_inscricao' => 'required|file|mimes:pdf|max:5120',
+            'documento_habilitacao' => 'required|file|mimes:pdf|max:5120',
+
+            'curriculo_lattes' => 'nullable|file|mimes:pdf|max:5120',
+            'documento_identificacao' => 'nullable|file|mimes:pdf|max:5120',
+            'comprovante_ensino_medio' => 'nullable|file|mimes:pdf|max:5120',
+            'quitacao_eleitoral' => 'nullable|file|mimes:pdf|max:5120',
+            'outros_documentos' => 'nullable|file|mimes:pdf|max:5120',
+        ]);
+
+        return redirect()
+            ->route('candidato.inscricao')
+            ->with('success', 'Inscrição enviada com sucesso!');
+    }
 }

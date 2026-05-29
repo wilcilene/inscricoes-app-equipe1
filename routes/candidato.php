@@ -14,6 +14,12 @@ Route::get('/candidato/cadastro/credenciais', [CandidatoController::class, 'cred
 
 Route::post('/candidato/cadastro/finalizar', [CandidatoController::class, 'store'])
     ->name('candidato.store');
+Route::get('/candidato/inscricao', [CandidatoController::class, 'inscricao'])
+    ->name('candidato.inscricao');
+
+Route::post('/candidato/inscricao', [CandidatoController::class, 'enviarInscricao'])
+    ->name('candidato.inscricao.enviar');
+
 
 Route::middleware(['auth', 'candidato'])->group(function () {
     Route::get('/candidato/dashboard', function () {
