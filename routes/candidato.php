@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CandidatoController;
 
+Route::get('/candidato/dados-pessoais', function () {
+    return view('candidato.dados-pessoais');
+})->name('candidato.dados-pessoais');
+
 Route::get('/candidato/cadastro', [CandidatoController::class, 'create'])
     ->name('candidato.cadastro');
 
