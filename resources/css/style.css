@@ -1,0 +1,391 @@
+/* ==========================================================================
+   1. RESET BÁSICO E CONFIGURAÇÕES GERAIS
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #ededed;
+    color: #333333;
+    overflow-x: hidden;
+}
+
+/* Container que divide a tela entre Sidebar e Conteúdo */
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ==========================================================================
+   2. BARRA LATERAL (SIDEBAR)
+   ========================================================================== */
+.sidebar {
+    width: 280px;
+    background-color: #414244;
+    color: #ffffff;
+    padding: 30px 0;
+    flex-shrink: 0;
+}
+
+/* Logo do IF */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 0 24px;
+    margin-bottom: 50px;
+}
+
+.logo-img-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 110px;
+    min-width: 110px;
+    flex-shrink: 0;
+}
+
+.if-logo-img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-title {
+    font-weight: 700;
+    font-size: 29px;
+    letter-spacing: 0.5px;
+    line-height: 1.1;
+}
+
+.brand-subtitle {
+    font-weight: 400;
+    font-size: 19px;
+    color: #a0a0a0;
+    letter-spacing: 0.5px;
+}
+
+/* Navegação da Sidebar */
+.sidebar-nav ul {
+    list-style: none;
+}
+
+.sidebar-nav li {
+    margin-bottom: 5px;
+}
+
+.sidebar-nav a {
+    display: flex;
+    align-items: center;
+    padding: 15px 24px;
+    color: #bcbcbc;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 400;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.sidebar-nav a i {
+    width: 20px;
+    margin-right: 15px;
+    font-size: 18px;
+    text-align: center;
+}
+
+/* Efeito Hover e Estado Ativo */
+.sidebar-nav li.active a,
+.sidebar-nav a:hover {
+    background-color: #4d4e50;
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   3. CONTEÚDO PRINCIPAL E CABEÇALHO
+   ========================================================================== */
+.main-content {
+    flex-grow: 1;
+    padding: 40px 50px;
+}
+
+.content-header {
+    margin-bottom: 35px;
+}
+
+/* Alinha o título à esquerda e a busca à direita, ambos no topo */
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: wrap;
+    /* Quebra linha suavemente em telas menores */
+}
+
+.content-header h1 {
+    font-size: 42px;
+    font-weight: 700;
+    color: #3e3f41;
+    letter-spacing: -0.5px;
+    margin-bottom: 5px;
+}
+
+.content-header p {
+    font-size: 16px;
+    color: #555555;
+    font-weight: 400;
+}
+
+/* ==========================================================================
+   4. BARRA DE PESQUISA (CANTO SUPERIOR DIREITO - INDEX.HTML)
+   ========================================================================== */
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 280px;
+    /* Tamanho discreto da caixinha */
+    margin-top: 10px;
+    /* Alinhamento óptico com a primeira linha do H1 */
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px 15px 10px 40px;
+    /* Espaço para o ícone não cobrir o texto */
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+    color: #333333;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 20px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.search-input::placeholder {
+    color: #999999;
+}
+
+.search-input:focus {
+    border-color: #2f9e41;
+    /* Verde padrão do IF */
+    box-shadow: 0 0 5px rgba(47, 158, 65, 0.2);
+}
+
+.search-icon {
+    position: absolute;
+    left: 15px;
+    color: #888888;
+    font-size: 14px;
+    pointer-events: none;
+    /* O clique passa direto para o input */
+}
+
+/* ==========================================================================
+   5. GRID E CARDS DE EDITAIS (INDEX.HTML)
+   ========================================================================== */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 30px;
+    align-items: start;
+}
+
+.edital-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 300px;
+    background: #ffffff;
+    border-radius: 16px;
+    border-top: 8px solid #2f9e41;
+    /* Faixa verde superior */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+    padding: 25px 25px 20px 25px;
+}
+
+.card-header h2 {
+    font-size: 34px;
+    font-weight: 700;
+    color: #333333;
+    letter-spacing: -0.5px;
+    margin-bottom: 5px;
+}
+
+.card-header h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #444444;
+    letter-spacing: 0.5px;
+    margin-bottom: 15px;
+}
+
+/* Badge de Data */
+.date-badge {
+    display: inline-flex;
+    align-items: center;
+    background-color: #e8e8e8;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    color: #444444;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.date-badge i {
+    margin-right: 8px;
+    font-size: 14px;
+}
+
+/* Texto descritivo */
+.card-text {
+    font-size: 14.5px;
+    line-height: 1.4;
+    color: #555555;
+    margin-bottom: 25px;
+}
+
+/* Rodapé e Botão de Inscrição */
+.card-footer {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-inscription {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 12px 20px;
+    background-color: #2f9e41;
+    color: #ffffff;
+    border: none;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(47, 158, 65, 0.3);
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn-inscription i {
+    font-size: 14px;
+}
+
+.btn-inscription:hover {
+    background-color: #268034;
+}
+
+.btn-inscription:active {
+    transform: scale(0.98);
+}
+
+/* ==========================================================================
+   6. ESTRUTURA DO FORMULÁRIO (PERFIL.HTML)
+   ========================================================================== */
+.profile-form-container {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+
+.form-section-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #414244;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* Layout de cada campo (Label em cima, input embaixo) */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #444444;
+}
+
+/* Adaptação dos inputs gerais dentro do formulário */
+.profile-form-container .search-input {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 15px;
+    /* Remove o recuo que existia por causa da lupa */
+    border-radius: 6px;
+    /* Bordas levemente arredondadas, igual ao print */
+}
+
+/* Customização para os campos de Select (Setinha customizada) */
+.select-input {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 15px;
+    padding-right: 40px;
+    cursor: pointer;
+}
+
+/* Alinhamentos das colunas responsivas do formulário */
+.form-row-3,
+.form-row-2,
+.form-row-cep-logradouro {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Divide as linhas em 3 colunas iguais */
+.form-row-3 .form-group {
+    flex: 1 1 calc(33.333% - 20px);
+    min-width: 180px;
+}
+
+/* Divide as linhas em 2 colunas iguais */
+.form-row-2 .form-group {
+    flex: 1 1 calc(50% - 20px);
+    min-width: 220px;
+}
+
+/* CEP menor e Logradouro maior (estilo do print) */
+.form-row-cep-logradouro .form-group:nth-child(1) {
+    flex: 1 1 200px;
+}
+
+.form-row-cep-logradouro .form-group:nth-child(2) {
+    flex: 3 1 400px;
+}
+
+/* Posiciona o botão "Confirmar" na direita */
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.btn-confirm {
+    max-width: 180px;
+    border-radius: 8px;
+    /* Cantos compatíveis com os novos inputs */
+}
