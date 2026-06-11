@@ -19,3 +19,7 @@ Route::get('/candidaturas', function () {
 })->name('candidaturas');
 
 require __DIR__ . '/candidato.php';
+use App\Http\Controllers\PerfilController;
+
+Route::get('/perfil', [PerfilController::class, 'index'])->name('perfil.index');
+Route::post('/perfil', [PerfilController::class, 'store'])->name('perfil.store');
