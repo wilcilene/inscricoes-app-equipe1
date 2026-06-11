@@ -127,11 +127,27 @@
                                         {{ $item->status ?? $item['status'] }}
                                     </span>
                                 </td>
-                                <td>
-                                    <a href="#" class="btn-acao">
-                                        <span class="material-icons-outlined">edit_note</span>
-                                    </a>
-                                </td>
+                              <td>
+    <div style="display: flex; gap: 8px;">
+        <form action="{{ route('candidaturas.updateStatus', $item->id ?? $item['id']) }}" method="POST">
+            @csrf
+            @method('PATCH')
+            <input type="hidden" name="status" value="Aprovado">
+            <button type="submit" class="btn-acao" style="color: #28a745; border: none; background: none; cursor: pointer;" title="Aprovar">
+                <span class="material-icons-outlined">check_circle</span>
+            </button>
+        </form>
+
+        <form action="{{ route('candidaturas.updateStatus', $item->id ?? $item['id']) }}" method="POST">
+            @csrf
+            @method('PATCH')
+            <input type="hidden" name="status" value="Rejeitado">
+            <button type="submit" class="btn-acao" style="color: #dc3545; border: none; background: none; cursor: pointer;" title="Rejeitar">
+                <span class="material-icons-outlined">cancel</span>
+            </button>
+        </form>
+    </div>
+</td>
                             </tr>
                             @endforeach
                         </tbody>
