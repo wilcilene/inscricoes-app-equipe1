@@ -1,4 +1,4 @@
-    <aside class="sidebar">
+        <aside class="sidebar">
     <div class="logo-container">
         <div class="logo-img-wrapper">
             <img src="{{ asset('imagens/logoifc.png') }}" alt="Logo Instituto Federal" class="if-logo-img">

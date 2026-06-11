@@ -285,7 +285,7 @@ body {
 /*MENU LATERAL*/
 
 .menu-lateral {
-      position: fixed;
+    position: fixed;
 
     top: 0;
     left: 0;
@@ -563,25 +563,26 @@ textarea:focus {
 /* ==========================================
    ESTILOS ESPECÍFICOS DA TELA DE LOGIN
    ========================================== */
-.body-login { 
-    background-image: url("../img/ifccampus.jpg"); 
-    background-size: cover; 
-    background-position: center; 
+.body-login {
+    background-image: url("../img/ifccampus.jpg");
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    height: 100vh; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
 
-.login-container { 
-    width: 100%; 
-    max-width: 400px; 
-    padding: 20px; 
-    background: rgba(255, 255, 255, 0.9); 
-    border-radius: 8px; 
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
 /* ==========================================
    ESTILOS ESPECÍFICOS DA TELA DE CADASTRO
    ========================================== */
@@ -589,7 +590,7 @@ textarea:focus {
 .cadastro-page {
     min-height: 100vh;
     padding: 55px 70px;
-    background: var(--cor-fundo);   
+    background: var(--cor-fundo);
     color: var(--cor-texto);
     font-family: var(--fonte-principal), Arial, Helvetica, sans-serif;
 }
@@ -761,6 +762,7 @@ textarea:focus {
         position: static;
     }
 }
+
 /* ==========================================
    ESTILOS ESPECÍFICOS DA TELA DE CREDENCIAIS
    ========================================== */
@@ -875,7 +877,7 @@ textarea:focus {
     margin-bottom: 6px;
 }
 
-..credenciais-field input {
+.credenciais-field input {
     height: 34px;
     border: 1px solid #aaaaaa;
     border-radius: 4px;
@@ -926,7 +928,8 @@ textarea:focus {
     .credenciais-btn-finalizar {
         position: static;
     }
-}   
+}
+
 /* ==========================================
    ESTILOS ESPECÍFICOS DA TELA DE DADOS PESSOAIS
    ========================================== */
@@ -1080,4 +1083,4 @@ textarea:focus {
     .dados-btn-next {
         position: static;
     }
-}   
+}
