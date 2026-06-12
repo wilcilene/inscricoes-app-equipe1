@@ -2,39 +2,32 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
-
-    /**
-     * Campos que podem ser preenchidos no cadastro.
-     */
     protected $fillable = [
         'name',
         'email',
         'password',
+        'tipo_usuario_id'
     ];
 
-    /**
-     * Campos que ficam ocultos em consultas (segurança).
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    /**
-     * Garante que a senha seja criptografada automaticamente.
-     */
-    protected function casts(): array
+    // ONE TO ONE
+    public function perfilCandidato()
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+        return $this->hasOne(PerfilCandidato::class);
+    }
+
+    // ONE TO MANY
+    public function tipoUsuario()
+    {
+        return $this->belongsTo(TipoUsuario::class);
+    }
+
+    // MANY TO MANY
+    public function editais()
+    {
+        return $this->belongsToMany(Edital::class);
     }
 }
