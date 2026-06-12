@@ -1314,4 +1314,251 @@ textarea:focus {
         flex-direction: column;
         align-items: center;
     }
+}/* ==========================================
+   TELA CANDIDATURAS - ADMIN
+   ========================================== */
+
+.admin-cand-page {
+    min-height: 100vh;
+    display: flex;
+    background: #e6e6e6;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #333333;
+}
+
+.admin-cand-sidebar {
+    width: 360px;
+    min-height: 100vh;
+    background: #3f3f3f;
+    padding: 48px 48px 40px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-cand-logo {
+    margin-bottom: 72px;
+}
+
+.admin-cand-logo img {
+    width: 215px;
+    height: auto;
+    display: block;
+    filter: brightness(0) invert(1);
+}
+
+.admin-cand-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 42px;
+}
+
+.admin-cand-menu-item,
+.admin-cand-sair {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    color: #d8d8d8;
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: 400;
+}
+
+.admin-cand-menu-item img,
+.admin-cand-sair img {
+    width: 31px;
+    height: 31px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+}
+
+.admin-cand-menu-item.active,
+.admin-cand-menu-item:hover {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.admin-cand-sair {
+    margin-top: auto;
+    background: #242424;
+    padding: 14px 20px;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 18px;
+}
+
+.admin-cand-sair:hover {
+    background: #1f1f1f;
+}
+}
+
+.admin-cand-logo img {
+    width: 215px;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 70px;
+
+}
+
+.admin-cand-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 42px;
+}
+
+.admin-cand-menu-item,
+.admin-cand-sair {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: #d8d8d8;
+    text-decoration: none;
+    font-size: 22px;
+}
+
+.admin-cand-menu-item:hover,
+.admin-cand-menu-item.active {
+    color: #ffffff;
+}
+
+.admin-cand-icon {
+    width: 32px;
+    font-size: 32px;
+    line-height: 1;
+    text-align: center;
+    color: #d8d8d8;
+}
+
+.admin-cand-sair {
+    margin-top: auto;
+    background: #242424;
+    padding: 14px 20px;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 18px;
+}
+
+.admin-cand-content {
+    flex: 1;
+    padding: 72px 70px;
+    overflow-x: hidden;
+}
+
+.admin-cand-header {
+    margin-bottom: 32px;
+}
+
+.admin-cand-header h1 {
+    font-size: 44px;
+    font-weight: 800;
+    margin: 0 0 8px;
+    color: #34383d;
+}
+
+.admin-cand-header p {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+    color: #555555;
+}
+
+.admin-cand-card {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 30px;
+    width: 100%;
+    max-width: 1040px;
+    box-sizing: border-box;
+    overflow-x: auto;
+}
+
+.admin-cand-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 16px;
+    color: #000000;
+}
+
+.admin-cand-table thead tr {
+    background: #c4c4c4;
+}
+
+.admin-cand-table th {
+    padding: 15px 16px;
+    text-align: left;
+    font-weight: 700;
+}
+
+.admin-cand-table th:first-child {
+    border-radius: 7px 0 0 7px;
+}
+
+.admin-cand-table th:last-child {
+    border-radius: 0 7px 7px 0;
+    text-align: center;
+}
+
+.admin-cand-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #dddddd;
+    vertical-align: middle;
+}
+
+.admin-cand-table td:last-child {
+    text-align: center;
+}
+
+.admin-cand-status {
+    display: inline-block;
+    min-width: 100px;
+    padding: 8px 10px;
+    border-radius: 7px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.admin-cand-status.gray {
+    background: #808080;
+}
+
+.admin-cand-status.green {
+    background: #28a745;
+}
+
+.admin-cand-status.red {
+    background: #dc3545;
+}
+
+.admin-cand-action {
+    border: none;
+    background: transparent;
+    color: #159947;
+    font-size: 22px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+@media (max-width: 1000px) {
+    .admin-cand-page {
+        flex-direction: column;
+    }
+
+    .admin-cand-sidebar {
+        width: 100%;
+        min-height: auto;
+    }
+
+    .admin-cand-content {
+        padding: 40px 25px;
+    }
+
+    .admin-cand-header h1 {
+        font-size: 38px;
+    }
+
+    .admin-cand-card {
+        max-width: 100%;
+    }
 }
