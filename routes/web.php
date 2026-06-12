@@ -1,4 +1,4 @@
-<?php
+	<?php
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MinhasInscricoesController;
@@ -22,7 +22,9 @@ Route::get('/login', function () {
 
 # telas da gabi <
 # candidato
-Route::get('/perfil', [PerfilController::class, 'index'])->name('perfil.index');
+Route::get('/perfil', function () {
+    return view('perfil');
+})->name('perfil.index');
 Route::post('/perfil', [PerfilController::class, 'store'])->name('perfil.store');
 
 # candidato

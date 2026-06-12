@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minhas Inscrições</title>
 
-```
+
 <link rel="stylesheet" href="{{ asset('css/style.css') }}?v=18">
-```
+
 
 </head>
 <body>
@@ -18,7 +18,7 @@
                 <img src="{{ asset('icons/IFCfull.svg') }}" alt="Instituto Federal">
             </div>
 
-```
+
         <nav class="mural-ifc-menu">
             <a href="/mural-editais" class="mural-ifc-menu-item">
                 <img src="{{ asset('icons/inicio.svg') }}" alt="">
@@ -142,7 +142,7 @@
         </div>
     </section>
 </main>
-```
+
 
 </body>
 </html>

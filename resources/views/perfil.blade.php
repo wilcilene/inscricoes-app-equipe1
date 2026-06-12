@@ -1,144 +1,175 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Perfil - Instituto Federal</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <title>Meu Perfil</title>
+
+<link rel="stylesheet" href="{{ asset('css/style.css') }}?v=999">
+
+
 </head>
-
 <body>
+    <main class="mural-ifc-page">
+        <aside class="mural-ifc-sidebar">
+            <div class="mural-ifc-logo">
+                <img src="{{ asset('icons/IFCfull.svg') }}" alt="Instituto Federal">
+            </div>
 
-    <div class="container">
-        @php $activePage = 'perfil'; @endphp
-        @include('sidebar', ['activePage' => $activePage])
-        <main class="main-content">
-            <header class="content-header">
-            </header>
 
-            <section class="profile-form-container">
-                <form>
+        <nav class="mural-ifc-menu">
+            <a href="/mural-editais" class="mural-ifc-menu-item">
+                <img src="{{ asset('icons/inicio.svg') }}" alt="">
+                <span>Início</span>
+            </a>
 
-                    <h3 class="form-section-title">Dados Pessoais</h3>
+            <a href="/perfil" class="mural-ifc-menu-item active">
+                <img src="{{ asset('icons/usuario.svg') }}" alt="">
+                <span>Meu perfil</span>
+            </a>
 
-                    <div class="form-group full-width">
-                        <label for="nome">Nome Completo</label>
-                        <input type="text" id="nome" placeholder="Preencher..." class="search-input">
+            <a href="/minhas-inscricoes" class="mural-ifc-menu-item">
+                <img src="{{ asset('icons/lista.svg') }}" alt="">
+                <span>Minhas Inscrições</span>
+            </a>
+        </nav>
+    </aside>
+
+    <section class="perfil-conteudo">
+        <header class="perfil-cabecalho">
+            <h1>MEU PERFIL</h1>
+            <p>Altere seus dados para inscrição</p>
+        </header>
+
+        <form class="perfil-formulario">
+            <section class="perfil-card">
+                <div class="perfil-titulo-card">
+                    <h2>Dados Pessoais</h2>
+                </div>
+
+                <div class="perfil-campo cheio">
+                    <label>Nome Completo*:</label>
+                    <input type="text" placeholder="Preencher">
+                </div>
+
+                <div class="perfil-campo cheio">
+                    <label>Nome Social (se houver):</label>
+                    <input type="text" placeholder="Preencher">
+                </div>
+
+                <div class="perfil-linha quatro">
+                    <div class="perfil-campo">
+                        <label>CPF*:</label>
+                        <input type="text" placeholder="000.000.000-00">
                     </div>
 
-                    <div class="form-row-3">
-                        <div class="form-group">
-                            <label for="cpf">CPF:</label>
-                            <input type="text" id="cpf" placeholder="000.000.000-00" class="search-input">
-                        </div>
-                        <div class="form-group">
-                            <label for="nascimento">Data de Nascimento:</label>
-                            <input type="date" id="nascimento" class="search-input">
-                        </div>
-                        <div class="form-group">
-                            <label for="sexo">Sexo:</label>
-                            <select id="sexo" class="search-input select-input">
-                                <option value="">Selecione</option>
-                                <option value="M">Masculino</option>
-                                <option value="F">Feminino</option>
-                                <option value="O">Outro</option>
-                            </select>
-                        </div>
+                    <div class="perfil-campo">
+                        <label>Data de Nascimento*:</label>
+                        <input type="text" placeholder="dd/mm/aaaa">
                     </div>
 
-                    <div class="form-row-3">
-                        <div class="form-group">
-                            <label for="tipo-doc">Tipo de Documento:</label>
-                            <select id="tipo-doc" class="search-input select-input">
-                                <option value="">Selecione</option>
-                                <option value="RG">RG</option>
-                                <option value="CNH">CNH</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="orgao">Órgão:</label>
-                            <select id="orgao" class="search-input select-input">
-                                <option value="">Selecione</option>
-                                <option value="SSP">SSP</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="uf-doc">UF:</label>
-                            <select id="uf-doc" class="search-input select-input">
-                                <option value="">Selecione</option>
-                                <option value="SC">SC</option>
-                                <option value="PR">PR</option>
-                                <option value="SP">SP</option>
-                            </select>
-                        </div>
+                    <div class="perfil-campo">
+                        <label>Gênero*:</label>
+                        <select>
+                            <option>Selecione</option>
+                        </select>
                     </div>
 
-                    <h3 class="form-section-title">Endereço e Contato</h3>
+                    <div class="perfil-campo">
+                        <label>Naturalidade*:</label>
+                        <select>
+                            <option>Selecione</option>
+                        </select>
+                    </div>
+                </div>
 
-                    <div class="form-row-cep-logradouro">
-                        <div class="form-group">
-                            <label for="cep">CEP:</label>
-                            <input type="text" id="cep" placeholder="00.000-00" class="search-input">
-                        </div>
-                        <div class="form-group">
-                            <label for="logradouro">Logradouro:</label>
-                            <input type="text" id="logradouro" placeholder="Preencher..." class="search-input">
-                        </div>
+                <div class="perfil-linha duas">
+                    <div class="perfil-campo">
+                        <label>Mãe*:</label>
+                        <input type="text" placeholder="Preencher">
                     </div>
 
-                    <div class="form-row-3">
-                        <div class="form-group">
-                            <label for="numero">Número:</label>
-                            <input type="text" id="numero" placeholder="00000" class="search-input">
-                        </div>
-                        <div class="form-group">
-                            <label for="complemento">Complemento:</label>
-                            <input type="text" id="complemento" placeholder="Preencher..." class="search-input">
-                        </div>
-                        <div class="form-group">
-                            <label for="bairro">Bairro:</label>
-                            <input type="text" id="bairro" placeholder="Preencher" class="search-input">
-                        </div>
+                    <div class="perfil-campo">
+                        <label>Pai:</label>
+                        <input type="text" placeholder="Preencher">
                     </div>
+                </div>
 
-                    <div class="form-row-2">
-                        <div class="form-group">
-                            <label for="estado">Estado:</label>
-                            <input type="text" id="estado" placeholder="Preencher..." class="search-input">
-                        </div>
-                        <div class="form-group">
-                            <label for="cidade">Cidade:</label>
-                            <input type="text" id="cidade" placeholder="Preencher..." class="search-input">
-                        </div>
+                <div class="perfil-linha duas">
+                    <div class="perfil-campo">
+                        <label>Área Profissional de Atuação do Candidato*:</label>
+                        <input type="text" placeholder="Preencher">
                     </div>
-
-                    <div class="form-row-2">
-                        <div class="form-group">
-                            <label for="telefone">Telefone:</label>
-                            <input type="text" id="telefone" placeholder="00 0000-0000" class="search-input">
-                        </div>
-                        <div class="form-group">
-                            <label for="celular">Celular:</label>
-                            <input type="text" id="celular" placeholder="00 00000-0000" class="search-input">
-                        </div>
-                    </div>
-
-                    <div class="form-actions">
-                        <button type="submit" class="btn-inscription btn-confirm">
-                            Confirmar
-                        </button>
-                    </div>
-
-                </form>
+                </div>
             </section>
-        </main>
-    </div>
+
+            <section class="perfil-card">
+                <div class="perfil-titulo-card">
+                    <h2>Endereço e Contato</h2>
+                </div>
+
+                <div class="perfil-linha endereco">
+                    <div class="perfil-campo cep">
+                        <label>CEP:</label>
+                        <input type="text" placeholder="00.000-000">
+                    </div>
+
+                    <div class="perfil-campo">
+                        <label>Logradouro:</label>
+                        <input type="text" placeholder="Preencher">
+                    </div>
+                </div>
+
+                <div class="perfil-linha quatro">
+                    <div class="perfil-campo">
+                        <label>Número:</label>
+                        <input type="text" placeholder="00000">
+                    </div>
+
+                    <div class="perfil-campo">
+                        <label>Complemento:</label>
+                        <input type="text" placeholder="Preencher">
+                    </div>
+
+                    <div class="perfil-campo">
+                        <label>Bairro:</label>
+                        <input type="text" placeholder="Preencher">
+                    </div>
+
+                    <div class="perfil-campo">
+                        <label>Cidade:</label>
+                        <input type="text" placeholder="Preencher">
+                    </div>
+                </div>
+
+                <div class="perfil-linha tres">
+                    <div class="perfil-campo">
+                        <label>UF:</label>
+                        <select>
+                            <option>Selecione</option>
+                        </select>
+                    </div>
+
+                    <div class="perfil-campo">
+                        <label>Telefone:</label>
+                        <input type="text" placeholder="(00) 00000-0000">
+                    </div>
+
+                    <div class="perfil-campo">
+                        <label>E-mail:</label>
+                        <input type="email" placeholder="seu@email.com">
+                    </div>
+                </div>
+            </section>
+
+            <div class="perfil-acoes">
+                <a href="/mural-editais" class="perfil-botao cancelar">Cancelar</a>
+                <button type="button" class="perfil-botao salvar">Salvar Perfil</button>
+            </div>
+        </form>
+    </section>
+</main>
+
 
 </body>
-
 </html>

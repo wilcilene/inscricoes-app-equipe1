@@ -2024,4 +2024,282 @@ textarea:focus {
     background: #e5e5e5;
     color: #33383d;
     font-family: Arial, Helvetica, sans-serif;
+}     /* ===== PERFIL CANDIDATO - AJUSTE FINAL ===== */
+
+.perfil-conteudo {
+flex: 1 !important;
+padding: 52px 50px 70px !important;
+overflow-x: hidden !important;
+font-family: var(--fonte-principal), Arial, Helvetica, sans-serif !important;
+}
+
+.perfil-cabecalho {
+max-width: 1010px !important;
+margin-bottom: 50px !important;
+}
+
+.perfil-cabecalho h1 {
+margin: 0 !important;
+color: #34383d !important;
+font-size: 40px !important;
+line-height: 1 !important;
+font-weight: 800 !important;
+letter-spacing: -1px !important;
+}
+
+.perfil-cabecalho p {
+margin: 10px 0 0 !important;
+color: #3f3f3f !important;
+font-size: 18px !important;
+}
+
+.perfil-formulario {
+max-width: 1010px !important;
+}
+
+.perfil-card {
+background: #ffffff !important;
+margin-bottom: 12px !important;
+padding: 0 18px 26px !important;
+}
+
+.perfil-titulo-card {
+margin: 0 -18px 18px !important;
+padding: 14px 22px 10px !important;
+border-bottom: 1px solid #cfcfcf !important;
+}
+
+.perfil-titulo-card h2 {
+margin: 0 !important;
+font-size: 18px !important;
+font-weight: 800 !important;
+color: #3b3f44 !important;
+}
+
+.perfil-linha {
+display: grid !important;
+gap: 18px 38px !important;
+margin-bottom: 14px !important;
+}
+
+.perfil-linha.duas {
+grid-template-columns: repeat(2, 1fr) !important;
+}
+
+.perfil-linha.tres {
+grid-template-columns: repeat(3, 1fr) !important;
+}
+
+.perfil-linha.quatro {
+grid-template-columns: 170px 170px 170px 170px !important;
+}
+
+.perfil-linha.endereco {
+grid-template-columns: 170px 1fr !important;
+}
+
+.perfil-campo {
+margin-bottom: 14px !important;
+}
+
+.perfil-campo.cheio {
+width: 100% !important;
+}
+
+.perfil-campo label {
+display: block !important;
+margin-bottom: 6px !important;
+color: #33383d !important;
+font-size: 15px !important;
+font-weight: 500 !important;
+}
+
+.perfil-campo input,
+.perfil-campo select {
+width: 100% !important;
+height: 30px !important;
+border: 1px solid #bfc3c7 !important;
+border-radius: 3px !important;
+background: #ffffff !important;
+color: #33383d !important;
+padding: 4px 10px !important;
+font-size: 15px !important;
+font-family: var(--fonte-principal), Arial, Helvetica, sans-serif !important;
+}
+
+.perfil-campo input::placeholder {
+color: #666666 !important;
+}
+
+.perfil-acoes {
+max-width: 1010px !important;
+display: flex !important;
+justify-content: flex-end !important;
+gap: 14px !important;
+margin-top: 18px !important;
+}
+
+.perfil-botao {
+min-width: 150px !important;
+height: 40px !important;
+border-radius: 6px !important;
+font-weight: 800 !important;
+font-size: 15px !important;
+text-decoration: none !important;
+display: inline-flex !important;
+align-items: center !important;
+justify-content: center !important;
+cursor: pointer !important;
+}
+
+.perfil-botao.cancelar {
+border: 1px solid #c8c8c8 !important;
+background: #ffffff !important;
+color: #33383d !important;
+}
+
+.perfil-botao.salvar {
+border: none !important;
+background: #2b9d42 !important;
+color: #ffffff !important;
+}/* ===== AJUSTE FINAL - PERFIL CANDIDATO ===== */
+
+.mural-ifc-page .perfil-conteudo {
+    flex: 1 !important;
+    padding: 52px 50px 70px !important;
+    overflow-x: hidden !important;
+    font-family: var(--fonte-principal), Arial, Helvetica, sans-serif !important;
+}
+
+.mural-ifc-page .perfil-cabecalho {
+    max-width: 1010px !important;
+    margin-bottom: 50px !important;
+}
+
+.mural-ifc-page .perfil-cabecalho h1 {
+    margin: 0 !important;
+    color: #34383d !important;
+    font-size: 40px !important;
+    line-height: 1 !important;
+    font-weight: 800 !important;
+    letter-spacing: -1px !important;
+}
+
+.mural-ifc-page .perfil-cabecalho p {
+    margin: 10px 0 0 !important;
+    color: #3f3f3f !important;
+    font-size: 18px !important;
+}
+
+.mural-ifc-page .perfil-formulario {
+    max-width: 1010px !important;
+}
+
+.mural-ifc-page .perfil-card {
+    background: #ffffff !important;
+    margin-bottom: 12px !important;
+    padding: 0 18px 26px !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+.mural-ifc-page .perfil-titulo-card {
+    margin: 0 -18px 18px !important;
+    padding: 14px 22px 10px !important;
+    border-bottom: 1px solid #cfcfcf !important;
+}
+
+.mural-ifc-page .perfil-titulo-card h2 {
+    margin: 0 !important;
+    font-size: 18px !important;
+    font-weight: 800 !important;
+    color: #3b3f44 !important;
+}
+
+.mural-ifc-page .perfil-linha {
+    display: grid !important;
+    gap: 18px 38px !important;
+    margin-bottom: 14px !important;
+}
+
+.mural-ifc-page .perfil-linha.duas {
+    grid-template-columns: repeat(2, 1fr) !important;
+}
+
+.mural-ifc-page .perfil-linha.tres {
+    grid-template-columns: repeat(3, 1fr) !important;
+}
+
+.mural-ifc-page .perfil-linha.quatro {
+    grid-template-columns: 170px 170px 170px 170px !important;
+}
+
+.mural-ifc-page .perfil-linha.endereco {
+    grid-template-columns: 170px 1fr !important;
+}
+
+.mural-ifc-page .perfil-campo {
+    margin-bottom: 14px !important;
+}
+
+.mural-ifc-page .perfil-campo.cheio {
+    width: 100% !important;
+}
+
+.mural-ifc-page .perfil-campo label {
+    display: block !important;
+    margin-bottom: 6px !important;
+    color: #33383d !important;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+}
+
+.mural-ifc-page .perfil-campo input,
+.mural-ifc-page .perfil-campo select {
+    width: 100% !important;
+    height: 30px !important;
+    border: 1px solid #bfc3c7 !important;
+    border-radius: 3px !important;
+    background: #ffffff !important;
+    color: #33383d !important;
+    padding: 4px 10px !important;
+    font-size: 15px !important;
+    font-family: var(--fonte-principal), Arial, Helvetica, sans-serif !important;
+}
+
+.mural-ifc-page .perfil-campo input::placeholder {
+    color: #666666 !important;
+}
+
+.mural-ifc-page .perfil-acoes {
+    max-width: 1010px !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+    gap: 14px !important;
+    margin-top: 18px !important;
+}
+
+.mural-ifc-page .perfil-botao {
+    min-width: 150px !important;
+    height: 40px !important;
+    border-radius: 6px !important;
+    font-weight: 800 !important;
+    font-size: 15px !important;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+}
+
+.mural-ifc-page .perfil-botao.cancelar {
+    border: 1px solid #c8c8c8 !important;
+    background: #ffffff !important;
+    color: #33383d !important;
+}
+
+.mural-ifc-page .perfil-botao.salvar {
+    border: none !important;
+    background: #2b9d42 !important;
+    color: #ffffff !important;
 }
