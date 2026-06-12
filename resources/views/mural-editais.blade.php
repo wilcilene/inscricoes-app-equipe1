@@ -29,7 +29,12 @@
                     <img src="{{ asset('icons/lista.svg') }}" alt="">
                     <span>Minhas Inscrições</span>
                 </a>
+
+
+
             </nav>
+
+            
         </aside>
 
         <section class="mural-ifc-content">
@@ -74,5 +79,7 @@
             </section>
         </section>
     </main>
+
+    
 </body>
 </html>

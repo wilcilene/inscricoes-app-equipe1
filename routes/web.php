@@ -59,7 +59,7 @@ Route::middleware([
 
     // Página de teste
     Route::get('/candidato', function () {
-        return view('candidatoteste');
+        return view('mural-editais');
     })->name('candidato.dashboard');
 
 

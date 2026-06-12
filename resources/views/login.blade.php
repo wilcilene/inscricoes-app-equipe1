@@ -30,21 +30,6 @@
 
 <div class="login-tabs">
 
-<button
-type="button"
-class="login-tab active"
->
-    Candidato
-</button>
-
-
-<button
-type="button"
-class="login-tab"
->
-    Administrador
-</button>
-
 </div>
 
 
