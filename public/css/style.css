@@ -2306,3 +2306,19 @@ color: #ffffff !important;
     background: #2b9d42 !important;
     color: #ffffff !important;
 }
+.mural-ifc-logout {
+    margin-top: auto !important;
+    padding: 14px 18px !important;
+    border-radius: 12px !important;
+    background: #2f3030 !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    font-weight: 500 !important;
+}
+
+.mural-ifc-logout:hover {
+    background: #232323 !important;
+}
