@@ -21,6 +21,9 @@
     background: #3f3f3f !important;
     padding: 42px 34px !important;
     flex-shrink: 0 !important;
+    
+    display: flex !important;
+    flex-direction: column !important;
 }
 
 .mural-ifc-logo {
