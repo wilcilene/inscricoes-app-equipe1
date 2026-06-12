@@ -1561,4 +1561,235 @@ textarea:focus {
     .admin-cand-card {
         max-width: 100%;
     }
+}/* ==========================================
+   DETALHE DA CANDIDATURA - ADMIN
+   ========================================== */
+
+.cand-detalhe-content {
+    flex: 1;
+    padding: 56px 50px;
+    background: #e6e6e6;
+    overflow-x: hidden;
+}
+
+.cand-detalhe-header h1 {
+    font-size: 44px;
+    font-weight: 800;
+    margin: 0 0 44px;
+    color: #2f3338;
+    letter-spacing: -1px;
+}
+
+.cand-detalhe-summary {
+    width: 100%;
+    max-width: 1010px;
+    min-height: 82px;
+    background: #ffffff;
+    border: 1px solid #bdbdbd;
+    border-radius: 4px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 170px;
+    align-items: center;
+    gap: 20px;
+    padding: 14px 34px;
+    box-sizing: border-box;
+    margin-bottom: 24px;
+}
+
+.cand-detalhe-summary div {
+    display: flex;
+    flex-direction: column;
+}
+
+.cand-detalhe-summary span {
+    font-size: 16px;
+    color: #3f3f3f;
+    margin-bottom: 4px;
+}
+
+.cand-detalhe-summary strong {
+    font-size: 22px;
+    color: #3a3a3a;
+}
+
+.cand-detalhe-status {
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    background: #cf1b22;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.cand-detalhe-grid {
+    max-width: 1010px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 26px;
+}
+
+.cand-detalhe-left {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.cand-detalhe-card {
+    background: #ffffff;
+    border: 1px solid #bdbdbd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.cand-detalhe-card h2 {
+    font-size: 25px;
+    margin: 0 0 18px;
+    color: #3a3a3a;
+}
+
+.cand-detalhe-card.dados {
+    min-height: 180px;
+    padding: 26px 22px;
+}
+
+.cand-detalhe-dados {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 32px;
+    row-gap: 10px;
+    font-size: 14px;
+    color: #444444;
+}
+
+.cand-detalhe-dados p {
+    margin: 0;
+}
+
+.cand-detalhe-dados span {
+    font-weight: 700;
+    margin-right: 5px;
+}
+
+.cand-detalhe-card.historico {
+    min-height: 225px;
+    padding: 26px 28px;
+}
+
+.cand-historico-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.cand-historico-bolinha {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #2da04b;
+    border-radius: 50%;
+    color: #ffffff;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.cand-historico-item.completo .cand-historico-bolinha {
+    background: #2da04b;
+}
+
+.cand-historico-item h3 {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0 0 3px;
+    color: #3f3f3f;
+}
+
+.cand-historico-item p {
+    font-size: 14px;
+    margin: 0;
+    color: #4f4f4f;
+}
+
+.cand-detalhe-card.documentos {
+    min-height: 413px;
+    padding: 22px 22px;
+}
+
+.cand-documento {
+    border: 1px solid #c7c7c7;
+    border-radius: 9px;
+    padding: 16px 14px;
+    margin-bottom: 14px;
+}
+
+.cand-documento h3 {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0 0 16px;
+    color: #3f3f3f;
+}
+
+.cand-documento-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cand-pdf {
+    color: #e02222;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.cand-documento-row span {
+    color: #555555;
+    font-size: 14px;
+}
+
+.cand-documento-row button {
+    margin-left: auto;
+    min-width: 112px;
+    height: 40px;
+    border: 1px solid #d0d0d0;
+    border-radius: 9px;
+    background: #eeeeee;
+    color: #3f3f3f;
+    font-size: 15px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+}
+
+.admin-cand-action {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 1100px) {
+    .cand-detalhe-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cand-detalhe-summary {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 700px) {
+    .cand-detalhe-content {
+        padding: 35px 22px;
+    }
+
+    .cand-detalhe-header h1 {
+        font-size: 34px;
+    }
+
+    .cand-detalhe-summary {
+        grid-template-columns: 1fr;
+    }
 }

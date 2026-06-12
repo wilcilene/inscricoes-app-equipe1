@@ -9,33 +9,33 @@
 </head>
 <body>
     <main class="admin-cand-page">
-       <aside class="admin-cand-sidebar">
-    <div class="admin-cand-logo">
-        <img src="{{ asset('icons/IFCfull.svg') }}" alt="Instituto Federal">
-    </div>
+        <aside class="admin-cand-sidebar">
+            <div class="admin-cand-logo">
+                <img src="{{ asset('icons/IFCfull.svg') }}" alt="Instituto Federal">
+            </div>
 
-    <nav class="admin-cand-menu">
-        <a href="/mural-editais" class="admin-cand-menu-item">
-            <img src="{{ asset('icons/inicio.svg') }}" alt="">
-            <span>Início</span>
-        </a>
+            <nav class="admin-cand-menu">
+                <a href="/mural-editais" class="admin-cand-menu-item">
+                    <img src="{{ asset('icons/inicio.svg') }}" alt="">
+                    <span>Início</span>
+                </a>
 
-        <a href="/admin/editais/cadastrar" class="admin-cand-menu-item">
-            <img src="{{ asset('icons/AdicionarDocumento.svg') }}" alt="">
-            <span>Cadastrar Editais</span>
-        </a>
+                <a href="/admin/editais/cadastrar" class="admin-cand-menu-item">
+                    <img src="{{ asset('icons/AdicionarDocumento.svg') }}" alt="">
+                    <span>Cadastrar Editais</span>
+                </a>
 
-        <a href="/candidaturas" class="admin-cand-menu-item active">
-            <img src="{{ asset('icons/lista.svg') }}" alt="">
-            <span>Candidaturas</span>
-        </a>
-    </nav>
+                <a href="/candidaturas" class="admin-cand-menu-item active">
+                    <img src="{{ asset('icons/lista.svg') }}" alt="">
+                    <span>Candidaturas</span>
+                </a>
+            </nav>
 
-    <a href="/login" class="admin-cand-sair">
-        <img src="{{ asset('icons/Saida.svg') }}" alt="">
-        <span>Sair</span>
-    </a>
-</aside>
+            <a href="/login" class="admin-cand-sair">
+                <img src="{{ asset('icons/Saida.svg') }}" alt="">
+                <span>Sair</span>
+            </a>
+        </aside>
 
         <section class="admin-cand-content">
             <header class="admin-cand-header">
@@ -63,7 +63,9 @@
                             <td>Gabriela Silva</td>
                             <td>06/02/2023</td>
                             <td><span class="admin-cand-status gray">Pendente</span></td>
-                            <td><button class="admin-cand-action">☰✎</button></td>
+                            <td>
+                                <a href="/candidaturas/1" class="admin-cand-action">☰✎</a>
+                            </td>
                         </tr>
 
                         <tr>
@@ -72,7 +74,9 @@
                             <td>Daniela Maria Gonçalves Pedrozo</td>
                             <td>01/09/2025</td>
                             <td><span class="admin-cand-status green">Aprovado</span></td>
-                            <td><button class="admin-cand-action">☰✎</button></td>
+                            <td>
+                                <a href="/candidaturas/2" class="admin-cand-action">☰✎</a>
+                            </td>
                         </tr>
 
                         <tr>
@@ -81,7 +85,9 @@
                             <td>João Pedro Neiskvy da Silva</td>
                             <td>29/04/2026</td>
                             <td><span class="admin-cand-status red">Rejeitado</span></td>
-                            <td><button class="admin-cand-action">☰✎</button></td>
+                            <td>
+                                <a href="/candidaturas/3" class="admin-cand-action">☰✎</a>
+                            </td>
                         </tr>
 
                         <tr>
@@ -90,7 +96,9 @@
                             <td>João Pedro Neiskvy da Silva</td>
                             <td>29/04/2026</td>
                             <td><span class="admin-cand-status gray">Pendente</span></td>
-                            <td><button class="admin-cand-action">☰✎</button></td>
+                            <td>
+                                <a href="/candidaturas/4" class="admin-cand-action">☰✎</a>
+                            </td>
                         </tr>
 
                         <tr>
@@ -99,7 +107,9 @@
                             <td>João Pedro Neiskvy da Silva</td>
                             <td>29/04/2026</td>
                             <td><span class="admin-cand-status gray">Pendente</span></td>
-                            <td><button class="admin-cand-action">☰✎</button></td>
+                            <td>
+                                <a href="/candidaturas/5" class="admin-cand-action">☰✎</a>
+                            </td>
                         </tr>
 
                         <tr>
@@ -108,7 +118,9 @@
                             <td>João Pedro Neiskvy da Silva</td>
                             <td>29/04/2026</td>
                             <td><span class="admin-cand-status red">Rejeitado</span></td>
-                            <td><button class="admin-cand-action">☰✎</button></td>
+                            <td>
+                                <a href="/candidaturas/6" class="admin-cand-action">☰✎</a>
+                            </td>
                         </tr>
 
                         <tr>
@@ -117,7 +129,9 @@
                             <td>João Pedro Neiskvy da Silva</td>
                             <td>29/04/2026</td>
                             <td><span class="admin-cand-status green">Aprovado</span></td>
-                            <td><button class="admin-cand-action">☰✎</button></td>
+                            <td>
+                                <a href="/candidaturas/7" class="admin-cand-action">☰✎</a>
+                            </td>
                         </tr>
 
                         <tr>
@@ -126,7 +140,9 @@
                             <td>João Pedro Neiskvy da Silva</td>
                             <td>29/04/2026</td>
                             <td><span class="admin-cand-status red">Rejeitado</span></td>
-                            <td><button class="admin-cand-action">☰✎</button></td>
+                            <td>
+                                <a href="/candidaturas/8" class="admin-cand-action">☰✎</a>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
