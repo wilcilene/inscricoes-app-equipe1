@@ -285,7 +285,8 @@ body {
 /*MENU LATERAL*/
 
 .menu-lateral {
-      position: fixed;
+
+	position: fixed;
 
     top: 0;
     left: 0;
@@ -563,22 +564,754 @@ textarea:focus {
 /* ==========================================
    ESTILOS ESPECÍFICOS DA TELA DE LOGIN
    ========================================== */
-.body-login { 
-    background-image: url("../img/ifccampus.jpg"); 
-    background-size: cover; 
-    background-position: center; 
+
+.body-login {
+    background-image: url("../img/ifccampus.jpg");
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    height: 100vh; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
 
-.login-container { 
-    width: 100%; 
-    max-width: 400px; 
-    padding: 20px; 
-    background: rgba(255, 255, 255, 0.9); 
-    border-radius: 8px; 
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================================
+   ESTILOS ESPECÍFICOS DA TELA DE CADASTRO
+   ========================================== */
+
+.cadastro-page {
+    min-height: 100vh;
+    padding: 55px 70px;
+    background: var(--cor-fundo);
+    color: var(--cor-texto);
+    font-family: var(--fonte-principal), Arial, Helvetica, sans-serif;
+}
+
+.cadastro-header {
+    margin-bottom: 30px;
+}
+
+.cadastro-titulo {
+    font-size: 44px;
+    margin: 0;
+    font-weight: 800;
+}
+
+.cadastro-subtitulo {
+    font-size: 20px;
+    margin-top: 6px;
+    margin-bottom: 25px;
+    color: #333333;
+}
+
+.cadastro-top-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 35px;
+}
+
+.cadastro-progress {
+    display: flex;
+    align-items: center;
+}
+
+.cadastro-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #777777;
+    border: 4px solid #555555;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.cadastro-circle.done {
+    background: #22b14c;
+}
+
+.cadastro-circle.active {
+    background: var(--cor-vermelho);
+}
+
+.cadastro-line {
+    width: 120px;
+    height: 4px;
+    background: #777777;
+}
+
+.cadastro-line.done {
+    background: #22b14c;
+}
+
+.cadastro-btn-next {
+    position: absolute;
+    right: 90px;
+    padding: 12px 65px;
+    font-size: 16px;
+    border-radius: 7px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.35);
+}
+
+.cadastro-form-box {
+    background: var(--cor-branco);
+    width: 82%;
+    min-height: 430px;
+    margin: 0 auto;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.cadastro-section-title {
+    font-size: 22px;
+    font-weight: bold;
+    padding: 15px 25px 10px;
+    border-bottom: 1px solid #cccccc;
+}
+
+.cadastro-form {
+    padding: 20px 25px 30px;
+}
+
+.cadastro-row {
+    display: flex;
+    gap: 35px;
+    margin-bottom: 18px;
+    align-items: flex-end;
+}
+
+.cadastro-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.cadastro-field label {
+    font-size: 16px;
+    margin-bottom: 6px;
+}
+
+.cadastro-field input {
+    height: 34px;
+    border: 1px solid #aaaaaa;
+    border-radius: 4px;
+    padding: 6px 10px;
+    font-size: 16px;
+}
+
+.cadastro-small {
+    width: 190px;
+}
+
+.cadastro-flex-grow {
+    flex: 1;
+}
+
+.cadastro-buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 70px;
+}
+
+.cadastro-btn-cancelar {
+    font-size: 16px;
+    border-radius: 7px;
+    padding: 12px 55px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.35);
+}
+
+.cadastro-error-box {
+    background: #ffdede;
+    border: 1px solid var(--cor-vermelho);
+    color: #900000;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+@media (max-width: 900px) {
+    .cadastro-page {
+        padding: 35px 25px;
+    }
+
+    .cadastro-form-box {
+        width: 100%;
+    }
+
+    .cadastro-row {
+        flex-direction: column;
+        gap: 18px;
+        align-items: stretch;
+    }
+
+    .cadastro-small {
+        width: 100%;
+    }
+
+    .cadastro-top-area {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .cadastro-btn-next {
+        position: static;
+    }
+}
+
+/* ==========================================
+   ESTILOS ESPECÍFICOS DA TELA DE CREDENCIAIS
+   ========================================== */
+
+.credenciais-page {
+    min-height: 100vh;
+    padding: 55px 70px;
+    background: var(--cor-fundo);
+    color: var(--cor-texto);
+    font-family: var(--fonte-principal), Arial, Helvetica, sans-serif;
+}
+
+.credenciais-header {
+    margin-bottom: 30px;
+}
+
+.credenciais-titulo {
+    font-size: 44px;
+    margin: 0;
+    font-weight: 800;
+}
+
+.credenciais-subtitulo {
+    font-size: 20px;
+    margin-top: 6px;
+    margin-bottom: 25px;
+    color: #333333;
+}
+
+.credenciais-top-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 35px;
+}
+
+.credenciais-progress {
+    display: flex;
+    align-items: center;
+}
+
+.credenciais-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #777777;
+    border: 4px solid #555555;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.credenciais-circle.done {
+    background: #22b14c;
+}
+
+.credenciais-circle.active {
+    background: var(--cor-vermelho);
+}
+
+.credenciais-line {
+    width: 120px;
+    height: 4px;
+    background: #777777;
+}
+
+.credenciais-line.done {
+    background: #22b14c;
+}
+
+.credenciais-btn-finalizar {
+    position: absolute;
+    right: 90px;
+    padding: 12px 65px;
+    font-size: 16px;
+    border-radius: 7px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.35);
+}
+
+.credenciais-form-box {
+    background: var(--cor-branco);
+    width: 82%;
+    min-height: 430px;
+    margin: 0 auto;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.credenciais-section-title {
+    font-size: 22px;
+    font-weight: bold;
+    padding: 15px 25px 10px;
+    border-bottom: 1px solid #cccccc;
+}
+
+.credenciais-form {
+    padding: 25px 35px 30px;
+}
+
+.credenciais-row {
+    display: flex;
+    gap: 45px;
+    margin-bottom: 35px;
+}
+
+.credenciais-field {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.credenciais-field label {
+    font-size: 16px;
+    margin-bottom: 6px;
+}
+
+.credenciais-field input {
+    height: 34px;
+    border: 1px solid #aaaaaa;
+    border-radius: 4px;
+    padding: 6px 10px;
+    font-size: 16px;
+}
+
+.credenciais-buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 145px;
+}
+
+.credenciais-btn-cancelar {
+    font-size: 16px;
+    border-radius: 7px;
+    padding: 12px 55px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.35);
+}
+
+.credenciais-error-box {
+    background: #ffdede;
+    border: 1px solid var(--cor-vermelho);
+    color: #900000;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+@media (max-width: 900px) {
+    .credenciais-page {
+        padding: 35px 25px;
+    }
+
+    .credenciais-form-box {
+        width: 100%;
+    }
+
+    .credenciais-row {
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .credenciais-top-area {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .credenciais-btn-finalizar {
+        position: static;
+    }
+}
+
+/* ==========================================
+   ESTILOS ESPECÍFICOS DA TELA DE DADOS PESSOAIS
+   ========================================== */
+
+.dados-page {
+    min-height: 100vh;
+    padding: 55px 70px;
+    background: var(--cor-fundo);
+    color: var(--cor-texto);
+    font-family: var(--fonte-principal), Arial, Helvetica, sans-serif;
+}
+
+.dados-header {
+    margin-bottom: 30px;
+}
+
+.dados-titulo {
+    font-size: 44px;
+    margin: 0;
+    font-weight: 800;
+}
+
+.dados-subtitulo {
+    font-size: 20px;
+    margin-top: 6px;
+    margin-bottom: 25px;
+    color: #333333;
+}
+
+.dados-top-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 35px;
+}
+
+.dados-progress {
+    display: flex;
+    align-items: center;
+}
+
+.dados-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #777777;
+    border: 4px solid #555555;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.dados-circle.active {
+    background: var(--cor-vermelho);
+}
+
+.dados-line {
+    width: 120px;
+    height: 4px;
+    background: #b8b8b8;
+}
+
+.dados-btn-next {
+    position: absolute;
+    right: 90px;
+    padding: 12px 65px;
+    font-size: 16px;
+    border-radius: 7px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.35);
+}
+
+.dados-form-box {
+    background: var(--cor-branco);
+    width: 82%;
+    min-height: 430px;
+    margin: 0 auto;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.dados-section-title {
+    font-size: 22px;
+    font-weight: bold;
+    padding: 15px 25px 10px;
+    border-bottom: 1px solid #cccccc;
+}
+
+.dados-form {
+    padding: 20px 25px 30px;
+}
+
+.dados-row {
+    display: flex;
+    gap: 35px;
+    margin-bottom: 18px;
+    align-items: flex-end;
+}
+
+.dados-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.dados-field label {
+    font-size: 16px;
+    margin-bottom: 6px;
+}
+
+.dados-field input,
+.dados-field select {
+    height: 40px;
+    border: 1px solid #aaaaaa;
+    border-radius: 4px;
+    padding: 6px 10px;
+    font-size: 16px;
+    background: #ffffff;
+    font-family: var(--fonte-principal), Arial, Helvetica, sans-serif;
+}
+
+.dados-full {
+    width: 100%;
+}
+
+.dados-half {
+    flex: 1;
+}
+
+.dados-medium {
+    flex: 1;
+    min-width: 180px;
+}
+
+@media (max-width: 900px) {
+    .dados-page {
+        padding: 35px 25px;
+    }
+
+    .dados-form-box {
+        width: 100%;
+    }
+
+    .dados-row {
+        flex-direction: column;
+        gap: 18px;
+        align-items: stretch;
+    }
+
+    .dados-top-area {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .dados-btn-next {
+        position: static;
+    }
+}
+
+.login-form {
+    width: 100%;
+}
+
+.login-field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 34px;
+}
+
+.login-field label {
+    font-size: 21px;
+    color: #333333;
+    margin-bottom: 7px;
+}
+
+.login-field input {
+    height: 40px;
+    border: 1px solid #b7b7b7;
+    border-radius: 4px;
+    padding: 6px 14px;
+    font-size: 22px;
+    color: #333333;
+}
+
+.login-field input::placeholder {
+    color: #777777;
+}
+
+.login-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 8px;
+}
+
+/* ==========================================
+   TELA DE LOGIN
+   ========================================== */
+
+.login-page {
+    min-height: 100vh;
+    background: #e6e6e6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.login-card {
+    width: 745px;
+    min-height: 510px;
+    background: #ffffff;
+    border: 1px solid #b8b8b8;
+    border-radius: 4px;
+    padding: 36px 95px 42px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.login-title {
+    text-align: center;
+    font-size: 44px;
+    font-weight: 800;
+    color: #383838;
+    margin: 0 0 28px;
+    letter-spacing: -1px;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.login-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-bottom: 30px;
+}
+
+.login-tab {
+    width: 155px;
+    height: 41px;
+    border: 1px solid #b5b5b5;
+    border-radius: 9px;
+    background: #eeeeee;
+    color: #3d3d3d;
+    font-size: 18px;
+    font-weight: 400;
+    cursor: pointer;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.25);
+}
+
+.login-tab-active {
+    background: #a6a6a6;
+}
+
+.login-form {
+    width: 100%;
+}
+
+.login-field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 34px;
+}
+
+.login-field label {
+    font-size: 21px;
+    color: #333333;
+    margin-bottom: 7px;
+}
+
+.login-field input {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #b7b7b7;
+    border-radius: 4px;
+    padding: 6px 14px;
+    font-size: 22px;
+    color: #333333;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.login-field input::placeholder {
+    color: #777777;
+}
+
+.login-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 8px;
+}
+
+.login-btn {
+    width: 252px;
+    height: 52px;
+    border: 1px solid #555555;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 21px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 7px rgba(0, 0, 0, 0.35);
+}
+
+.login-btn-cadastrar {
+    background: #6973df;
+}
+
+.login-btn-entrar {
+    background: #2e9e43;
+}
+
+.login-btn:hover,
+.login-tab:hover {
+    filter: brightness(0.96);
+}
+
+@media (max-width: 900px) {
+    .login-page {
+        padding: 25px;
+    }
+
+    .login-card {
+        width: 100%;
+        min-height: auto;
+        padding: 30px;
+    }
+
+    .login-title {
+        font-size: 34px;
+        white-space: normal;
+    }
+
+    .login-tabs {
+        gap: 20px;
+    }
+
+    .login-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .login-btn {
+        width: 100%;
+    }
+}
+
+.login-btn {
+    width: 252px;
+    height: 52px;
+    border: 1px solid #555555;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 21px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 7px rgba(0, 0, 0, 0.35);
+}
+
+.login-btn-cadastrar {
+    background: #6973df;
+}
+
+.login-btn-entrar {
+    background: #2e9e43;
+}
+
+@media (max-width: 1000px) {
+    .login-page {
+        padding: 30px;
+    }
+
+    .login-card {
+        width: 100%;
+        padding: 30px;
+    }
+
+    .login-title {
+        font-size: 38px;
+    }
+
+    .login-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
 }
