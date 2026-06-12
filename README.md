@@ -43,13 +43,13 @@ Este projeto PHP tem como objetivo criar um sistema dedicado a preenchimento de 
 
 # Ferramentas
 
-- Linguagem: PHP
+- Linguagem: PHP 8.3
 - Framework: Laravel (com Eloquent ORM/SQL built-in)
-- Banco de Dados: MariaDB
+- Banco de Dados: MariaDB, MySQL
 - Frontend: Bootstrap, HTML5, CSS
 - Ambiente: XAMPP
 - Versionamento: GitHub
-- Suporte ao Desenvolvimento: IA's LLM, Self-hosted models e documentação técnica.
+- Suporte ao Desenvolvimento: IA's LLM, Self-hosted e documentação técnica.
 
 # Destinação
 
