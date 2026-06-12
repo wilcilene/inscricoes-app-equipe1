@@ -12,8 +12,19 @@ class PerfilCandidato extends Model
     protected $table = 'perfil_candidatos';
 
     protected $fillable = [
-        'nome_completo', 'nome_social', 'cpf', 'data_nascimento', 
-        'genero', 'naturalidade', 'mae', 'pai', 'area_atuacao',
-        'cep', 'logradouro', 'numero', 'complemento', 'bairro'
+        'nome_completo', 
+        'nome_social', 
+        'cpf', 
+        'data_nascimento', 
+        'genero', 
+        'naturalidade', 
+        'mae', 
+        'pai', 
+        'area_atuacao',
+        'cep', 
+        'logradouro', 
+        'numero', 
+        'complemento', 
+        'bairro'
     ];
 }
