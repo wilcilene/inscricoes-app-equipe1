@@ -1,4 +1,4 @@
-<!D<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -29,12 +29,12 @@
                     <img src="{{ asset('icons/lista.svg') }}" alt="">
                     <span>Minhas Inscrições</span>
                 </a>
-
-
-
             </nav>
 
-            
+            <a href="/login" class="mural-ifc-logout">
+                <span>↪</span>
+                <span>Sair</span>
+            </a>
         </aside>
 
         <section class="mural-ifc-content">
@@ -79,7 +79,6 @@
             </section>
         </section>
     </main>
-
-    
 </body>
 </html>
+    
