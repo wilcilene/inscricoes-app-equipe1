@@ -1,106 +1,149 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minhas Inscrições - IFC</title>
-    
-    @vite(['resources/css/style.css', 'public/css/minhasInscricoes.css'])
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Minhas Inscrições</title>
+
+```
+<link rel="stylesheet" href="{{ asset('css/style.css') }}?v=18">
+```
+
 </head>
 <body>
-
-    <div class="layout-container">
-        
-        <aside class="sidebar">
-            
-            <div class="logo-container" style="padding: 30px 24px; text-align: center; display: flex; justify-content: center; align-items: center;">
-                <div class="logo-img-wrapper" style="width: 100%; max-width: 200px;">
-                    <img src="{{ asset('icons/IFCfull.svg') }}" alt="Logo Instituto Federal" class="if-logo-img" style="width: 100%; height: auto; object-fit: contain;">
-                </div>
+    <main class="mural-ifc-page">
+        <aside class="mural-ifc-sidebar">
+            <div class="mural-ifc-logo">
+                <img src="{{ asset('icons/IFCfull.svg') }}" alt="Instituto Federal">
             </div>
 
-            <nav class="sidebar-nav">
-                <ul>
-                    <li>
-                        <a href="#">
-                            <i class="fa-solid fa-house"></i> Início
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa-solid fa-user"></i> Meu perfil
-                        </a>
-                    </li>
-                    <li class="{{ $activePage === 'inscricoes' ? 'active' : '' }}">
-                        <a href="#">
-                            <i class="fa-solid fa-address-card"></i> Minhas Inscrições
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+```
+        <nav class="mural-ifc-menu">
+            <a href="/mural-editais" class="mural-ifc-menu-item">
+                <img src="{{ asset('icons/inicio.svg') }}" alt="">
+                <span>Início</span>
+            </a>
 
-            <div class="sidebar-footer">
-                <a href="#" class="btn-sair">
-                    <i class="fa-solid fa-arrow-right-from-bracket"></i> Sair
-                </a>
-            </div>
-        </aside>
+            <a href="/perfil" class="mural-ifc-menu-item">
+                <img src="{{ asset('icons/usuario.svg') }}" alt="">
+                <span>Meu perfil</span>
+            </a>
 
-        <main class="main-content">
-            
-            <div class="page-header">
+            <a href="/minhas-inscricoes" class="mural-ifc-menu-item active">
+                <img src="{{ asset('icons/lista.svg') }}" alt="">
+                <span>Minhas Inscrições</span>
+            </a>
+        </nav>
+    </aside>
+
+    <section class="mural-ifc-content">
+        <header class="mural-ifc-header">
+            <div>
                 <h1>MINHAS INSCRIÇÕES</h1>
-                <p>Acompanhe o status da sua inscrição</p>
+                <p>Acompanhe o status das suas inscrições</p>
             </div>
+        </header>
 
-            <div class="table-card">
-                <table class="tabela-inscricoes">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Edital</th>
-                            <th>Descrição</th>
-                            <th>Cadastro</th>
-                            <th>Situação</th>
-                            <th>Ação</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($inscricoes as $inscricao)
-                            <tr>
-                                <td>{{ $inscricao['id'] }}</td>
-                                <td>{{ $inscricao['edital'] }}</td>
-                                <td>{{ $inscricao['descricao'] }}</td>
-                                <td>{{ $inscricao['cadastro'] }}</td>
-                                <td>
-                                    <span class="badge badge-{{ $inscricao['classe'] }}">
-                                        {{ $inscricao['situacao'] }}
-                                    </span>
-                                </td>
-                                <td>
-                                    <a href="#" class="btn-acao-editar">
-                                        <i class="fa-regular fa-pen-to-square"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-                
-                <div class="table-pagination">
-                    <span>1-10 de 12 Editais</span>
-                    <div class="pagination-buttons">
-                        <button class="btn-pag" disabled><i class="fa-solid fa-chevron-left"></i></button>
-                        <button class="btn-pag"><i class="fa-solid fa-chevron-right"></i></button>
-                    </div>
-                </div>
+        <section class="admin-cand-card">
+            <table class="admin-cand-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Edital</th>
+                        <th>Descrição</th>
+                        <th>Cadastro</th>
+                        <th>Situação</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>0001</td>
+                        <td>01/2026</td>
+                        <td>Chamada Pública - Docente</td>
+                        <td>06/02/2026</td>
+                        <td>
+                            <span class="admin-cand-status gray">Pendente</span>
+                        </td>
+                        <td>
+                            <a href="/minhas-inscricoes/1" class="admin-cand-action">☰✎</a>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>0002</td>
+                        <td>20/2026</td>
+                        <td>Processo Seletivo Simplificado</td>
+                        <td>01/09/2026</td>
+                        <td>
+                            <span class="admin-cand-status green">Aprovado</span>
+                        </td>
+                        <td>
+                            <a href="/minhas-inscricoes/2" class="admin-cand-action">☰✎</a>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>0003</td>
+                        <td>10/2026</td>
+                        <td>Seleção de Bolsistas</td>
+                        <td>29/04/2026</td>
+                        <td>
+                            <span class="admin-cand-status red">Rejeitado</span>
+                        </td>
+                        <td>
+                            <a href="/minhas-inscricoes/3" class="admin-cand-action">☰✎</a>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>0004</td>
+                        <td>15/2026</td>
+                        <td>Cadastro Reserva</td>
+                        <td>12/05/2026</td>
+                        <td>
+                            <span class="admin-cand-status gray">Pendente</span>
+                        </td>
+                        <td>
+                            <a href="/minhas-inscricoes/4" class="admin-cand-action">☰✎</a>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>0005</td>
+                        <td>44/2026</td>
+                        <td>Auxílio Estudantil</td>
+                        <td>18/06/2026</td>
+                        <td>
+                            <span class="admin-cand-status green">Aprovado</span>
+                        </td>
+                        <td>
+                            <a href="/minhas-inscricoes/5" class="admin-cand-action">☰✎</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <div style="max-width: 1010px; display: flex; justify-content: space-between; align-items: center; margin-top: 18px; color: #33383d;">
+            <span>1-5 de 5 inscrições</span>
+
+            <div style="display: flex; gap: 8px;">
+                <button type="button" style="width: 36px; height: 34px; border: 1px solid #c5c5c5; border-radius: 6px; background: #ffffff; color: #777777;">
+                    ‹
+                </button>
+
+                <button type="button" style="width: 36px; height: 34px; border: 1px solid #c5c5c5; border-radius: 6px; background: #ffffff; color: #333333;">
+                    ›
+                </button>
             </div>
-
-        </main>
-
-    </div>
+        </div>
+    </section>
+</main>
+```
 
 </body>
 </html>
+

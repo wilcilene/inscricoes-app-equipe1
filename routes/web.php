@@ -49,4 +49,8 @@ Route::get('/candidaturas/{id}', function ($id) {
 })->name('candidaturas.detalhe');
 # telas felipe/admin >
 
+Route::get('/minhas-inscricoes/{id}', function ($id) {
+    return view('minhas-inscricoes-detalhe', ['id' => $id]);
+})->name('minhas-inscricoes.detalhe');
+
 require __DIR__ . '/candidato.php';
