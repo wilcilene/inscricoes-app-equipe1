@@ -1314,4 +1314,482 @@ textarea:focus {
         flex-direction: column;
         align-items: center;
     }
+}/* ==========================================
+   TELA CANDIDATURAS - ADMIN
+   ========================================== */
+
+.admin-cand-page {
+    min-height: 100vh;
+    display: flex;
+    background: #e6e6e6;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #333333;
+}
+
+.admin-cand-sidebar {
+    width: 360px;
+    min-height: 100vh;
+    background: #3f3f3f;
+    padding: 48px 48px 40px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-cand-logo {
+    margin-bottom: 72px;
+}
+
+.admin-cand-logo img {
+    width: 215px;
+    height: auto;
+    display: block;
+    filter: brightness(0) invert(1);
+}
+
+.admin-cand-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 42px;
+}
+
+.admin-cand-menu-item,
+.admin-cand-sair {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    color: #d8d8d8;
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: 400;
+}
+
+.admin-cand-menu-item img,
+.admin-cand-sair img {
+    width: 31px;
+    height: 31px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+}
+
+.admin-cand-menu-item.active,
+.admin-cand-menu-item:hover {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.admin-cand-sair {
+    margin-top: auto;
+    background: #242424;
+    padding: 14px 20px;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 18px;
+}
+
+.admin-cand-sair:hover {
+    background: #1f1f1f;
+}
+}
+
+.admin-cand-logo img {
+    width: 215px;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 70px;
+
+}
+
+.admin-cand-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 42px;
+}
+
+.admin-cand-menu-item,
+.admin-cand-sair {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: #d8d8d8;
+    text-decoration: none;
+    font-size: 22px;
+}
+
+.admin-cand-menu-item:hover,
+.admin-cand-menu-item.active {
+    color: #ffffff;
+}
+
+.admin-cand-icon {
+    width: 32px;
+    font-size: 32px;
+    line-height: 1;
+    text-align: center;
+    color: #d8d8d8;
+}
+
+.admin-cand-sair {
+    margin-top: auto;
+    background: #242424;
+    padding: 14px 20px;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 18px;
+}
+
+.admin-cand-content {
+    flex: 1;
+    padding: 72px 70px;
+    overflow-x: hidden;
+}
+
+.admin-cand-header {
+    margin-bottom: 32px;
+}
+
+.admin-cand-header h1 {
+    font-size: 44px;
+    font-weight: 800;
+    margin: 0 0 8px;
+    color: #34383d;
+}
+
+.admin-cand-header p {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+    color: #555555;
+}
+
+.admin-cand-card {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 30px;
+    width: 100%;
+    max-width: 1040px;
+    box-sizing: border-box;
+    overflow-x: auto;
+}
+
+.admin-cand-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 16px;
+    color: #000000;
+}
+
+.admin-cand-table thead tr {
+    background: #c4c4c4;
+}
+
+.admin-cand-table th {
+    padding: 15px 16px;
+    text-align: left;
+    font-weight: 700;
+}
+
+.admin-cand-table th:first-child {
+    border-radius: 7px 0 0 7px;
+}
+
+.admin-cand-table th:last-child {
+    border-radius: 0 7px 7px 0;
+    text-align: center;
+}
+
+.admin-cand-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #dddddd;
+    vertical-align: middle;
+}
+
+.admin-cand-table td:last-child {
+    text-align: center;
+}
+
+.admin-cand-status {
+    display: inline-block;
+    min-width: 100px;
+    padding: 8px 10px;
+    border-radius: 7px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.admin-cand-status.gray {
+    background: #808080;
+}
+
+.admin-cand-status.green {
+    background: #28a745;
+}
+
+.admin-cand-status.red {
+    background: #dc3545;
+}
+
+.admin-cand-action {
+    border: none;
+    background: transparent;
+    color: #159947;
+    font-size: 22px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+@media (max-width: 1000px) {
+    .admin-cand-page {
+        flex-direction: column;
+    }
+
+    .admin-cand-sidebar {
+        width: 100%;
+        min-height: auto;
+    }
+
+    .admin-cand-content {
+        padding: 40px 25px;
+    }
+
+    .admin-cand-header h1 {
+        font-size: 38px;
+    }
+
+    .admin-cand-card {
+        max-width: 100%;
+    }
+}/* ==========================================
+   DETALHE DA CANDIDATURA - ADMIN
+   ========================================== */
+
+.cand-detalhe-content {
+    flex: 1;
+    padding: 56px 50px;
+    background: #e6e6e6;
+    overflow-x: hidden;
+}
+
+.cand-detalhe-header h1 {
+    font-size: 44px;
+    font-weight: 800;
+    margin: 0 0 44px;
+    color: #2f3338;
+    letter-spacing: -1px;
+}
+
+.cand-detalhe-summary {
+    width: 100%;
+    max-width: 1010px;
+    min-height: 82px;
+    background: #ffffff;
+    border: 1px solid #bdbdbd;
+    border-radius: 4px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 170px;
+    align-items: center;
+    gap: 20px;
+    padding: 14px 34px;
+    box-sizing: border-box;
+    margin-bottom: 24px;
+}
+
+.cand-detalhe-summary div {
+    display: flex;
+    flex-direction: column;
+}
+
+.cand-detalhe-summary span {
+    font-size: 16px;
+    color: #3f3f3f;
+    margin-bottom: 4px;
+}
+
+.cand-detalhe-summary strong {
+    font-size: 22px;
+    color: #3a3a3a;
+}
+
+.cand-detalhe-status {
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    background: #cf1b22;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.cand-detalhe-grid {
+    max-width: 1010px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 26px;
+}
+
+.cand-detalhe-left {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.cand-detalhe-card {
+    background: #ffffff;
+    border: 1px solid #bdbdbd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.cand-detalhe-card h2 {
+    font-size: 25px;
+    margin: 0 0 18px;
+    color: #3a3a3a;
+}
+
+.cand-detalhe-card.dados {
+    min-height: 180px;
+    padding: 26px 22px;
+}
+
+.cand-detalhe-dados {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 32px;
+    row-gap: 10px;
+    font-size: 14px;
+    color: #444444;
+}
+
+.cand-detalhe-dados p {
+    margin: 0;
+}
+
+.cand-detalhe-dados span {
+    font-weight: 700;
+    margin-right: 5px;
+}
+
+.cand-detalhe-card.historico {
+    min-height: 225px;
+    padding: 26px 28px;
+}
+
+.cand-historico-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.cand-historico-bolinha {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #2da04b;
+    border-radius: 50%;
+    color: #ffffff;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.cand-historico-item.completo .cand-historico-bolinha {
+    background: #2da04b;
+}
+
+.cand-historico-item h3 {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0 0 3px;
+    color: #3f3f3f;
+}
+
+.cand-historico-item p {
+    font-size: 14px;
+    margin: 0;
+    color: #4f4f4f;
+}
+
+.cand-detalhe-card.documentos {
+    min-height: 413px;
+    padding: 22px 22px;
+}
+
+.cand-documento {
+    border: 1px solid #c7c7c7;
+    border-radius: 9px;
+    padding: 16px 14px;
+    margin-bottom: 14px;
+}
+
+.cand-documento h3 {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0 0 16px;
+    color: #3f3f3f;
+}
+
+.cand-documento-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cand-pdf {
+    color: #e02222;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.cand-documento-row span {
+    color: #555555;
+    font-size: 14px;
+}
+
+.cand-documento-row button {
+    margin-left: auto;
+    min-width: 112px;
+    height: 40px;
+    border: 1px solid #d0d0d0;
+    border-radius: 9px;
+    background: #eeeeee;
+    color: #3f3f3f;
+    font-size: 15px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+}
+
+.admin-cand-action {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 1100px) {
+    .cand-detalhe-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cand-detalhe-summary {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 700px) {
+    .cand-detalhe-content {
+        padding: 35px 22px;
+    }
+
+    .cand-detalhe-header h1 {
+        font-size: 34px;
+    }
+
+    .cand-detalhe-summary {
+        grid-template-columns: 1fr;
+    }
 }
