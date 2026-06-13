@@ -1,13 +1,9 @@
 <?php
-use Illuminate\Support\Facedes\Route;
 
-Route::middleware(['auth','admin'])->group(function(){
+use Illuminate\Support\Facades\Route;
 
-    Route::get('/admin/dashboard',funcion(){
-       return view('admin.dashboard');
-
-    
-
-   });
-
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin/dashboard', function () {
+        return view('admin.dashboard');
+    });
 });

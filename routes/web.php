@@ -1,21 +1,22 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-<<<<<<< Updated upstream
 
-=======
-use App\Http\Controllers\Admin\AdminEditalController;
 use App\Http\Controllers\CandidatoController;
 
 Route::post('/candidato/endereco', [CandidatoController::class, 'salvarEndereco'])
     ->name('candidato.endereco');
 
 // Página inicial
->>>>>>> Stashed changes
+//<<<<<<< livia
+//>>>>>>> Stashed changes
+//=======
+//>>>>>>> main
 Route::get('/', function () {
-    return view('arquivo');
+    return view('login');
 });
 
+// Perfil
 Route::get('/perfil', function () {
     return view('perfil');
 });
