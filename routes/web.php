@@ -12,9 +12,10 @@ use App\Http\Controllers\CandidatoController;
 
 //-----------------ROTAS PÚBLICAS
 
+
 // Tela inicial
 Route::get('/', function () {
-    return view('login');
+    return view('inscricao');
 });
 
 // Tela de login
@@ -125,9 +126,8 @@ Route::middleware([
     'admin'
 ])->group(function () {
 
-    // Página de teste
     Route::get('/admin', function () {
-        return view('admintest');
+        return view('admin-mural-editais');
     })->name('admin.dashboard');
 
 
@@ -164,7 +164,27 @@ Route::middleware([
         'candidaturas.detalhe'
     );
 
+
+Route::get('/admin/editais/cadastrar', function () {
+        return view('admin-mural-editais');
+    })->name('admin.editais.cadastrar');
+
+Route::get('/admin/editais/{id}/editar', function ($id) {
+        return view('admin-mural-editais')
+            ->with('success', "Edital {$id} selecionado para edicao.");
+    })->name('admin.editais.editar');
+
+    Route::delete('/admin/editais/{id}', function ($id) {
+        return redirect()
+            ->route('admin.mural.editais')
+            ->with('success', "Edital {$id} excluido.");
+    })->name('admin.editais.excluir'); 
+
+
+
 });
+
+
 
 
 

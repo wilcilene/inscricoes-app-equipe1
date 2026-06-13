@@ -1,41 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel de Candidaturas</title>
-
+    <link rel="stylesheet" href="{{ asset('global/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <body>
+
+<div class="layout">
+
+    @include('global.sidebarAdmin')
+
+    <main class="pagina">
+<body>
     <main class="admin-cand-page">
-        <aside class="admin-cand-sidebar">
-            <div class="admin-cand-logo">
-                <img src="{{ asset('icons/IFCfull.svg') }}" alt="Instituto Federal">
-            </div>
-
-            <nav class="admin-cand-menu">
-                <a href="/mural-editais" class="admin-cand-menu-item">
-                    <img src="{{ asset('icons/inicio.svg') }}" alt="">
-                    <span>Início</span>
-                </a>
-
-                <a href="/admin/editais/cadastrar" class="admin-cand-menu-item">
-                    <img src="{{ asset('icons/AdicionarDocumento.svg') }}" alt="">
-                    <span>Cadastrar Editais</span>
-                </a>
-
-                <a href="/candidaturas" class="admin-cand-menu-item active">
-                    <img src="{{ asset('icons/lista.svg') }}" alt="">
-                    <span>Candidaturas</span>
-                </a>
-            </nav>
-
-            <a href="/login" class="admin-cand-sair">
-                <img src="{{ asset('icons/Saida.svg') }}" alt="">
-                <span>Sair</span>
-            </a>
-        </aside>
 
         <section class="admin-cand-content">
             <header class="admin-cand-header">

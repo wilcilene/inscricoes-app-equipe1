@@ -1126,6 +1126,37 @@ textarea:focus {
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.35);
 }
 
+.admin-mural-btn {
+    min-width: 92px !important;
+    height: 36px !important;
+    border: none !important;
+    border-radius: 18px !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 14px !important;
+    font-weight: 800 !important;
+    cursor: pointer !important;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.25) !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+}
+
+.admin-mural-btn.edit {
+    background: #2b9d42 !important;
+}
+
+.admin-mural-btn.delete {
+    background: #d93645 !important;
+}
+.admin-mural-actions {
+    display: flex;
+    gap: 10px; /* espaço entre os botões */
+    align-items: center;
+}
+
+
 .credenciais-error-box {
     background: #ffdede;
     border: 1px solid var(--cor-vermelho);
@@ -1615,7 +1646,6 @@ textarea:focus {
 
 .admin-cand-sair:hover {
     background: #1f1f1f;
-}
 }
 
 .admin-cand-logo img {
@@ -2321,4 +2351,68 @@ color: #ffffff !important;
 
 .mural-ifc-logout:hover {
     background: #232323 !important;
+}
+
+/*---------------VALIDAÇÃO CPF*/
+
+.cpf-error-card {
+    display: none;
+    margin-top: 8px;
+    padding: 12px;
+    border-radius: 8px;
+    background-color: #ffe5e5;
+    border: 1px solid #c20000;
+    color: #c20000;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.cpf-error-card.show {
+    display: block;
+    animation: fadeIn .2s ease-in-out;
+}
+
+.cpf-invalido {
+    border: 2px solid #c20000 !important;
+    background-color: #fff5f5 !important;
+    color: #c20000;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.password-box{
+    position: relative;
+    width: 100%;
+}
+
+.password-box input{
+    width: 100%;
+    padding-right: 45px;
+}
+
+.toggle-password {
+    background: none;
+    border: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.eye-icon{
+    width: 2px;
+    height: 2px;
+    display: block;
+}
 }

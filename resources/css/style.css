@@ -390,6 +390,13 @@ body {
     border-radius: 8px;
     /* Cantos compatíveis com os novos inputs */
 }
+
+.admin-mural-actions {
+    display: flex;
+    gap: 10px; /* espaço entre os botões */
+    align-items: center;
+}
+
 .mural-ifc-logout {
     margin-top: auto !important;
     padding: 14px 18px !important;
@@ -469,3 +476,5 @@ body {
     height: 2px;
     display: block;
 }
+
+
