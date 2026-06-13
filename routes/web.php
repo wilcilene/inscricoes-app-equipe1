@@ -4,6 +4,12 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\CandidatoController;
 
+/* Route::get('/', [MuralController::class, 'index'])->name('mural');
+
+Route::prefix('admin')->name('admin.')->middleware('auth')->group(function(){
+    Route::resource('editais', AdminEditalController::class);
+});
+*/
 Route::post('/candidato/endereco', [CandidatoController::class, 'salvarEndereco'])
     ->name('candidato.endereco');
 

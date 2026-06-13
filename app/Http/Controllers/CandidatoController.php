@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
-class CandidatoController extends Controller
+class pCandidatoController extends Controller
 {
     public function create()
     {
