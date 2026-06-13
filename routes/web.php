@@ -69,14 +69,8 @@ Route::middleware([
 
 
     // Perfil
-    Route::get('/perfil', function () {
-        return view('perfil');
-    })->name('perfil.index');
-
-    Route::post(
-        '/perfil',
-        [PerfilController::class, 'store']
-    )->name('perfil.store');
+    Route::get('/perfil', [PerfilController::class, 'index'])->name('perfil.index');
+    Route::post('/perfil', [PerfilController::class, 'store'])->name('perfil.store');
 
 
     // Editais
