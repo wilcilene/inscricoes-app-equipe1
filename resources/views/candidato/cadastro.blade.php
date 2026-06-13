@@ -2,162 +2,232 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro - Endereço e Contato</title>
 
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
+
 <body>
-    <main class="cadastro-page">
-        <header class="cadastro-header">
-            <h1 class="titulo cadastro-titulo">CADASTRO</h1>
-            <p class="subtitulo cadastro-subtitulo">Certifique-se de que os dados estão corretos</p>
-        </header>
 
-        <section class="cadastro-top-area">
-            <div class="cadastro-progress">
-                <div class="cadastro-circle done"></div>
-                <div class="cadastro-line done"></div>
-                <div class="cadastro-circle active"></div>
-                <div class="cadastro-line"></div>
-                <div class="cadastro-circle"></div>
+<main class="dados-page">
+
+    <header class="dados-header">
+        <h1 class="titulo dados-titulo">CADASTRO</h1>
+
+        <p class="subtitulo dados-subtitulo">
+            Informe seus dados de endereço e contato
+        </p>
+    </header>
+
+    <section class="dados-top-area">
+
+        <div class="dados-progress">
+            <div class="dados-circle active"></div>
+            <div class="dados-line active"></div>
+            <div class="dados-circle active"></div>
+            <div class="dados-line"></div>
+            <div class="dados-circle"></div>
+        </div>
+
+        <button
+            type="button"
+            id="btnProximo"
+            class="btn Vd dados-btn-next"
+        >
+            Próximo
+        </button>
+
+    </section>
+
+    <section class="dados-form-box">
+
+        <div class="dados-section-title">
+            Endereço e Contato
+        </div>
+
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                Verifique os campos obrigatórios.
+            </div>
+        @endif
+
+        <form
+    method="POST"
+    action="{{ route('candidato.endereco') }}"
+    id="formCadastro"
+    class="dados-form"
+>
+            @csrf
+
+            <div class="dados-row">
+
+                <div class="dados-field dados-half">
+                    <label>CEP *</label>
+
+                    <input
+                        type="text"
+                        name="cep"
+                        id="cep"
+                        value="{{ old('cep') }}"
+                        required
+                    >
+                </div>
+
+                <div class="dados-field dados-half">
+                    <label>Logradouro *</label>
+
+                    <input
+                        type="text"
+                        name="logradouro"
+                        id="logradouro"
+                        value="{{ old('logradouro') }}"
+                        required
+                    >
+                </div>
+
             </div>
 
-            <button class="btn Vd cadastro-btn-next" type="submit" form="formEndereco">
-                Próximo
-            </button>
-        </section>
+            <div class="dados-row">
 
-        <section class="cadastro-form-box">
-            <div class="cadastro-section-title">
-                Endereço e Contato
+                <div class="dados-field dados-half">
+                    <label>Número *</label>
+
+                    <input
+                        type="text"
+                        name="numero"
+                        value="{{ old('numero') }}"
+                        required
+                    >
+                </div>
+
+                <div class="dados-field dados-half">
+                    <label>Complemento</label>
+
+                    <input
+                        type="text"
+                        name="complemento"
+                        value="{{ old('complemento') }}"
+                    >
+                </div>
+
             </div>
 
-            <form id="formEndereco" method="POST" action="{{ route('candidato.endereco') }}" class="cadastro-form">
-                @csrf
+            <div class="dados-row">
 
-                @if ($errors->any())
-                    <div class="cadastro-error-box">
-                        Preencha todos os campos obrigatórios corretamente.
-                    </div>
-                @endif
+                <div class="dados-field dados-half">
+                    <label>Bairro *</label>
 
-
-                <div class="cadastro-row">
-                    <div class="cadastro-field cadastro-small">
-                        <label for="cep">CEP:</label>
-                        <input
-                            type="text"
-                            id="cep"
-                            name="cep"
-                            placeholder="00.000-00"
-                            value="{{ old('cep') }}"
-                        >
-                    </div>
-
-                    <div class="cadastro-field cadastro-flex-grow">
-                        <label for="logradouro">Logradouro:</label>
-                        <input
-                            type="text"
-                            id="logradouro"
-                            name="logradouro"
-                            placeholder="Preencher..."
-                            value="{{ old('logradouro') }}"
-                        >
-                    </div>
+                    <input
+                        type="text"
+                        name="bairro"
+                        id="bairro"
+                        value="{{ old('bairro') }}"
+                        required
+                    >
                 </div>
 
-                <div class="cadastro-row">
-                    <div class="cadastro-field cadastro-small">
-                        <label for="numero">Número:</label>
-                        <input
-                            type="text"
-                            id="numero"
-                            name="numero"
-                            placeholder="00000"
-                            value="{{ old('numero') }}"
-                        >
-                    </div>
+                <div class="dados-field dados-half">
+                    <label>Estado *</label>
 
-                    <div class="cadastro-field cadastro-small">
-                        <label for="complemento">Complemento:</label>
-                        <input
-                            type="text"
-                            id="complemento"
-                            name="complemento"
-                            placeholder="Preencher..."
-                            value="{{ old('complemento') }}"
-                        >
-                    </div>
+                    <select
+                        name="estado"
+                        id="estado"
+                        required
+                    >
+                        <option value="">Selecione</option>
 
-                    <div class="cadastro-field cadastro-small">
-                        <label for="bairro">Bairro:</label>
-                        <input
-                            type="text"
-                            id="bairro"
-                            name="bairro"
-                            placeholder="Preencher"
-                            value="{{ old('bairro') }}"
-                        >
-                    </div>
+                        @foreach([
+                            'AC','AL','AP','AM','BA','CE','DF','ES',
+                            'GO','MA','MT','MS','MG','PA','PB','PR',
+                            'PE','PI','RJ','RN','RS','RO','RR','SC',
+                            'SP','SE','TO'
+                        ] as $uf)
+
+                            <option
+                                value="{{ $uf }}"
+                                {{ old('estado') == $uf ? 'selected' : '' }}
+                            >
+                                {{ $uf }}
+                            </option>
+
+                        @endforeach
+
+                    </select>
+
                 </div>
 
-                <div class="cadastro-row">
-                    <div class="cadastro-field cadastro-flex-grow">
-                        <label for="estado">Estado:</label>
-                        <input
-                            type="text"
-                            id="estado"
-                            name="estado"
-                            placeholder="Preencher..."
-                            value="{{ old('estado') }}"
-                        >
-                    </div>
+            </div>
 
-                    <div class="cadastro-field cadastro-flex-grow">
-                        <label for="cidade">Cidade:</label>
-                        <input
-                            type="text"
-                            id="cidade"
-                            name="cidade"
-                            placeholder="Preencher..."
-                            value="{{ old('cidade') }}"
-                        >
-                    </div>
+            <div class="dados-row">
+
+                <div class="dados-field dados-full">
+
+                    <label>Cidade *</label>
+
+                    <input
+                        type="text"
+                        name="cidade"
+                        id="cidade"
+                        value="{{ old('cidade') }}"
+                        required
+                    >
+
                 </div>
 
-                <div class="cadastro-row">
-                    <div class="cadastro-field cadastro-small">
-                        <label for="telefone">Telefone:</label>
-                        <input
-                            type="text"
-                            id="telefone"
-                            name="telefone"
-                            placeholder="00 0000-0000"
-                            value="{{ old('telefone') }}"
-                        >
-                    </div>
+            </div>
 
-                    <div class="cadastro-field cadastro-small">
-                        <label for="celular">Celular:</label>
-                        <input
-                            type="text"
-                            id="celular"
-                            name="celular"
-                            placeholder="00 00000-0000"
-                            value="{{ old('celular') }}"
-                        >
-                    </div>
+            <div class="dados-row">
+
+                <div class="dados-field dados-half">
+
+                    <label>Telefone</label>
+
+                    <input
+                        type="text"
+                        name="telefone"
+                        value="{{ old('telefone') }}"
+                    >
+
                 </div>
 
-                <div class="cadastro-buttons">
-                    <button type="button" class="btn Vm cadastro-btn-cancelar" onclick="window.location.href='/'">
-                        Cancelar
-                    </button>
+                <div class="dados-field dados-half">
+
+                    <label>Celular *</label>
+
+                    <input
+                        type="text"
+                        name="celular"
+                        value="{{ old('celular') }}"
+                        required
+                    >
+
                 </div>
-            </form>
-        </section>
-    </main>
+
+            </div>
+
+        </form>
+
+    </section>
+
+</main>
+
+<script>
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    const form = document.getElementById('formCadastro');
+    const btnProximo = document.getElementById('btnProximo');
+
+    btnProximo.addEventListener('click', function () {
+
+        form.submit();
+
+    });
+
+});
+
+</script>
+
 </body>
 </html>

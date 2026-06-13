@@ -4,6 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\MinhasInscricoesController;
 use App\Http\Controllers\PerfilController;
+use App\Http\Controllers\CandidatoController;
+
+
+
+
 
 //-----------------ROTAS PÚBLICAS
 
@@ -161,6 +166,54 @@ Route::middleware([
 
 });
 
+
+
+//----------- ETAPA 1 - DADOS PESSOAIS
+
+Route::get(
+    '/candidato/dados',
+    [CandidatoController::class, 'dadosPessoais']
+)->name('candidato.dados');
+
+Route::post(
+    '/candidato/dados',
+    [CandidatoController::class, 'salvarDadosPessoais']
+)->name('candidato.dados.salvar');
+
+//----------------- ETAPA 2 - ENDEREÇO
+
+Route::get(
+    '/candidato/cadastro',
+    [CandidatoController::class, 'create']
+)->name('candidato.cadastro');
+
+Route::post(
+    '/candidato/endereco',
+    [CandidatoController::class, 'salvarEndereco']
+)->name('candidato.endereco');
+//--------- ETAPA 3 - CREDENCIAIS
+
+Route::get(
+    '/candidato/credenciais',
+    [CandidatoController::class, 'credenciais']
+)->name('candidato.credenciais');
+
+Route::post(
+    '/candidato/store',
+    [CandidatoController::class, 'store']
+)->name('candidato.store');
+
+//-----------------INSCRIÇÃO
+
+Route::get(
+    '/candidato/inscricao',
+    [CandidatoController::class, 'inscricao']
+)->name('candidato.inscricao');
+
+Route::post(
+    '/candidato/inscricao',
+    [CandidatoController::class, 'enviarInscricao']
+)->name('candidato.inscricao.enviar');
 
 //-----------------ROTAS EXTERNAS
 

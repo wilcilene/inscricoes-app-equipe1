@@ -14,6 +14,7 @@
 
     <header class="dados-header">
         <h1 class="titulo dados-titulo">CADASTRO</h1>
+
         <p class="subtitulo dados-subtitulo">
             Certifique-se de que os dados estão corretos
         </p>
@@ -29,8 +30,11 @@
             <div class="dados-circle"></div>
         </div>
 
-        <!-- BOTÃO CONTROLADO PELO JS -->
-        <button class="btn Vd dados-btn-next" type="button" id="btnProximo">
+        <button
+            type="button"
+            id="btnProximo"
+            class="btn Vd dados-btn-next"
+        >
             Próximo
         </button>
 
@@ -42,73 +46,194 @@
             Dados Pessoais
         </div>
 
-        <form class="dados-form">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                Verifique os campos destacados.
+            </div>
+        @endif
+
+        <form
+            method="POST"
+            action="{{ route('candidato.dados.salvar') }}"
+            id="formDados"
+            class="dados-form"
+        >
+            @csrf
 
             <div class="dados-row">
+
                 <div class="dados-field dados-full">
-                    <label>Nome Completo*:</label>
-                    <input type="text" name="nome_completo" placeholder="Preencher">
+
+                    <label>Nome Completo *</label>
+
+                    <input
+                        type="text"
+                        name="nome_completo"
+                        value="{{ old('nome_completo') }}"
+                        placeholder="Digite seu nome completo"
+                        required
+                    >
+
+                    @error('nome_completo')
+                        <div class="cpf-error-card show">
+                            {{ $message }}
+                        </div>
+                    @enderror
+
                 </div>
+
             </div>
 
             <div class="dados-row">
+
                 <div class="dados-field dados-full">
-                    <label>Nome Social:</label>
-                    <input type="text" name="nome_social" placeholder="Preencher">
+
+                    <label>Nome Social</label>
+
+                    <input
+                        type="text"
+                        name="nome_social"
+                        value="{{ old('nome_social') }}"
+                        placeholder="Opcional"
+                    >
+
                 </div>
+
             </div>
 
             <div class="dados-row">
 
                 <div class="dados-field dados-medium">
-                    <label>CPF*:</label>
-                    <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00">
+
+                    <label>CPF *</label>
+
+                    <input
+                        type="text"
+                        id="cpf"
+                        name="cpf"
+                        value="{{ old('cpf') }}"
+                        placeholder="000.000.000-00"
+                        maxlength="14"
+                        required
+                    >
+
+                    <div
+                        id="cpfErrorCard"
+                        class="cpf-error-card"
+                    ></div>
+
+                    @error('cpf')
+                        <div class="cpf-error-card show">
+                            {{ $message }}
+                        </div>
+                    @enderror
+
                 </div>
 
                 <div class="dados-field dados-medium">
-                    <label>Data de Nascimento*:</label>
-                    <input type="text" name="data_nascimento" placeholder="dd/mm/aaaa">
+
+                    <label>Data de Nascimento *</label>
+
+                    <input
+                        type="date"
+                        id="data_nascimento"
+                        name="data_nascimento"
+                        value="{{ old('data_nascimento') }}"
+                        max="{{ date('Y-m-d') }}"
+                        required
+                    >
+
+                    <div
+                        id="idadeErrorCard"
+                        class="cpf-error-card"
+                    ></div>
+
+                    @error('data_nascimento')
+                        <div class="cpf-error-card show">
+                            {{ $message }}
+                        </div>
+                    @enderror
+
                 </div>
 
                 <div class="dados-field dados-medium">
-                    <label>Gênero*:</label>
-                    <select name="genero">
+
+                    <label>Gênero *</label>
+
+                    <select name="genero" required>
+
                         <option value="">Selecione</option>
-                        <option value="feminino">Feminino</option>
-                        <option value="masculino">Masculino</option>
-                        <option value="outro">Outro</option>
-                        <option value="nao_informar">Prefiro não informar</option>
-                    </select>
-                </div>
 
-                <div class="dados-field dados-medium">
-                    <label>Naturalidade*:</label>
-                    <select name="naturalidade">
-                        <option value="">Selecione</option>
-                        <option value="brasileira">Brasileira</option>
-                        <option value="estrangeira">Estrangeira</option>
+                        <option value="M"
+                            {{ old('genero') == 'M' ? 'selected' : '' }}>
+                            Masculino
+                        </option>
+
+                        <option value="F"
+                            {{ old('genero') == 'F' ? 'selected' : '' }}>
+                            Feminino
+                        </option>
+
+                        <option value="NB"
+                            {{ old('genero') == 'NB' ? 'selected' : '' }}>
+                            Não Binário
+                        </option>
+
+                        <option value="O"
+                            {{ old('genero') == 'O' ? 'selected' : '' }}>
+                            Outro
+                        </option>
+
                     </select>
+
                 </div>
 
             </div>
 
             <div class="dados-row">
+
                 <div class="dados-field dados-half">
-                    <label>Mãe*:</label>
-                    <input type="text" name="mae" placeholder="Preencher">
+
+                    <label>Nome da Mãe *</label>
+
+                    <input
+                        type="text"
+                        name="mae"
+                        value="{{ old('mae') }}"
+                        required
+                    >
+
                 </div>
 
                 <div class="dados-field dados-half">
-                    <label>Pai:</label>
-                    <input type="text" name="pai" placeholder="Preencher">
+
+                    <label>Nome do Pai</label>
+
+                    <input
+                        type="text"
+                        name="pai"
+                        value="{{ old('pai') }}"
+                    >
+
                 </div>
+
             </div>
 
             <div class="dados-row">
+
                 <div class="dados-field dados-half">
-                    <label>Área Profissional*:</label>
-                    <input type="text" name="area_profissional" placeholder="Preencher">
+
+                    <label>Área de Atuação *</label>
+
+                    <input
+                        type="text"
+                        name="area_profissional"
+                        value="{{ old('area_profissional') }}"
+                        required
+                    >
+
                 </div>
+
             </div>
 
         </form>
@@ -117,79 +242,186 @@
 
 </main>
 
-<!-- SCRIPT -->
 <script>
+
 document.addEventListener('DOMContentLoaded', function () {
 
-    const cpfInput = document.getElementById('cpf');
+    const form = document.getElementById('formDados');
     const btnProximo = document.getElementById('btnProximo');
 
+    const cpfInput = document.getElementById('cpf');
+    const cpfCard = document.getElementById('cpfErrorCard');
+
+    const dataNascimento = document.getElementById('data_nascimento');
+    const idadeCard = document.getElementById('idadeErrorCard');
+
+    // Máscara CPF
+
+    cpfInput.addEventListener('input', function () {
+
+        let value = this.value.replace(/\D/g, '');
+
+        value = value.replace(/(\d{3})(\d)/, '$1.$2');
+        value = value.replace(/(\d{3})(\d)/, '$1.$2');
+        value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+
+        this.value = value;
+
+    });
+
+    function mostrarErroCPF(msg) {
+
+        cpfCard.textContent = msg;
+
+        cpfCard.classList.add('show');
+
+        cpfInput.classList.add('cpf-invalido');
+    }
+
+    function limparErroCPF() {
+
+        cpfCard.textContent = '';
+
+        cpfCard.classList.remove('show');
+
+        cpfInput.classList.remove('cpf-invalido');
+    }
+
+    function mostrarErroIdade(msg) {
+
+        idadeCard.textContent = msg;
+
+        idadeCard.classList.add('show');
+
+        dataNascimento.classList.add('cpf-invalido');
+    }
+
+    function limparErroIdade() {
+
+        idadeCard.textContent = '';
+
+        idadeCard.classList.remove('show');
+
+        dataNascimento.classList.remove('cpf-invalido');
+    }
+
     function validarCPF(cpf) {
+
         cpf = cpf.replace(/\D/g, '');
 
         if (cpf.length !== 11) return false;
+
         if (/^(\d)\1+$/.test(cpf)) return false;
 
         let soma = 0;
-        let resto;
 
-        // primeiro dígito
         for (let i = 0; i < 9; i++) {
-            soma += parseInt(cpf[i]) * (10 - i);
+            soma += parseInt(cpf.charAt(i)) * (10 - i);
         }
 
-        resto = soma % 11;
-        const digito1 = resto < 2 ? 0 : 11 - resto;
+        let resto = (soma * 10) % 11;
 
-        if (parseInt(cpf[9]) !== digito1) return false;
+        if (resto === 10) resto = 0;
 
-        // segundo dígito
+        if (resto !== parseInt(cpf.charAt(9))) {
+            return false;
+        }
+
         soma = 0;
 
         for (let i = 0; i < 10; i++) {
-            soma += parseInt(cpf[i]) * (11 - i);
+            soma += parseInt(cpf.charAt(i)) * (11 - i);
         }
 
-        resto = soma % 11;
-        const digito2 = resto < 2 ? 0 : 11 - resto;
+        resto = (soma * 10) % 11;
 
-        if (parseInt(cpf[10]) !== digito2) return false;
+        if (resto === 10) resto = 0;
 
-        return true;
+        return resto === parseInt(cpf.charAt(10));
     }
 
-    // valida ao digitar (efeito vermelho)
-    cpfInput.addEventListener('input', function () {
-        if (this.value.length === 0) {
-            this.classList.remove('is-invalid');
+    function idadeValida(data) {
+
+        if (!data) return false;
+
+        const nascimento = new Date(data);
+        const hoje = new Date();
+
+        let idade =
+            hoje.getFullYear() -
+            nascimento.getFullYear();
+
+        const mes =
+            hoje.getMonth() -
+            nascimento.getMonth();
+
+        if (
+            mes < 0 ||
+            (mes === 0 &&
+            hoje.getDate() < nascimento.getDate())
+        ) {
+            idade--;
+        }
+
+        return idade >= 16;
+    }
+
+    cpfInput.addEventListener('blur', function () {
+
+        if (!this.value.trim()) return;
+
+        if (!validarCPF(this.value)) {
+
+            mostrarErroCPF('CPF inválido.');
+
+        } else {
+
+            limparErroCPF();
+        }
+
+    });
+
+    dataNascimento.addEventListener('blur', function () {
+
+        if (!this.value) return;
+
+        if (!idadeValida(this.value)) {
+
+            mostrarErroIdade(
+                'O candidato deve possuir no mínimo 16 anos.'
+            );
+
+        } else {
+
+            limparErroIdade();
+        }
+
+    });
+
+    btnProximo.addEventListener('click', function () {
+
+        if (!validarCPF(cpfInput.value)) {
+
+            mostrarErroCPF('CPF inválido.');
+
+            cpfInput.focus();
+
             return;
         }
 
-        if (!validarCPF(this.value)) {
-            this.classList.add('is-invalid');
-        } else {
-            this.classList.remove('is-invalid');
-        }
-    });
+        if (!idadeValida(dataNascimento.value)) {
 
-    // botão próximo
-    btnProximo.addEventListener('click', function (e) {
+            mostrarErroIdade(
+                'O candidato deve possuir no mínimo 16 anos.'
+            );
 
-        const cpf = cpfInput.value;
+            dataNascimento.focus();
 
-        if (!validarCPF(cpf)) {
-
-            cpfInput.classList.add('is-invalid');
-
-            alert('CPF inválido! Verifique o número.');
-
-            return; // NÃO trava mais o botão, só bloqueia avanço
+            return;
         }
 
-        cpfInput.classList.remove('is-invalid');
+        form.submit();
 
-        // libera navegação
-        window.location.href = "{{ route('candidato.cadastro') }}";
     });
 
 });

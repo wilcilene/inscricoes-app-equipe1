@@ -3,31 +3,36 @@
 namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class User extends Authenticatable
 {
+    use HasFactory, Notifiable;
+
     protected $fillable = [
         'name',
         'email',
         'password',
-        'tipo_usuario_id'
     ];
 
-    // ONE TO ONE
-    public function perfilCandidato()
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    protected function casts(): array
     {
-        return $this->hasOne(PerfilCandidato::class);
+        return [
+            'name',
+            'email_verified_at' => 'datetime',
+            'password' => 'hashed',
+            'tipo_usuario_id',
+        ];
     }
 
-    // ONE TO MANY
-    public function tipoUsuario()
+    public function candidato()
     {
-        return $this->belongsTo(TipoUsuario::class);
-    }
-
-    // MANY TO MANY
-    public function editais()
-    {
-        return $this->belongsToMany(Edital::class);
+        return $this->hasOne(Candidato::class);
     }
 }

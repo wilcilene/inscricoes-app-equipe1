@@ -15,6 +15,14 @@
         rel="stylesheet"
         href="{{ asset('css/style.css') }}"
     >
+
+    @if(session('success'))
+        <script>
+            window.onload = function () {
+                alert("{{ session('success') }}");
+            }
+        </script>
+    @endif
 </head>
 
 <body>
