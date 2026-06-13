@@ -8,6 +8,10 @@ Route::post('/candidato/endereco', [CandidatoController::class, 'salvarEndereco'
     ->name('candidato.endereco');
 
 // Página inicial
+//<<<<<<< livia
+//>>>>>>> Stashed changes
+//=======
+//>>>>>>> main
 Route::get('/', function () {
     return view('login');
 });
@@ -17,17 +21,13 @@ Route::get('/perfil', function () {
     return view('perfil');
 });
 
-// Arquivo
-Route::get('/arquivo', function () {
-    return view('arquivo');
+//Rota do mural.
+//Route::get('/mural', [MuralController::class, 'index'])
+//->name('Mural');
+
+//Rotas do admin.
+Route::prefix('admin')->name('admin.')->group(function(){
+    Route::resource('editais', AdminEditalController::class);
 });
 
-// Confirmação
-Route::get('/confirmacao', function () {
-    return view('confirmacao');
-});
 
-// Inscrição
-Route::get('/inscricao', function () {
-    return view('inscricao');
-});
