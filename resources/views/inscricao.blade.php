@@ -1,41 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confirmação de Inscrição</title>
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="{{ asset('global/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
-<body style="background: var(--cor-fundo); font-family: var(--fonte-principal), sans-serif;">
+<body>
 
-<div class="menu-lateral flex-col">
-    <img src="{{ asset('icons/IFCfull.svg') }}" alt="Instituto Federal" class="logo-img" style="width: 80%; margin: 20px auto 40px auto; display: block;">
+<div class="layout">
 
-    <div class="item-menu flex">
-        <img src="{{ asset('icons/inicio.svg') }}" alt="Início" style="width: var(--icone-size); margin-right: 10px;">
-        <span>Início</span>
-    </div>
-    
-    <div class="item-menu flex">
-        <img src="{{ asset('icons/usuario.svg') }}" alt="Perfil" style="width: var(--icone-size); margin-right: 10px;">
-        <span>Meu perfil</span>
-    </div>
-    
-    <div class="item-menu flex">
-        <img src="{{ asset('icons/lista.svg') }}" alt="Inscrições" style="width: var(--icone-size); margin-right: 10px;">
-        <span>Minhas Inscrições</span>
-    </div>
+    @include('global.sidebarCandidato')
 
-    <a href="/" class="item-menu flex" style="margin-top: auto; margin-bottom: 25px; border: 1px solid #fff; padding: 10px; border-radius: 8px; text-decoration: none; color: #fff;">
-        <img src="{{ asset('icons/Saida.svg') }}" alt="Sair" style="width: var(--icone-size); margin-right: 10px;">
-        <span>Sair</span>
-    </a>
-</div>
+    <main class="pagina">
 
-<div style="margin-left: 260px; padding: 45px; padding-bottom: 120px;">
+<div style="margin-left: 20px; padding: 45px; padding-bottom: 120px;">
     
     <h1 style="font-size: 42px; font-weight: 700; color: var(--cor-texto); margin-bottom: 5px;">INSCRIÇÃO</h1>
     <p style="font-size: 18px; color: #666; margin-bottom: 30px;">Certifique-se de que os dados estão corretos</p>
@@ -220,6 +198,8 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script src="{{ asset('js/inscricao.js') }}"></script>
+
+</main>
 
 </body>
 </html>

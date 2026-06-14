@@ -5,8 +5,8 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <body>
-
 <div class="layout">
+
 
     @include('global.sidebarCandidato')
 
@@ -54,6 +54,8 @@
             </section>
         </section>
     </main>
+
+
 </body>
 </html>
     

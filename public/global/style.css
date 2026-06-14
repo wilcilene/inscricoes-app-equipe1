@@ -607,3 +607,12 @@ textarea:focus {
 .modal.ativo .modal-conteudo {
     transform: scale(1);
 }
+
+.menu-toggle {
+    display: none;
+}
+
+.menu-toggle {
+    display: none;
+}
+

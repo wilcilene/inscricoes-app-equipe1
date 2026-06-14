@@ -15,7 +15,7 @@ use App\Http\Controllers\CandidatoController;
 
 // Tela inicial
 Route::get('/', function () {
-    return view('inscricao');
+    return view('welcome');
 });
 
 // Tela de login

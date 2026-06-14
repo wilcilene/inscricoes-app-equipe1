@@ -1,40 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Perfil</title>
-
-<link rel="stylesheet" href="{{ asset('css/style.css') }}?v=999">
-
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('global/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <body>
-    <main class="mural-ifc-page">
-        <aside class="mural-ifc-sidebar">
-            <div class="mural-ifc-logo">
-                <img src="{{ asset('icons/IFCfull.svg') }}" alt="Instituto Federal">
-            </div>
 
+<div class="layout">
 
-        <nav class="mural-ifc-menu">
-            <a href="/mural-editais" class="mural-ifc-menu-item">
-                <img src="{{ asset('icons/inicio.svg') }}" alt="">
-                <span>Início</span>
-            </a>
+    @include('global.sidebarCandidato')
 
-            <a href="/perfil" class="mural-ifc-menu-item active">
-                <img src="{{ asset('icons/usuario.svg') }}" alt="">
-                <span>Meu perfil</span>
-            </a>
-
-            <a href="/minhas-inscricoes" class="mural-ifc-menu-item">
-                <img src="{{ asset('icons/lista.svg') }}" alt="">
-                <span>Minhas Inscrições</span>
-            </a>
-        </nav>
-    </aside>
-
+    <main class="pagina">
+        
     <section class="perfil-conteudo">
         <header class="perfil-cabecalho">
             <h1>MEU PERFIL</h1>

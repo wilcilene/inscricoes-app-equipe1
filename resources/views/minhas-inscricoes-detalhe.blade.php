@@ -1,41 +1,16 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acompanhamento da Inscrição</title>
-
-```
-<link rel="stylesheet" href="{{ asset('css/style.css') }}?v=22">
-```
-
+    <link rel="stylesheet" href="{{ asset('global/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <body>
-    <main class="mural-ifc-page">
-        <aside class="mural-ifc-sidebar">
-            <div class="mural-ifc-logo">
-                <img src="{{ asset('icons/IFCfull.svg') }}" alt="Instituto Federal">
-            </div>
 
-```
-        <nav class="mural-ifc-menu">
-            <a href="/mural-editais" class="mural-ifc-menu-item">
-                <img src="{{ asset('icons/inicio.svg') }}" alt="">
-                <span>Início</span>
-            </a>
+<div class="layout">
 
-            <a href="/perfil" class="mural-ifc-menu-item">
-                <img src="{{ asset('icons/usuario.svg') }}" alt="">
-                <span>Meu perfil</span>
-            </a>
+    @include('global.sidebarCandidato')
 
-            <a href="/minhas-inscricoes" class="mural-ifc-menu-item active">
-                <img src="{{ asset('icons/lista.svg') }}" alt="">
-                <span>Minhas Inscrições</span>
-            </a>
-        </nav>
-    </aside>
+    <main class="pagina">
 
     <section class="mural-ifc-content" style="font-family: var(--fonte-principal), Arial, sans-serif;">
         <header class="mural-ifc-header" style="max-width: 1010px; margin-bottom: 26px;">
@@ -170,7 +145,6 @@
         </section>
     </section>
 </main>
-```
 
 </body>
 </html>

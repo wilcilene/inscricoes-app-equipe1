@@ -1,38 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Perfil - IFC</title>
     <link rel="stylesheet" href="{{ asset('css/meuPerfil.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ asset('global/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <body>
 
-    <div class="layout-container">
-        
-        <aside class="sidebar">
-            <div class="logo-container">
-                <div class="logo-img-wrapper">
-                    <img src="{{ asset('icons/IFCfull.svg') }}" alt="Logo Instituto Federal" class="if-logo-img">
-                </div>
-            </div>
+<div class="layout">
 
-            <nav class="sidebar-nav">
-                <ul>
-                    <li class="{{ ($activePage ?? '') === 'inicio' ? 'active' : '' }}"><a href="/"><i class="fa-solid fa-house"></i> Início</a></li>
-                    <li class="{{ ($activePage ?? '') === 'perfil' ? 'active' : '' }}"><a href="/perfil"><i class="fa-solid fa-user"></i> Meu perfil</a></li>
-                    <li class="{{ ($activePage ?? '') === 'inscricoes' ? 'active' : '' }}"><a href="{{ route('inscricoes.index') }}"><i class="fa-solid fa-id-card-clip"></i> Minhas Inscrições</a></li>
-                </ul>
-            </nav>
+    @include('global.sidebarCandidato')
 
-            <div class="sidebar-footer">
-                <a href="#" class="btn-sair">
-                    <i class="fa-solid fa-arrow-right-from-bracket"></i> Sair
-                </a>
-            </div>
-        </aside>
-
+    <main class="pagina">
         <main class="main-content">
             <div class="page-header">
                 <h1>MEU PERFIL</h1>
