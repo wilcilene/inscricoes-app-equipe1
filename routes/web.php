@@ -37,3 +37,6 @@ Route::get('/confirmacao', function () {
 Route::get('/inscricao', function () {
     return view('inscricao');
 });
+
+Route::get('/mural', [MuralController::class, 'index'])->name('mural.index');
+
