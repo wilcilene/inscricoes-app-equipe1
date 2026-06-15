@@ -1,41 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalhe da Candidatura</title>
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('global/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <body>
-    <main class="admin-cand-page">
-        <aside class="admin-cand-sidebar">
-            <div class="admin-cand-logo">
-                <img src="{{ asset('icons/IFCfull.svg') }}" alt="Instituto Federal">
-            </div>
 
-            <nav class="admin-cand-menu">
-                <a href="/mural-editais" class="admin-cand-menu-item">
-                    <img src="{{ asset('icons/inicio.svg') }}" alt="">
-                    <span>Início</span>
-                </a>
+<div class="layout">
 
-                <a href="/admin/editais/cadastrar" class="admin-cand-menu-item">
-                    <img src="{{ asset('icons/AdicionarDocumento.svg') }}" alt="">
-                    <span>Cadastrar Editais</span>
-                </a>
+    @include('global.sidebarAdmin')
 
-                <a href="/candidaturas" class="admin-cand-menu-item active">
-                    <img src="{{ asset('icons/lista.svg') }}" alt="">
-                    <span>Candidaturas</span>
-                </a>
-            </nav>
-
-            <a href="/login" class="admin-cand-sair">
-                <img src="{{ asset('icons/Saida.svg') }}" alt="">
-                <span>Sair</span>
-            </a>
-        </aside>
+    <main class="pagina">
 
         <section class="cand-detalhe-content">
             <header class="cand-detalhe-header">
