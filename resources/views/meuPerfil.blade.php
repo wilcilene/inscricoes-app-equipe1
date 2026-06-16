@@ -113,18 +113,18 @@
 
                     <div class="form-grid grid-address">
                         <div class="form-group">
-                            <label for="cep">CEP:</label>
+                            <label for="cep">CEP*:</label>
                             <input type="text" id="cep" name="cep" value="{{ old('cep', $endereco->cep) }}" placeholder="00.000-000">
                         </div>
                         <div class="form-group item-logradouro">
-                            <label for="logradouro">Logradouro:</label>
+                            <label for="logradouro">Logradouro*:</label>
                             <input type="text" id="logradouro" name="logradouro" value="{{ old('logradouro', $endereco->logradouro) }}" placeholder="Preencher">
                         </div>
                     </div>
 
                     <div class="form-grid grid-3">
                         <div class="form-group">
-                            <label for="numero">Número:</label>
+                            <label for="numero">Número*:</label>
                             <input type="text" id="numero" name="numero" value="{{ old('numero', $endereco->numero_end) }}" placeholder="00000">
                         </div>
                         <div class="form-group">
@@ -132,8 +132,37 @@
                             <input type="text" id="complemento" name="complemento" value="{{ old('complemento', $endereco->complemento) }}" placeholder="Preencher">
                         </div>
                         <div class="form-group">
-                            <label for="bairro">Bairro:</label>
+                            <label for="bairro">Bairro*:</label>
                             <input type="text" id="bairro" name="bairro" value="{{ old('bairro', $endereco->bairro) }}" placeholder="Preencher">
+                        </div>
+                    </div>
+
+                    <div class="form-grid grid-2">
+                        <div class="form-group">
+                            <label for="cidade">Cidade*:</label>
+                            <input type="text" id="cidade" name="cidade" value="{{ old('cidade', $endereco->cidade) }}" placeholder="Preencher Cidade">
+                        </div>
+                        <div class="form-group">
+                            <label for="estado_end">Estado (Endereço)*:</label>
+                            <select id="estado_end" name="estado_end">
+                                <option value="">Selecione</option>
+                                @foreach($estados as $sigla => $nome)
+                                    <option value="{{ $sigla }}" {{ old('estado_end', $endereco->estado_end) == $sigla ? 'selected' : '' }}>
+                                        {{ $nome }} ({{ $sigla }})
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-grid grid-2">
+                        <div class="form-group">
+                            <label for="telefone">Telefone Fixo:</label>
+                            <input type="text" id="telefone" name="telefone" value="{{ old('telefone', $endereco->telefone) }}" placeholder="(00) 0000-0000">
+                        </div>
+                        <div class="form-group">
+                            <label for="celular">Celular*:</label>
+                            <input type="text" id="celular" name="celular" value="{{ old('celular', $endereco->celular) }}" placeholder="(00) 00000-0000">
                         </div>
                     </div>
                 </div>
@@ -143,7 +172,8 @@
                 </div>
             </form>
         </main>
-    </div>
+    </main>
+</div>
 
 </body>
 </html>
