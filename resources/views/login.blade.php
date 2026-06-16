@@ -15,6 +15,7 @@
         rel="stylesheet"
         href="{{ asset('css/style.css') }}"
     >
+    <link rel="stylesheet" href="{{ asset('global/style.css') }}">
 
     @if(session('success'))
         <script>
@@ -25,7 +26,9 @@
     @endif
 </head>
 
-<body>
+<body class="login">
+
+
 
 <main class="login-page">
 

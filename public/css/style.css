@@ -791,7 +791,7 @@ textarea:focus {
    ESTILOS ESPECÍFICOS DA TELA DE LOGIN
    ========================================== */
 
-.body-login {
+body.login {
     background-image: url("../img/ifccampus.jpg");
     background-size: cover;
     background-position: center;
@@ -1386,7 +1386,6 @@ textarea:focus {
 
 .login-page {
     min-height: 100vh;
-    background: #e6e6e6;
     display: flex;
     align-items: center;
     justify-content: center;
