@@ -15,7 +15,15 @@ class MinhasInscricoesController extends Controller
         $activePage = 'inscricoes';
 
         $user = Auth::user();
-        $perfil = $user ? $user->perfilCandidato : null;
+        $perfil = null;
+        if ($user) {
+            try {
+                $perfil = $user->perfilCandidato;
+            } catch (\Illuminate\Database\QueryException $e) {
+                \Log::warning('Não foi possível carregar perfil_candidato (coluna ausente?).', ['user_id' => $user->id, 'error' => $e->getMessage()]);
+                $perfil = null;
+            }
+        }
         $endereco = null;
         $inscricoes = collect();
 

@@ -21,7 +21,7 @@ class InscricaoController extends Controller
             try {
                 $inscricoes = DB::table('inscricaos')
                     ->join('candidatos', 'inscricaos.candidato_id', '=', 'candidatos.id')
-                    ->where('candidatos.user_id', $user->id)
+                    ->where('candidatos.usuer_id', $user->id)
                     ->select('inscricaos.*')
                     ->get();
             } catch (\Throwable $e) {
