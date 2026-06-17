@@ -262,10 +262,12 @@
 /*BODY*/
 
 body {
-    background: var(--cor-fundo);
+    background: var(--cor-fundo);*/
     color: var(--cor-texto);
     font-family: var(--fonte-principal);
 }
+
+
 
 /*LAYOUT*/
 
