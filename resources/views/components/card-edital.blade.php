@@ -179,9 +179,9 @@ value="{{ $edital->nome }}"
 >
 
 <button
-class="btn Br">
+class="btn-card Br">
 
-<i class="icone editar wt"></i>
+<i class="icone editar cz"></i>
 
 EDITAR
 
@@ -201,7 +201,7 @@ action="{{ route('edital.destroy',$edital->id) }}"
 @method('DELETE')
 
 <button
-class="btn Vm">
+class="btn-card Vm">
 
 <i class="icone excluir wt"></i>
 

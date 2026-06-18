@@ -24,7 +24,7 @@
     --icone-size: var(--tm);
 }
 
-/* RESET*/
+/*--------------------------- RESET ---------------------------*/
 
 * {
     margin: 0;
@@ -32,7 +32,7 @@
     box-sizing: border-box;
 }
 
-/* UTILITÁRIO*/
+/*--------------------------- UTILITÁRIOS ---------------------------*/
 
 .flex {
     display: flex;
@@ -104,7 +104,9 @@
 }
 
 
-/*ÍCONE BASE*/
+/*--------------------------- ÍCONES ---------------------------*/
+
+/* Ícone Base */
 
 
 .icone {
@@ -249,7 +251,7 @@
     mask-image: url("./img/icones/deletar.svg");
 }
 
-/*LOGO IFC*/
+/*--------------------------- LOGO IFC ---------------------------*/
 
 .IFCfull {
     width: 250px;
@@ -264,7 +266,9 @@
 
 }
 
-/*BODY*/
+/*--------------------------- PRINCIPAL ---------------------------*/
+
+/* Body */
 
 body {
     background: var(--cor-fundo);
@@ -274,7 +278,7 @@ body {
 
 
 
-/*LAYOUT*/
+/* Layout */
 
 .layout {
     display: flex;
@@ -290,7 +294,7 @@ body {
     flex: 1;
 }
 
-/*MENU LATERAL*/
+/* Menu Lateral */
 
 .menu-lateral {
     position: fixed;
@@ -343,7 +347,7 @@ body {
     padding: 15px;
 }
 
-/*TÍTULOS*/
+/* Títulos */
 
 
 .tcz {
@@ -364,7 +368,7 @@ body {
     color: #555;
 }
 
-/*PAINEL*/
+/* Painel */
 
 .painel {
     width: 100%;
@@ -381,7 +385,7 @@ body {
     font-weight: 700;
 }
 
-/*FORMULÁRIOS*/
+/*--------------------------- FORMULÁRIOS ---------------------------*/
 
 .formulario {
     padding: 20px;
@@ -440,58 +444,6 @@ textarea:focus {
     color: #611117;
 }
 
-/*BOTÕES*/
-
-.btn {
-    padding: 12px 18px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: .3s;
-    text-decoration: none;
-}
-
-.Vd {
-    border: none;
-    background: var(--cor-verde);
-    color: white;
-}
-
-.Vd:hover {
-    background: var(--cor-verde-hover);
-}
-
-.Vm {
-    border: none;
-    background: var(--cor-vermelho);
-    color: white;
-}
-
-.Vm:hover {
-    background: var(--cor-vermelho-hover);
-}
-
-.Br {
-    border: 1px solid #dadada;
-    background: white;
-    color: black;
-}
-
-.Br:hover {
-    background: #dadada;
-}
-
-.eq {
-    border: 1px solid #ffffff;
-    background: none;
-    color: #ffffff;
-}
-
-.eq:hover {
-    background: #3d3d3d4b;
-}
-
-
 
 
 /* RESPONSIVO*/
@@ -512,7 +464,7 @@ textarea:focus {
 
 }
 
-/*TABELAS*/
+/*--------------------------- TABELAS ---------------------------*/
 
 .tabela-container {
     width: 100%;
@@ -616,7 +568,7 @@ margin-top:auto;
 
 }
 
-/* MODAL */
+/*--------------------------- MODAL ---------------------------*/
 .modal {
     display: none;
     position: fixed;
@@ -667,11 +619,7 @@ margin-top:auto;
     display: none;
 }
 
-.menu-toggle {
-    display: none;
-}
-
-/*--------------------------CARD EDITAL*/
+/*--------------------------- CARDS DE EDITAL ---------------------------*/
 
 
 /*TOPO*/
@@ -774,9 +722,7 @@ margin-top:auto;
 
     grid-template-columns:
 
-        repeat(auto-fill,
-
-            minmax(320px,
+        repeat(auto-fill,minmax(320px,
 
                 1fr));
 
@@ -819,12 +765,7 @@ margin-top:auto;
 
         translateY(-2px);
 
-    box-shadow:
-
-        0 8px 20px rgba(0,
-            0,
-            0,
-            0.08);
+    box-shadow:0 8px 20px #000000;
 
 }
 
@@ -973,9 +914,7 @@ margin-top:auto;
 
     border-radius: 999px;
 
-    background:
-
-        var(--cor-verde);
+    background:var(--cor-verde);
 
     color: white;
 
@@ -1001,11 +940,66 @@ width:100%;
 
 .btn-card:hover {
 
-    background:
-
-        var(--cor-verde-hover);
+    background:var(--cor-verde-hover);
 
 }
+
+
+
+/*--------------------------- BOTÕES ---------------------------*/
+
+.btn {
+    padding: 12px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: .3s;
+    text-decoration: none;
+}
+
+.Vd {
+    border: none;
+    background: var(--cor-verde);
+    color: white;
+}
+
+.Vd:hover {
+    background: var(--cor-verde-hover);
+}
+
+.Vm {
+    border: none;
+    background: var(--cor-vermelho);
+    color: white;
+}
+
+.Vm:hover {
+    background: var(--cor-vermelho-hover);
+}
+
+.Br {
+    border: 1px solid #555;
+    background: white;
+    color: #555;
+}
+
+.Br:hover {
+    background: #dadada;
+}
+
+.eq {
+    border: 1px solid #ffffff;
+    background: none;
+    color: #ffffff;
+}
+
+.eq:hover {
+    background: #3d3d3d4b;
+}
+
+
+
+
 
 
 
@@ -1015,7 +1009,7 @@ width:100%;
 
     display: flex;
 
-    gap: 12px;
+    gap: 10px;
 
     margin-top: auto;
 
@@ -1035,9 +1029,7 @@ width:100%;
 
     background: #ffe8e8;
 
-    color:
-
-        var(--cor-vermelho);
+    color:var(--cor-vermelho);
 
     font-weight: 700;
 
@@ -1045,12 +1037,13 @@ width:100%;
 
 
 
-/*---------------------------RESPONSIVO*/
+/*--------------------------- RESPONSIVIDADE ---------------------------*/
 
 
     .grid-editais {
 
-        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+        gap: 10px;
 
     }
 
@@ -1062,8 +1055,8 @@ width:100%;
 
     .grid-editais {
 
-        grid-template-columns:repeat(3,1fr);
-
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 10px;
     }
 
 }
@@ -1115,9 +1108,7 @@ width:100%;
 
     .grid-editais {
 
-        grid-template-columns:
-
-            1fr;
+        grid-template-columns:1fr;
 
     }
 
