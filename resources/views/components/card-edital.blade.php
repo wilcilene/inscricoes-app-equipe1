@@ -82,7 +82,7 @@ EDITAL
 
 <h3>
 
-{{ strtoupper($edital->descricao) }}
+{{ strtoupper($edital->area) }}
 
 </h3>
 
@@ -145,7 +145,7 @@ action="{{ route('inscrever') }}"
 <input
 type="hidden"
 name="edital"
-value="{{ $edital->nome }}"
+value="{{ $edital->id }}"
 >
 
 <button

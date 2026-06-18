@@ -3,7 +3,6 @@
 
 <head>
     <link rel="stylesheet" href="{{ asset('global/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
 
 </head>
@@ -20,9 +19,9 @@
 
 <main class="pagina">
 
-    <section class="mural-ifc-content">
+    <section class="pagina-conteudo">
 
-        <header class="mural-ifc-header">
+        <header class="pagina-cabecalho">
 
             <div>
 

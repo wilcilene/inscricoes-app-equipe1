@@ -924,16 +924,6 @@ margin-top:auto;
 
     cursor: pointer;
 
- white-space:nowrap;
-
-flex-wrap:nowrap;
-
-overflow:hidden;
-
-text-overflow:ellipsis;
-
-width:100%;
-
 }
 
 
@@ -1055,8 +1045,8 @@ width:100%;
 
     .grid-editais {
 
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 10px;
+        grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+        gap: 5px;
     }
 
 }
@@ -1108,7 +1098,8 @@ width:100%;
 
     .grid-editais {
 
-        grid-template-columns:1fr;
+         grid-template-columns: repeat(auto-fill, minmax(1, 1fr));
+        gap: 10px;
 
     }
 

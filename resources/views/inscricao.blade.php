@@ -11,9 +11,12 @@
 
 <body>
 
+
     <div class="layout">
 
-    
+    @php
+    $edital = App\Models\Edital::find(request('edital'));
+@endphp
 
         <main class="pagina">
 
@@ -30,12 +33,12 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label class="form-label" style="font-weight: 600;">Edital selecionado:</label>
-                            <input type="text" class="form-control" value="Edital Genérico Selecionado (Ex: 132)" readonly style="background-color: #f5f5f5;">
+                            <input type="text" class="form-control" value="{{ $edital->nome }}" readonly style="background-color: #f5f5f5;">
                         </div>
 
                         <div class="col-md-6 mb-3">
                             <label class="form-label" style="font-weight: 600;">Área:</label>
-                            <input type="text" class="form-control" value="Área do Edital vinda da tela anterior" readonly style="background-color: #f5f5f5;">
+                            <input type="text" class="form-control" value="{{ $edital->area }}" readonly style="background-color: #f5f5f5;">
                         </div>
                     </div>
                     <p class="small text-muted" style="margin-top: 5px;">Confira os dados do edital antes de confirmar sua inscrição.</p>

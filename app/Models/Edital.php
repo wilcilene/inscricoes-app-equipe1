@@ -14,6 +14,8 @@ protected $fillable=[
 
 'nome',
 
+'area',
+
 'descricao',
 
 'data_inicio_inscr',

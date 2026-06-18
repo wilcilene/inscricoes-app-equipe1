@@ -16,6 +16,7 @@ class EditalSeeder extends Seeder
 
             Edital::create([
                 'nome' => "{$i}/2026",
+                'area' => "Edital institucional{$i}/2026",
                 'descricao' => "Descrição do edital {$i}/2026 para processo seletivo e cadastro reserva.",
                 'data_inicio_inscr' => $inicio,
                 'data_fim_inscr' => $inicio->copy()->addDays(15),
