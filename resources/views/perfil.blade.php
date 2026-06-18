@@ -4,18 +4,19 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('global/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+ @include('global.sidebarCandidato')
+
 </head>
 <body>
 
 <div class="layout">
 
-    @include('global.sidebarCandidato')
 
     <main class="pagina">
         
     <section class="perfil-conteudo">
         <header class="perfil-cabecalho">
-            <h1>MEU PERFIL</h1>
+            <h1>MEU PERFIL 1</h1>
             <p>Altere seus dados para inscrição</p>
         </header>
 

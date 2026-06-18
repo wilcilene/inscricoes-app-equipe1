@@ -35,3 +35,4 @@ return Application::configure(
 })
 
 ->create();
+

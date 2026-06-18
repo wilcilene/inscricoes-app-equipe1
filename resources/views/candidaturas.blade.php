@@ -3,12 +3,13 @@
 <head>
     <link rel="stylesheet" href="{{ asset('global/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    @include('global.sidebarAdmin')
 </head>
 <body>
 
 <div class="layout">
 
-    @include('global.sidebarAdmin')
+    
 
     <main class="pagina">
 <body>

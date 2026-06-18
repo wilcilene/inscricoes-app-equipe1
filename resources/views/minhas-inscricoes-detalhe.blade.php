@@ -3,12 +3,14 @@
 <head>
     <link rel="stylesheet" href="{{ asset('global/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+  @include('global.sidebarCandidato')
+
 </head>
 <body>
 
 <div class="layout">
 
-    @include('global.sidebarCandidato')
+  
 
     <main class="pagina">
 

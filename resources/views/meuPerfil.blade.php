@@ -4,12 +4,13 @@
     <link rel="stylesheet" href="{{ asset('css/meuPerfil.css') }}">
     <link rel="stylesheet" href="{{ asset('global/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+   
 </head>
 <body>
 
-<div class="layout">
+@include('global.sidebarCandidato')
 
-    @include('global.sidebarCandidato')
+<div class="layout">
 
     <main class="pagina">
         <main class="main-content">

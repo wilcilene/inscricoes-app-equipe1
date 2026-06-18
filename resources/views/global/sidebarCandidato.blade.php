@@ -1,20 +1,11 @@
-<!DOCTYPE html>
 
-<html lang="pt-BR">
+    <link rel="icon" href="global/img/icones/favicon-light.svg" media="(prefers-color-scheme:dark )">
+    <link rel="icon" href="global/img/icones/favicon-dark.svg" media="(prefers-color-scheme:light )">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <title>Editais IFC - Equipe 1</title>
 
 <link rel="stylesheet" href="{{ asset('global/style.css') }}">
 
-</head>
-
-<body>
-
-
-    <div class="layout">
 
 
         <!-- MENU LATERAL -->
@@ -47,7 +38,24 @@
     <span>Sobre</span>
 </a>
 
-                <script>
+                
+
+            </nav>
+
+            <div class="rodape-menu">
+
+                <a href="/login" class="item-menu">
+                    <i class="icone saida wt m"></i>
+                    <span>Sair</span>
+                </a>
+
+            </div>
+
+        </aside>
+</div>
+
+
+<script>
 document.addEventListener("DOMContentLoaded", function () {
 
     const modal = document.createElement("div");
@@ -108,23 +116,3 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 </script>
-
-            </nav>
-
-            <div class="rodape-menu">
-
-                <a href="/login" class="item-menu">
-                    <i class="icone saida wt m"></i>
-                    <span>Sair</span>
-                </a>
-
-            </div>
-
-        </aside>
-</div>
-
-
-
-</body>
-
-</html>

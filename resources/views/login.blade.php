@@ -9,7 +9,10 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Login do Projeto</title>
+    <link rel="icon" href="global/img/icones/favicon-light.svg" media="(prefers-color-scheme:dark )">
+    <link rel="icon" href="global/img/icones/favicon-dark.svg" media="(prefers-color-scheme:light )">
+
+    <title>Editais IFC - Equipe 1</title>
 
     <link
         rel="stylesheet"
@@ -92,8 +95,7 @@ required
 <button
 type="button"
 class="login-btn login-btn-cadastrar"
-onclick="window.location.href='{{ route('candidato.dados-pessoais') }}'"
->
+onclick="window.location.href='{{ route('candidato.dados-pessoais') }}'">
     Cadastrar
 </button>
 

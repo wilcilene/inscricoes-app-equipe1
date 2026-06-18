@@ -1127,8 +1127,8 @@ body.login {
 }
 
 .admin-mural-btn {
-    min-width: 92px !important;
-    height: 36px !important;
+    min-width: 92px  ;
+    height: 36px  ;
     border: none !important;
     border-radius: 18px !important;
     color: #ffffff !important;

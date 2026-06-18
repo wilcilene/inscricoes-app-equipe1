@@ -1,61 +1,91 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <link rel="stylesheet" href="{{ asset('global/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+
 </head>
+
+@if(auth()->user()->tipo_usuario_id == 1)
+@include('global.sidebarAdmin')
+
+@elseif(auth()->user()->tipo_usuario_id == 2)
+@include('global.sidebarCandidato')
+
+@endif
+
 <body>
-<div class="layout">
+
+<main class="pagina">
+
+    <section class="mural-ifc-content">
+
+        <header class="mural-ifc-header">
+
+            <div>
+
+                <h1 class="titulo">
+                    MURAL DE EDITAIS
+                </h1>
+
+                <p class="subtitulo">
+                    Acesse os editais disponíveis e faça sua inscrição
+                </p>
+
+            </div>
+
+        </header>
 
 
-    @include('global.sidebarCandidato')
+        <!-- CARDS -->
+        <div
+            class="flex gap-20"
+            style="
+                flex-wrap:wrap;
+                align-items:stretch;
+            "
+        >
 
-    <main class="pagina">
+            @if(isset($editais) && $editais->count())
 
-        <section class="mural-ifc-content">
-            <header class="mural-ifc-header">
-                <div>
-                    <h1>MURAL DE EDITAIS</h1>
-                    <p>Acesse os editais disponíveis e faça sua inscrição</p>
+                <x-card-edital
+                    :editais="$editais"
+                    :tipoUsuarioId="auth()->user()->tipo_usuario_id ?? null"
+                />
+
+            @else
+
+                <div
+                    class="flex-center flex-col"
+                    style="
+                        width:100%;
+                        min-height:60vh;
+                        text-align:center;
+                    "
+                >
+
+                    <i class="icone documento gg vd mb-20"></i>
+
+                    <h2 class="titulo">
+                        Nenhum edital disponível
+                    </h2>
+
+                    <p class="subtitulo">
+                        Ainda não existem editais publicados.
+                    </p>
+
                 </div>
 
-                <div class="mural-ifc-search">
-                    <span class="mural-ifc-search-icon">⌕</span>
-                    <input type="text" placeholder="Buscar Editais...">
-                    <span class="mural-ifc-divider"></span>
-                    <button type="button">Filtros⌄</button>
-                </div>
-            </header>
+            @endif
 
-            <section class="mural-ifc-grid">
-                @for ($i = 1; $i <= 9; $i++)
-                    <article class="mural-ifc-card">
-                        <div class="mural-ifc-card-bar"></div>
+        </div>
 
-                        <h2>EDITAL 01/2026</h2>
-                        <h3>CHAMADA PÚBLICA - DOCENTE</h3>
+    </section>
 
-                        <div class="mural-ifc-date">
-                            <span>▣</span>
-                            <p>Data Limite: 20/08/2026</p>
-                        </div>
-
-                        <p class="mural-ifc-text">
-                            Resumo da vaga, resumo vaga resumos vaga, resumo vaga,
-                            resumo vaga, resumo vaga.
-                        </p>
-
-                        <a href="/inscricao" class="mural-ifc-btn">
-                            <span>＋</span>
-                            REALIZAR INSCRIÇÃO
-                        </a>
-                    </article>
-                @endfor
-            </section>
-        </section>
-    </main>
-
+</main>
 
 </body>
+
 </html>
-    
