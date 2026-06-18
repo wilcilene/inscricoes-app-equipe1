@@ -10,7 +10,7 @@ class EditalSeeder extends Seeder
 {
     public function run(): void
     {
-        for ($i = 769; $i <= 869; $i++) {
+        for ($i = 769; $i <= 856; $i++) {
 
             $inicio = Carbon::create(2026, 5, 1)->addDays(($i - 769) * 7);
 
