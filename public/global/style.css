@@ -538,33 +538,16 @@ textarea:focus {
 
 .status-rejeitado{
 
-padding:18px 20px;
-
-border-radius:10px;
-
-background:var(--cor-vermelho);
-
-color:#ffffff;
+color:#555;
 
 font-size:24px; /* aumenta texto */
 
 font-weight:900;
 
-line-height:1.2;
-
 text-align:center;
 
 width:100%;
 
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-min-height:70px;
-
-margin-top:auto;
 
 }
 
@@ -765,7 +748,7 @@ margin-top:auto;
 
         translateY(-2px);
 
-    box-shadow:0 8px 20px #000000;
+    box-shadow:0 8px 15px #00000091;
 
 }
 
@@ -787,20 +770,24 @@ margin-top:auto;
 
 .card-bloqueado {
 
-    background: #fff5f5;
+     position:relative;
 
-    border-color:
+    overflow:hidden;
 
-        var(--cor-vermelho);
+    filter:
+        grayscale(100%)
+        brightness(.8);
+
+    opacity:.58;
+
+    pointer-events:none;
 
 }
 
 
 .card-bloqueado .card-topo {
 
-    background:
-
-        var(--cor-vermelho);
+    background:#808080;
 
 }
 

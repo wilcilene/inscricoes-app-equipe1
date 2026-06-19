@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Edital;
 use Illuminate\Http\Request;
+use App\Models\Inscricao;
+use Illuminate\Support\Facades\Auth;
 
 class EditalController extends Controller
 {
@@ -16,20 +18,36 @@ class EditalController extends Controller
     }
 
     public function index(Request $request)
-    {
-        Edital::where('data_fim_inscr','<',now()->subDays(15))->delete();
+{
+    Edital::where('data_fim_inscr','<',now()->subDays(15))->delete();
 
-        $editais = $this->buscarEditais($request);
+    $editais = $this->buscarEditais($request);
 
-        return view('index', compact('editais'));
+    $minhasInscricoes = [];
+
+    if (Auth::check()) {
+        $minhasInscricoes = Inscricao::where('user_id', Auth::id())
+            ->pluck('edital_id')
+            ->toArray();
     }
+
+    return view('index', compact('editais', 'minhasInscricoes'));
+}
 
     public function mural(Request $request)
-    {
-        $editais = $this->buscarEditais($request);
+{
+    $editais = $this->buscarEditais($request);
 
-        return view('mural-editais', compact('editais'));
+    $minhasInscricoes = [];
+
+    if (Auth::check()) {
+        $minhasInscricoes = Inscricao::where('candidato_id', Auth::id())
+    ->pluck('edital_id')
+    ->toArray();
     }
+
+    return view('mural-editais', compact('editais', 'minhasInscricoes'));
+}
 
     public function editar(Request $request)
     {

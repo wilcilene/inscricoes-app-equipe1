@@ -46,6 +46,8 @@ Encerrados
 @foreach($editais as $edital)
 
 @php
+    $inscrito = in_array($edital->id, $minhasInscricoes ?? []);
+
 
 $bloqueado=
 now()
@@ -135,30 +137,32 @@ REALIZAR INSCRIÇÃO
 
 
 
-@if(auth()->check() && $tipoUsuarioId==2)
+@if(auth()->check() && $tipoUsuarioId == 2)
 
-<form
-method="GET"
-action="{{ route('inscrever') }}"
->
+    @if($inscrito)
 
-<input
-type="hidden"
-name="edital"
-value="{{ $edital->id }}"
->
+        <a
+            href="{{ route('inscricoes.index', ['edital' => $edital->id]) }}"
+            class="btn-card"
+        >
+            <i class="icone olho wt"></i>
+            VER INSCRIÇÃO
+        </a>
 
-<button
-class="btn-card"
->
+    @else
 
-<i class="icone adicionar wt"></i>
+        <form method="GET" action="{{ route('inscrever') }}">
 
-REALIZAR INSCRIÇÃO
+            <input type="hidden" name="edital" value="{{ $edital->id }}">
 
-</button>
+            <button class="btn-card">
+                <i class="icone adicionar wt"></i>
+                REALIZAR INSCRIÇÃO
+            </button>
 
-</form>
+        </form>
+
+    @endif
 
 @endif
 
