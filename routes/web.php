@@ -13,14 +13,21 @@ use App\Http\Controllers\EditalController;
 // ROTAS PÚBLICAS
 
 // Página inicial
-Route::get(
+/*Route::get(
 '/',
 [
 EditalController::class,
 'index'
 ]
 )->name('home');
+*/
 
+Route::get(
+'/',
+function () {
+return view('');
+}
+);
 
 // Login
 Route::get(

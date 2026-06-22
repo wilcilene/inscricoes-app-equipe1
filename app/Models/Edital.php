@@ -3,67 +3,78 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Inscricao;
 
 class Edital extends Model
 {
+    protected $table = 'editals';
 
-protected $table='editals';
+    protected $fillable = [
+        'nome',
+        'area',
+        'descricao',
+        'data_inicio_inscr',
+        'data_fim_inscr',
+        'data_inicio_rev',
+        'data_fim_rev'
+    ];
 
+    protected $appends = [
+        'bloqueado'
+    ];
 
-protected $fillable=[
+    protected $casts = [
+        'data_inicio_inscr' => 'datetime',
+        'data_fim_inscr' => 'datetime',
+        'data_inicio_rev' => 'datetime',
+        'data_fim_rev' => 'datetime'
+    ];
 
-'nome',
+    /*
+    |---------------------------------
+    | RELACIONAMENTOS
+    |---------------------------------
+    */
 
-'area',
+    public function inscricoes()
+    {
+        return $this->hasMany(
+            Inscricao::class,
+            'edital_id'
+        );
+    }
 
-'descricao',
+    /*
+    |---------------------------------
+    | ATRIBUTOS
+    |---------------------------------
+    */
 
-'data_inicio_inscr',
+    public function getBloqueadoAttribute()
+    {
+        return now()->gt(
+            $this->data_fim_inscr
+        );
+    }
 
-'data_fim_inscr',
+    /*
+    |---------------------------------
+    | FILTRO
+    |---------------------------------
+    */
 
-'data_inicio_rev',
+    public function scopeFiltrar(
+        $query,
+        $filtro
+    ) {
+        if (!empty($filtro)) {
+            $query->where(
+                'nome',
+                'like',
+                "%{$filtro}%"
+            );
+        }
 
-'data_fim_rev'
-
-];
-
-
-
-protected $appends=[
-'bloqueado'
-];
-
-
-
-public function getBloqueadoAttribute()
-{
-
-return now()->gt(
-$this->data_fim_inscr
-);
-
-}
-
-
-
-public function scopeFiltrar(
-$query,
-$filtro
-){
-
-if($filtro){
-
-$query->where(
-'nome',
-'like',
-"%{$filtro}%"
-);
-
-}
-
-return $query;
-
-}
-
+        return $query;
+    }
 }

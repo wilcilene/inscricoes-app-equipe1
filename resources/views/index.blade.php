@@ -63,18 +63,14 @@ align-items:stretch;
 "
 >
 
-@if(
-isset($editais)
-&&
-$editais->count()
-)
+@if(isset($editais) && $editais->count())
 
-<x-card-edital
-    :editais="$editais"
-    :tipoUsuarioId="auth()->user()->tipo_usuario_id ?? null"
-/>
+                <x-card-edital
+                    :editais="$editais"
+                    :tipoUsuarioId="auth()->user()->tipo_usuario_id ?? null"
+                />
 
-@else
+            @else
 
 <div
 class="

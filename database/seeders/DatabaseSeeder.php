@@ -12,6 +12,7 @@ class DatabaseSeeder extends Seeder
             TipoUsuarioSeeder::class,
             UserSeeder::class,
             EditalSeeder::class,
+            InscricaoSeeder::class,
         ]);
     }
 }

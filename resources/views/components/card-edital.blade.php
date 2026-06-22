@@ -106,7 +106,18 @@ $edital->data_fim_inscr
 )
 }}
 
+
+&nbsp;&nbsp;|&nbsp;&nbsp;
+
+
+<i class="icone usuario p bk"></i>
+
+{{ $edital->inscricoes_count }}
+
 </div>
+
+
+
 
 
 
