@@ -1,54 +1,29 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
-
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\MinhasInscricoesController;
 use App\Http\Controllers\PerfilController;
-use App\Http\Controllers\CandidatoController;
-use App\Http\Controllers\EditalController;
 
+//-----------------ROTAS PÚBLICAS
 
-// ROTAS PÚBLICAS
+// Tela inicial
+Route::get('/', function () {
+    return view('login');
+});
 
-// Página inicial
-/*Route::get(
-'/',
-[
-EditalController::class,
-'index'
-]
-)->name('home');
-*/
+// Tela de login
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
 
-Route::get(
-    '/',
-    function () {
-        return view('cad_editais');
-    }
-);
-
-// Login
-Route::get(
-    '/login',
-    function () {
-        return view('login');
-    }
-)->name('login');
-
-
-// Autenticação
+// Processar autenticação
 Route::post(
     '/login',
-    [
-        LoginController::class,
-        'login'
-    ]
+    [LoginController::class, 'login']
 )->name('login.autenticar');
 
-
-// Logout
+// LOGOUT
 Route::post(
     '/logout',
     function () {
@@ -64,355 +39,135 @@ Route::post(
             ->regenerateToken();
 
         return redirect('/login');
+
     }
+
 )->name('logout');
 
-
-// Inscrição pública
-Route::get(
-    '/inscricao',
-    function () {
-        return view('inscricao');
-    }
-);
+// Cadastro
+Route::get('/inscricao', function () {
+    return view('inscricao');
+});
 
 
-// ÁREA CANDIDATO
+//-------------ÁREA CANDIDATO
 
 Route::middleware([
     'auth',
     'candidato'
-])
+])->group(function () {
+
+    // Página de teste
+    Route::get('/candidato', function () {
+        return view('candidatoteste');
+    })->name('candidato.dashboard');
 
 
+    // Perfil
+    Route::get('/perfil', function () {
+        return view('perfil');
+    })->name('perfil.index');
 
-    ->group(function () {
-
-
-        // Dashboard
-        Route::get(
-            '/candidato',
-            [
-                EditalController::class,
-                'mural'
-            ]
-        )->name(
-            'candidato.dashboard'
-        );
+    Route::post(
+        '/perfil',
+        [PerfilController::class, 'store']
+    )->name('perfil.store');
 
 
-        // Perfil
-        Route::get(
-            '/perfil',
-            [
-                PerfilController::class,
-                'index'
-            ]
-        )->name(
-            'perfil.index'
-        );
+    // Editais
+    Route::get('/mural-editais', function () {
+        return view('mural-editais');
+    })->name('mural.editais');
 
 
-        Route::post(
-            '/perfil',
-            [
-                PerfilController::class,
-                'store'
-            ]
-        )->name(
-            'perfil.store'
-        );
+    // Arquivos
+    Route::get('/arquivo', function () {
+        return view('arquivo');
+    })->name('arquivo');
 
 
-        // Mural
-        Route::get(
-            '/mural-editais',
-            [
-                EditalController::class,
-                'mural'
-            ]
-        )->name(
-            'mural.editais'
-        );
+    // Minhas inscrições
+    Route::get(
+        '/minhas-inscricoes',
+        [MinhasInscricoesController::class, 'index']
+    )->name('inscricoes.index');
 
 
-        // Arquivos
-        Route::get(
-            '/arquivo',
-            function () {
+    Route::get(
+        '/minhas-inscricoes/{id}',
+        function ($id) {
 
-                return view(
-                    'arquivo'
-                );
-            }
-        )->name(
-            'arquivo'
-        );
+            return view(
+                'minhas-inscricoes-detalhe',
+                [
+                    'id' => $id
+                ]
+            );
 
+        }
 
-        // Minhas inscrições
-        Route::get(
-            '/minhas-inscricoes',
-            [
-                MinhasInscricoesController::class,
-                'index'
-            ]
-        )->name(
-            'inscricoes.index'
-        );
+    )->name(
+        'minhas-inscricoes.detalhe'
+    );
 
+    // Download de arquivos de inscrição
+    Route::get('/minhas-inscricoes/{id}/download/{field}', [
+        App\Http\Controllers\InscricaoController::class,
+        'download'
+    ])->name('inscricoes.download');
 
-        // Tela inscrição
-        Route::get(
-            '/inscrever',
-            function () {
-
-                return view(
-                    'inscricao'
-                );
-            }
-        )->name(
-            'inscrever'
-        );
+});
 
 
-        // Detalhe inscrição
-        Route::get(
-            '/minhas-inscricoes/{id}',
-            function ($id) {
-
-                return view(
-                    'minhas-inscricoes-detalhe',
-                    [
-                        'id' => $id
-                    ]
-                );
-            }
-        )->name(
-            'minhas-inscricoes.detalhe'
-        );
-    });
-
-
-
-// ÁREA ADMIN
+//-------------ÁREA ADMIN
 
 Route::middleware([
     'auth',
     'admin'
 ])->group(function () {
 
-
-Route::get(
-    '/candidaturas/exportar',
-    [EditalController::class, 'exportar']
-)->name('candidaturas.exportar');
-
-        // Dashboard
-        Route::get(
-            '/admin',
-            [
-                EditalController::class,
-                'mural'
-            ]
-        )->name(
-            'admin.dashboard'
-        );
+    // Página de teste
+    Route::get('/admin', function () {
+        return view('admintest');
+    })->name('admin.dashboard');
 
 
-        // Candidaturas
-        Route::get(
-            '/candidaturas',
-            [
-                EditalController::class,
+    // Candidaturas
+    Route::get(
+        '/candidaturas',
+        function () {
+
+            return view(
                 'candidaturas'
-            ]
-        )->name(
-            'candidaturas'
-        );
+            );
+
+        }
+
+    )->name(
+        'candidaturas'
+    );
 
 
-        // Detalhe candidatura
-        Route::get(
-            '/candidaturas/{id}',
-            function ($id) {
+    Route::get(
+        '/candidaturas/{id}',
+        function ($id) {
 
-                return view(
-                    'candidatura-detalhe',
-                    [
-                        'id' => $id
-                    ]
-                );
-            }
-        )->name(
-            'candidaturas.detalhe'
-        );
+            return view(
+                'candidatura-detalhe',
+                [
+                    'id' => $id
+                ]
+            );
 
+        }
 
-        // Cadastro edital
-        Route::get(
-            '/admin/editais/cadastrar',
-            function () {
+    )->name(
+        'candidaturas.detalhe'
+    );
 
-                return view(
-                    'cad_editais'
-                );
-            }
-        )->name(
-            'admin.editais.cadastrar'
-        );
+});
 
 
-        // Editar edital
-        Route::get('/admin/editais/{id}/editar', function ($id) {
-
-            $edital = \App\Models\Edital::findOrFail($id);
-
-            return view('cad_editais', compact('edital'));
-        })->name('admin.editais.editar');
-
-
-        // Excluir edital
-        Route::delete(
-            '/admin/editais/{id}',
-            [
-                EditalController::class,
-                'destroy'
-            ]
-        )->name(
-            'admin.editais.excluir'
-        );
-    });
-Route::post('/editais', [EditalController::class, 'store'])
-    ->name('edital.store');
-
-Route::put('/editais/{id}', [EditalController::class, 'update'])
-    ->name('edital.update');
-
-// CADASTRO
-
-
-// Dados pessoais
-Route::get(
-    '/candidato/dados',
-    [
-        CandidatoController::class,
-        'dadosPessoais'
-    ]
-)->name(
-    'candidato.dados'
-);
-
-
-Route::post(
-    '/candidato/dados',
-    [
-        CandidatoController::class,
-        'salvarDadosPessoais'
-    ]
-)->name(
-    'candidato.dados.salvar'
-);
-
-
-// Endereço
-Route::get(
-    '/candidato/cadastro',
-    [
-        CandidatoController::class,
-        'create'
-    ]
-)->name(
-    'candidato.cadastro'
-);
-
-
-Route::post(
-    '/candidato/endereco',
-    [
-        CandidatoController::class,
-        'salvarEndereco'
-    ]
-)->name(
-    'candidato.endereco'
-);
-
-
-// Credenciais
-Route::get(
-    '/candidato/credenciais',
-    [
-        CandidatoController::class,
-        'credenciais'
-    ]
-)->name(
-    'candidato.credenciais'
-);
-
-
-Route::post(
-    '/candidato/store',
-    [
-        CandidatoController::class,
-        'store'
-    ]
-)->name(
-    'candidato.store'
-);
-
-
-// INSCRIÇÃO
-
-
-Route::get(
-    '/candidato/inscricao',
-    [
-        CandidatoController::class,
-        'inscricao'
-    ]
-)->name(
-    'candidato.inscricao'
-);
-
-
-Route::post(
-    '/candidato/inscricao',
-    [
-        CandidatoController::class,
-        'enviarInscricao'
-    ]
-)->name(
-    'candidato.inscricao.enviar'
-);
-
-
-// EDITAIS
-
-
-Route::get(
-    '/editais',
-    [
-        EditalController::class,
-        'index'
-    ]
-)->name(
-    'editais'
-);
-
-
-
-Route::delete(
-    '/editais/{id}',
-    [
-        EditalController::class,
-        'destroy'
-    ]
-)->name(
-    'edital.destroy'
-);
-
-
-
-// ROTAS EXTERNAS
+//-----------------ROTAS EXTERNAS
 
 require __DIR__ . '/candidato.php';

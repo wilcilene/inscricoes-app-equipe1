@@ -3,12 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Endereco extends Model
 {
-    use HasFactory;
-
     protected $table = 'enderecos';
 
     protected $fillable = [
@@ -26,6 +23,6 @@ class Endereco extends Model
 
     public function candidato()
     {
-        return $this->belongsTo(Candidato::class);
+        return $this->belongsTo(Candidato::class, 'candidato_id');
     }
 }
