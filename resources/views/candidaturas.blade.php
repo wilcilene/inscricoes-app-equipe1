@@ -1,131 +1,193 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demonstração CSS Global</title>
+
+
     <link rel="stylesheet" href="{{ asset('global/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+    @if(auth()->user()->tipo_usuario_id == 1)
     @include('global.sidebarAdmin')
+
+    @elseif(auth()->user()->tipo_usuario_id == 2)
+    @include('global.sidebarCandidato')
+
+    @endif
+
 </head>
+
 <body>
 
-<div class="layout">
+    <div class="layout">
 
-    
 
-    <main class="pagina">
-<body>
-    <main class="admin-cand-page">
+        <!-- CONTEÚDO -->
 
-        <section class="admin-cand-content">
-            <header class="admin-cand-header">
-                <h1>Candidaturas</h1>
-                <p>Avaliação dos candidatos</p>
-            </header>
+        <main class="pagina">
 
-            <section class="admin-cand-card">
-                <table class="admin-cand-table">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Edital</th>
-                            <th>Nome Completo</th>
-                            <th>Cadastro</th>
-                            <th>Situação</th>
-                            <th>Ação</th>
-                        </tr>
-                    </thead>
+            <h1 class="titulo">Demonstração CSS Global</h1>
+            <p class="subtitulo">
+                Página para testar componentes, ícones, botões, formulários e utilitários.
+            </p>
 
-                    <tbody>
-                        <tr>
-                            <td>0001</td>
-                            <td>01/2024</td>
-                            <td>Gabriela Silva</td>
-                            <td>06/02/2023</td>
-                            <td><span class="admin-cand-status gray">Pendente</span></td>
-                            <td>
-                                <a href="/candidaturas/1" class="admin-cand-action">☰✎</a>
-                            </td>
-                        </tr>
 
-                        <tr>
-                            <td>0002</td>
-                            <td>20/2026</td>
-                            <td>Daniela Maria Gonçalves Pedrozo</td>
-                            <td>01/09/2025</td>
-                            <td><span class="admin-cand-status green">Aprovado</span></td>
-                            <td>
-                                <a href="/candidaturas/2" class="admin-cand-action">☰✎</a>
-                            </td>
-                        </tr>
 
-                        <tr>
-                            <td>0003</td>
-                            <td>10/2026</td>
-                            <td>João Pedro Neiskvy da Silva</td>
-                            <td>29/04/2026</td>
-                            <td><span class="admin-cand-status red">Rejeitado</span></td>
-                            <td>
-                                <a href="/candidaturas/3" class="admin-cand-action">☰✎</a>
-                            </td>
-                        </tr>
 
-                        <tr>
-                            <td>0004</td>
-                            <td>15/2026</td>
-                            <td>João Pedro Neiskvy da Silva</td>
-                            <td>29/04/2026</td>
-                            <td><span class="admin-cand-status gray">Pendente</span></td>
-                            <td>
-                                <a href="/candidaturas/4" class="admin-cand-action">☰✎</a>
-                            </td>
-                        </tr>
+            <!-- TABELA -->
 
-                        <tr>
-                            <td>0005</td>
-                            <td>44/2026</td>
-                            <td>João Pedro Neiskvy da Silva</td>
-                            <td>29/04/2026</td>
-                            <td><span class="admin-cand-status gray">Pendente</span></td>
-                            <td>
-                                <a href="/candidaturas/5" class="admin-cand-action">☰✎</a>
-                            </td>
-                        </tr>
+            <section class="mt-20">
 
-                        <tr>
-                            <td>0006</td>
-                            <td>44/2026</td>
-                            <td>João Pedro Neiskvy da Silva</td>
-                            <td>29/04/2026</td>
-                            <td><span class="admin-cand-status red">Rejeitado</span></td>
-                            <td>
-                                <a href="/candidaturas/6" class="admin-cand-action">☰✎</a>
-                            </td>
-                        </tr>
+                <div class="tabela-container">
 
-                        <tr>
-                            <td>0007</td>
-                            <td>44/2026</td>
-                            <td>João Pedro Neiskvy da Silva</td>
-                            <td>29/04/2026</td>
-                            <td><span class="admin-cand-status green">Aprovado</span></td>
-                            <td>
-                                <a href="/candidaturas/7" class="admin-cand-action">☰✎</a>
-                            </td>
-                        </tr>
+                    <table class="tabela">
 
-                        <tr>
-                            <td>0008</td>
-                            <td>44/2026</td>
-                            <td>João Pedro Neiskvy da Silva</td>
-                            <td>29/04/2026</td>
-                            <td><span class="admin-cand-status red">Rejeitado</span></td>
-                            <td>
-                                <a href="/candidaturas/8" class="admin-cand-action">☰✎</a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Edital</th>
+                                <th>Nome Completo</th>
+                                <th>Cadastro</th>
+                                <th>Situação</th>
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            @foreach($inscricoes as $item)
+
+                            <tr>
+
+                                <td>
+                                    {{ str_pad($item->id, 4, '0', STR_PAD_LEFT) }}
+                                </td>
+
+                                <td>
+                                    {{ $item->edital->nome }}
+                                </td>
+
+                                <td>
+                                    {{ $item->candidato->user->name ?? 'Sem nome' }}
+                                </td>
+
+                                <td>
+                                    {{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y') }}
+                                </td>
+
+                                <td>
+
+                                    @if($item->status?->status == 'Aprovado')
+                                    <span class="status status-ativo">Aprovado</span>
+
+                                    @elseif( $item->status?->status  == 'Rejeitado')
+                                    <span class="status status-rejeitado">Rejeitado</span>
+
+                                    @else
+                                    <span class="status status-pendente">Pendente</span>
+                                    @endif
+
+                                </td>
+
+                                <td>
+
+                                    <div class="tabela-acoes">
+
+
+                                        <a href="{{ route('candidaturas.detalhe', $item->id) }}">
+                                            <i class="icone editar vd"></i>
+                                        </a>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+                            @endforeach
+
+                        </tbody>
+
+                    </table>
+                    <div class="rodape-tabela flex-between">
+
+    <span class="tcz">
+
+        {{ $inscricoes->firstItem() }}
+        -
+        {{ $inscricoes->lastItem() }}
+        de
+        {{ $inscricoes->total() }}
+        candidatos
+
+    </span>
+
+    <div class="flex gap-10">
+
+        @if($inscricoes->onFirstPage())
+
+            
+
+        @else
+
+            <a
+                href="{{ $inscricoes->previousPageUrl() }}"
+                class="btn-card Br"
+            >
+                <i
+                    class="icone setaBaixo cz"
+                    style="transform:rotate(90deg)"
+                ></i>
+            </a>
+
+        @endif
+
+        @if($inscricoes->hasMorePages())
+
+            <a
+                href="{{ $inscricoes->nextPageUrl() }}"
+                class="btn-card Br"
+            >
+                <i
+                    class="icone setaBaixo cz"
+                    style="transform:rotate(-90deg)"
+                ></i>
+            </a>
+
+        @else
+
+            <button class="btn-card Br" disabled>
+                <i
+                    class="icone setaBaixo cz"
+                    style="transform:rotate(-90deg)"
+                ></i>
+            </button>
+
+        @endif
+
+        <a
+            href="{{ route('candidaturas.exportar') }}"
+            class="btn-card"
+        >
+            EXPORTAR (csv)
+        </a>
+
+    </div>
+
+</div>
+                </div>
+
             </section>
-        </section>
-    </main>
+
+
+        </main>
+
+
+    </div>
+
 </body>
+
 </html>

@@ -11,7 +11,7 @@ class Edital extends Model
 
     protected $fillable = [
         'nome',
-        'area',
+        'resumo',
         'descricao',
         'data_inicio_inscr',
         'data_fim_inscr',

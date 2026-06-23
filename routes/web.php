@@ -23,354 +23,341 @@ EditalController::class,
 */
 
 Route::get(
-'/',
-function () {
-return view('');
-}
+    '/',
+    function () {
+        return view('cad_editais');
+    }
 );
 
 // Login
 Route::get(
-'/login',
-function () {
-return view('login');
-}
+    '/login',
+    function () {
+        return view('login');
+    }
 )->name('login');
 
 
 // Autenticação
 Route::post(
-'/login',
-[
-LoginController::class,
-'login'
-]
+    '/login',
+    [
+        LoginController::class,
+        'login'
+    ]
 )->name('login.autenticar');
 
 
 // Logout
 Route::post(
-'/logout',
-function () {
+    '/logout',
+    function () {
 
-Auth::logout();
+        Auth::logout();
 
-request()
-->session()
-->invalidate();
+        request()
+            ->session()
+            ->invalidate();
 
-request()
-->session()
-->regenerateToken();
+        request()
+            ->session()
+            ->regenerateToken();
 
-return redirect('/login');
-
-}
+        return redirect('/login');
+    }
 )->name('logout');
 
 
 // Inscrição pública
 Route::get(
-'/inscricao',
-function () {
-return view('inscricao');
-}
+    '/inscricao',
+    function () {
+        return view('inscricao');
+    }
 );
 
 
 // ÁREA CANDIDATO
 
 Route::middleware([
-'auth',
-'candidato'
+    'auth',
+    'candidato'
 ])
 
-->group(function () {
 
 
-// Dashboard
-Route::get(
-'/candidato',
-[
-EditalController::class,
-'mural'
-]
-)->name(
-'candidato.dashboard'
-);
+    ->group(function () {
 
 
-// Perfil
-Route::get(
-'/perfil',
-[
-PerfilController::class,
-'index'
-]
-)->name(
-'perfil.index'
-);
+        // Dashboard
+        Route::get(
+            '/candidato',
+            [
+                EditalController::class,
+                'mural'
+            ]
+        )->name(
+            'candidato.dashboard'
+        );
 
 
-Route::post(
-'/perfil',
-[
-PerfilController::class,
-'store'
-]
-)->name(
-'perfil.store'
-);
+        // Perfil
+        Route::get(
+            '/perfil',
+            [
+                PerfilController::class,
+                'index'
+            ]
+        )->name(
+            'perfil.index'
+        );
 
 
-// Mural
-Route::get(
-'/mural-editais',
-[
-EditalController::class,
-'mural'
-]
-)->name(
-'mural.editais'
-);
+        Route::post(
+            '/perfil',
+            [
+                PerfilController::class,
+                'store'
+            ]
+        )->name(
+            'perfil.store'
+        );
 
 
-// Arquivos
-Route::get(
-'/arquivo',
-function () {
-
-return view(
-'arquivo'
-);
-
-}
-)->name(
-'arquivo'
-);
+        // Mural
+        Route::get(
+            '/mural-editais',
+            [
+                EditalController::class,
+                'mural'
+            ]
+        )->name(
+            'mural.editais'
+        );
 
 
-// Minhas inscrições
-Route::get(
-'/minhas-inscricoes',
-[
-MinhasInscricoesController::class,
-'index'
-]
-)->name(
-'inscricoes.index'
-);
+        // Arquivos
+        Route::get(
+            '/arquivo',
+            function () {
+
+                return view(
+                    'arquivo'
+                );
+            }
+        )->name(
+            'arquivo'
+        );
 
 
-// Tela inscrição
-Route::get(
-'/inscrever',
-function () {
-
-return view(
-'inscricao'
-);
-
-}
-)->name(
-'inscrever'
-);
+        // Minhas inscrições
+        Route::get(
+            '/minhas-inscricoes',
+            [
+                MinhasInscricoesController::class,
+                'index'
+            ]
+        )->name(
+            'inscricoes.index'
+        );
 
 
-// Detalhe inscrição
-Route::get(
-'/minhas-inscricoes/{id}',
-function ($id) {
+        // Tela inscrição
+        Route::get(
+            '/inscrever',
+            function () {
 
-return view(
-'minhas-inscricoes-detalhe',
-[
-'id'=>$id
-]
-);
+                return view(
+                    'inscricao'
+                );
+            }
+        )->name(
+            'inscrever'
+        );
 
-}
-)->name(
-'minhas-inscricoes.detalhe'
-);
 
-});
+        // Detalhe inscrição
+        Route::get(
+            '/minhas-inscricoes/{id}',
+            function ($id) {
+
+                return view(
+                    'minhas-inscricoes-detalhe',
+                    [
+                        'id' => $id
+                    ]
+                );
+            }
+        )->name(
+            'minhas-inscricoes.detalhe'
+        );
+    });
 
 
 
 // ÁREA ADMIN
 
 Route::middleware([
-'auth',
-'admin'
-])
-
-->group(function () {
+    'auth',
+    'admin'
+])->group(function () {
 
 
-// Dashboard
 Route::get(
-'/admin',
-[
-EditalController::class,
-'mural'
-]
-)->name(
-'admin.dashboard'
-);
+    '/candidaturas/exportar',
+    [EditalController::class, 'exportar']
+)->name('candidaturas.exportar');
+
+        // Dashboard
+        Route::get(
+            '/admin',
+            [
+                EditalController::class,
+                'mural'
+            ]
+        )->name(
+            'admin.dashboard'
+        );
 
 
-// Candidaturas
-Route::get(
-'/candidaturas',
-function () {
-
-return view(
-'candidaturas'
-);
-
-}
-)->name(
-'candidaturas'
-);
+        // Candidaturas
+        Route::get(
+            '/candidaturas',
+            [
+                EditalController::class,
+                'candidaturas'
+            ]
+        )->name(
+            'candidaturas'
+        );
 
 
-// Detalhe candidatura
-Route::get(
-'/candidaturas/{id}',
-function ($id) {
+        // Detalhe candidatura
+        Route::get(
+            '/candidaturas/{id}',
+            function ($id) {
 
-return view(
-'candidatura-detalhe',
-[
-'id'=>$id
-]
-);
-
-}
-)->name(
-'candidaturas.detalhe'
-);
-
-
-// Cadastro edital
-Route::get(
-'/admin/editais/cadastrar',
-function () {
-
-return view(
-'admin-mural-editais'
-);
-
-}
-)->name(
-'admin.editais.cadastrar'
-);
+                return view(
+                    'candidatura-detalhe',
+                    [
+                        'id' => $id
+                    ]
+                );
+            }
+        )->name(
+            'candidaturas.detalhe'
+        );
 
 
-// Editar edital
-Route::get(
-'/admin/editais/{id}/editar',
-function ($id) {
+        // Cadastro edital
+        Route::get(
+            '/admin/editais/cadastrar',
+            function () {
 
-return view(
-'admin-mural-editais'
-)
-
-->with(
-'success',
-"Edital {$id} selecionado para edicao."
-);
-
-}
-)->name(
-'admin.editais.editar'
-);
+                return view(
+                    'cad_editais'
+                );
+            }
+        )->name(
+            'admin.editais.cadastrar'
+        );
 
 
-// Excluir edital
-Route::delete(
-'/admin/editais/{id}',
-[
-EditalController::class,
-'destroy'
-]
-)->name(
-'admin.editais.excluir'
-);
+        // Editar edital
+        Route::get('/admin/editais/{id}/editar', function ($id) {
 
-});
+            $edital = \App\Models\Edital::findOrFail($id);
 
+            return view('cad_editais', compact('edital'));
+        })->name('admin.editais.editar');
+
+
+        // Excluir edital
+        Route::delete(
+            '/admin/editais/{id}',
+            [
+                EditalController::class,
+                'destroy'
+            ]
+        )->name(
+            'admin.editais.excluir'
+        );
+    });
+Route::post('/editais', [EditalController::class, 'store'])
+    ->name('edital.store');
+
+Route::put('/editais/{id}', [EditalController::class, 'update'])
+    ->name('edital.update');
 
 // CADASTRO
 
 
 // Dados pessoais
 Route::get(
-'/candidato/dados',
-[
-CandidatoController::class,
-'dadosPessoais'
-]
+    '/candidato/dados',
+    [
+        CandidatoController::class,
+        'dadosPessoais'
+    ]
 )->name(
-'candidato.dados'
+    'candidato.dados'
 );
 
 
 Route::post(
-'/candidato/dados',
-[
-CandidatoController::class,
-'salvarDadosPessoais'
-]
+    '/candidato/dados',
+    [
+        CandidatoController::class,
+        'salvarDadosPessoais'
+    ]
 )->name(
-'candidato.dados.salvar'
+    'candidato.dados.salvar'
 );
 
 
 // Endereço
 Route::get(
-'/candidato/cadastro',
-[
-CandidatoController::class,
-'create'
-]
+    '/candidato/cadastro',
+    [
+        CandidatoController::class,
+        'create'
+    ]
 )->name(
-'candidato.cadastro'
+    'candidato.cadastro'
 );
 
 
 Route::post(
-'/candidato/endereco',
-[
-CandidatoController::class,
-'salvarEndereco'
-]
+    '/candidato/endereco',
+    [
+        CandidatoController::class,
+        'salvarEndereco'
+    ]
 )->name(
-'candidato.endereco'
+    'candidato.endereco'
 );
 
 
 // Credenciais
 Route::get(
-'/candidato/credenciais',
-[
-CandidatoController::class,
-'credenciais'
-]
+    '/candidato/credenciais',
+    [
+        CandidatoController::class,
+        'credenciais'
+    ]
 )->name(
-'candidato.credenciais'
+    'candidato.credenciais'
 );
 
 
 Route::post(
-'/candidato/store',
-[
-CandidatoController::class,
-'store'
-]
+    '/candidato/store',
+    [
+        CandidatoController::class,
+        'store'
+    ]
 )->name(
-'candidato.store'
+    'candidato.store'
 );
 
 
@@ -378,24 +365,24 @@ CandidatoController::class,
 
 
 Route::get(
-'/candidato/inscricao',
-[
-CandidatoController::class,
-'inscricao'
-]
+    '/candidato/inscricao',
+    [
+        CandidatoController::class,
+        'inscricao'
+    ]
 )->name(
-'candidato.inscricao'
+    'candidato.inscricao'
 );
 
 
 Route::post(
-'/candidato/inscricao',
-[
-CandidatoController::class,
-'enviarInscricao'
-]
+    '/candidato/inscricao',
+    [
+        CandidatoController::class,
+        'enviarInscricao'
+    ]
 )->name(
-'candidato.inscricao.enviar'
+    'candidato.inscricao.enviar'
 );
 
 
@@ -403,39 +390,29 @@ CandidatoController::class,
 
 
 Route::get(
-'/editais',
-[
-EditalController::class,
-'index'
-]
+    '/editais',
+    [
+        EditalController::class,
+        'index'
+    ]
 )->name(
-'editais'
+    'editais'
 );
 
-
-Route::get(
-'/cad-edital',
-[
-EditalController::class,
-'editar'
-]
-)->name(
-'cad_edital'
-);
 
 
 Route::delete(
-'/editais/{id}',
-[
-EditalController::class,
-'destroy'
-]
+    '/editais/{id}',
+    [
+        EditalController::class,
+        'destroy'
+    ]
 )->name(
-'edital.destroy'
+    'edital.destroy'
 );
 
 
 
 // ROTAS EXTERNAS
 
-require __DIR__.'/candidato.php';
+require __DIR__ . '/candidato.php';

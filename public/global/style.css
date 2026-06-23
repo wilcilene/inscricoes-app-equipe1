@@ -251,6 +251,17 @@
     mask-image: url("./img/icones/deletar.svg");
 }
 
+.olho {
+    -webkit-mask-image: url("./img/icones/olho.svg");
+    mask-image: url("./img/icones/olho.svg");
+}
+.olho-off {
+    -webkit-mask-image: url("./img/icones/olhof.svg");
+    mask-image: url("./img/icones/olhof.svg");
+}
+
+
+
 /*--------------------------- LOGO IFC ---------------------------*/
 
 .IFCfull {
@@ -536,19 +547,9 @@ textarea:focus {
     color: #856404;
 }
 
-.status-rejeitado{
-
-color:#555;
-
-font-size:24px; /* aumenta texto */
-
-font-weight:900;
-
-text-align:center;
-
-width:100%;
-
-
+.status-rejeitado {
+    background: #f8d7da;
+    color: #721c24;
 }
 
 /*--------------------------- MODAL ---------------------------*/
@@ -791,7 +792,24 @@ width:100%;
 
 }
 
+.alert-topo{
+    background:#fff3cd;
+    border:1px solid #ffeeba;
+    color:#856404;
+    padding:12px 16px;
+    border-radius:8px;
+    margin-bottom:15px;
+    display:flex;
+    gap:8px;
+    align-items:center;
+    font-size:14px;
+}
 
+.alert-topo.sucesso{
+    background:#d4edda;
+    border-color:#c3e6cb;
+    color:#155724;
+}
 
 /*----------------------- CONTEÚDO*/
 
@@ -974,6 +992,16 @@ width:100%;
     background: #3d3d3d4b;
 }
 
+.eqc {
+    border: 1px solid #555;
+    background: none;
+    color: #555;
+}
+
+.eqc:hover {
+    background: #3d3d3d4b;
+}
+
 
 
 
@@ -1097,4 +1125,55 @@ display:inline-block;
 padding:6px 10px;
 border-radius:20px;
 background:#f3f3f3;
+}
+
+.filtros {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.input {
+    padding: 8px 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.btn {
+    padding: 8px 12px;
+    background: #2F9D40;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #268034;
+}
+
+.rodape-tabela{
+    margin-top:20px;
+}
+
+.rodape-tabela .btn{
+    padding:10px 14px;
+}
+
+.rodape-tabela .eqc{
+    width:42px;
+    height:42px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:8px;
+}
+
+.rodape-tabela .Vd{
+    min-width:160px;
+    text-align:center;
+    border-radius:8px;
 }

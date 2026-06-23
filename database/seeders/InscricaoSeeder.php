@@ -20,10 +20,9 @@ class InscricaoSeeder extends Seeder
 
         foreach ($editais as $edital) {
 
-            // cria entre 3 e 10 inscrições por edital
-            $quantidade = rand(3, 10);
 
-            for ($i = 0; $i < $quantidade; $i++) {
+
+            for ($i = 0; $i < 1; $i++) {
 
 
                 Inscricao::create([

@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\InscricaoStatus;
+
 
 class Inscricao extends Model
 {
@@ -20,4 +22,23 @@ class Inscricao extends Model
         'edital_id',
         'candidato_id',
     ];
+
+    public function candidato()
+{
+    return $this->belongsTo(Candidato::class, 'candidato_id');
+}
+
+public function edital()
+{
+    return $this->belongsTo(Edital::class, 'edital_id');
+}
+
+public function status()
+{
+    return $this->belongsTo(
+        InscricaoStatus::class,
+        'id',   // coluna da tabela inscricoes
+        'id'    // coluna da tabela inscricao_statuss
+    );
+}
 }
