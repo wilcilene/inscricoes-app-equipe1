@@ -1,226 +1,272 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+ 
     <meta charset="UTF-8">
-    <title>Cadastro - Senha de Acesso</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Credenciais</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            min-height: 100vh;
-            background: #e5e5e5;
-            color: #333;
-            font-family: 'Inter', Arial, Helvetica, sans-serif;
-        }
-
-        .page {
-            min-height: 100vh;
-            padding: 55px 70px;
-        }
-
-        h1 {
-            font-size: 44px;
-            margin: 0;
-            font-weight: 800;
-        }
-
-        .subtitle {
-            font-size: 20px;
-            margin-top: 6px;
-            margin-bottom: 25px;
-        }
-
-        .top-area {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            margin-bottom: 35px;
-        }
-
-        .progress {
-            display: flex;
-            align-items: center;
-        }
-
-        .circle {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background: #777;
-            border: 4px solid #555;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.4);
-        }
-
-        .circle.done {
-            background: #22b14c;
-        }
-
-        .circle.active {
-            background: #d71920;
-        }
-
-        .line {
-            width: 120px;
-            height: 4px;
-            background: #777;
-        }
-
-        .line.done {
-            background: #22b14c;
-        }
-
-        .btn-finalizar {
-            position: absolute;
-            right: 90px;
-            background: #299b3f;
-            color: white;
-            border: none;
-            border-radius: 7px;
-            padding: 12px 65px;
-            font-size: 16px;
-            font-weight: bold;
-            box-shadow: 0 3px 5px rgba(0,0,0,0.35);
-            cursor: pointer;
-        }
-
-        .form-box {
-            background: white;
-            width: 82%;
-            min-height: 430px;
-            margin: 0 auto;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-        }
-
-        .section-title {
-            font-size: 22px;
-            font-weight: bold;
-            padding: 15px 25px 10px;
-            border-bottom: 1px solid #ccc;
-        }
-
-        form {
-            padding: 25px 35px 30px;
-        }
-
-        .row {
-            display: flex;
-            gap: 45px;
-            margin-bottom: 35px;
-        }
-
-        .field {
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-        }
-
-        label {
-            font-size: 16px;
-            margin-bottom: 6px;
-        }
-
-        input {
-            height: 34px;
-            border: 1px solid #aaa;
-            border-radius: 4px;
-            padding: 6px 10px;
-            font-size: 16px;
-        }
-
-        .buttons {
-            display: flex;
-            justify-content: flex-end;
-            margin-top: 145px;
-        }
-
-        .btn-red {
-            border: none;
-            color: white;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 7px;
-            padding: 12px 55px;
-            cursor: pointer;
-            box-shadow: 0 3px 5px rgba(0,0,0,0.35);
-            background: #d71920;
-        }
-
-        .error-box {
-            background: #ffdede;
-            border: 1px solid #d71920;
-            color: #900;
-            padding: 10px;
-            margin-bottom: 15px;
-        }
-    </style>
 </head>
 <body>
-    <div class="page">
-        <h1>CADASTRO</h1>
-        <p class="subtitle">Certifique-se de que os dados estão corretos</p>
 
-        <div class="top-area">
-            <div class="progress">
-                <div class="circle done"></div>
-                <div class="line done"></div>
-                <div class="circle done"></div>
-                <div class="line"></div>
-                <div class="circle active"></div>
+<main class="dados-page">
+
+    <header class="dados-header">
+        <h1 class="titulo dados-titulo">CADASTRO</h1>
+
+        <p class="subtitulo dados-subtitulo">
+            Crie suas credenciais de acesso
+        </p>
+    </header>
+
+    <section class="dados-top-area">
+
+        <div class="dados-progress">
+
+            <div class="dados-circle active"></div>
+            <div class="dados-line active"></div>
+
+            <div class="dados-circle active"></div>
+            <div class="dados-line active"></div>
+
+            <div class="dados-circle active"></div>
+
+        </div>
+
+        <button
+            type="button"
+            id="btnFinalizar"
+            class="btn Vd dados-btn-next"
+        >
+            Finalizar Cadastro
+        </button>
+    
+
+    </section>
+
+    <section class="dados-form-box">
+
+        <div class="dados-section-title">
+            Credenciais de Acesso
+        </div>
+
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                Verifique os campos informados.
+            </div>
+        @endif
+
+        <form
+            method="POST"
+            action="{{ route('candidato.store') }}"
+            id="formCredenciais"
+            class="dados-form"
+        >
+            @csrf
+
+            <div class="dados-row">
+
+                <div class="dados-field dados-full">
+
+                    <label>E-mail *</label>
+
+                    <input
+                        type="email"
+                        name="email"
+                        value="{{ old('email') }}"
+                        required
+                    >
+
+                    @error('email')
+                        <div class="cpf-error-card show">
+                            {{ $message }}
+                        </div>
+                    @enderror
+
+                </div>
+
             </div>
 
-            <button class="btn-finalizar" type="submit" form="formCredenciais">Finalizar</button>
-        </div>
+            <div class="dados-row">
 
-        <div class="form-box">
-            <div class="section-title">Senha de Acesso</div>
+                <div class="dados-field dados-half">
 
-            <form id="formCredenciais" method="POST" action="{{ route('candidato.store') }}">
-                @csrf
+                    <label>Confirmar E-mail *</label>
 
-                @if ($errors->any())
-                    <div class="error-box">
-                        Preencha email, confirmação de email, senha e confirmação de senha corretamente.
-                    </div>
-                @endif
+                    <input
+                        type="email"
+                        name="email_confirmation"
+                        value="{{ old('email_confirmation') }}"
+                        required
+                    >
 
-                <div class="row">
-                    <div class="field">
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" placeholder="Preencher..." value="{{ old('email') }}">
-                    </div>
-
-                    <div class="field">
-                        <label for="email_confirmation">Confirmar Email:</label>
-                        <input type="email" id="email_confirmation" name="email_confirmation" placeholder="Preencher..." value="{{ old('email_confirmation') }}">
-                    </div>
                 </div>
 
-                <div class="row">
-                    <div class="field">
-                        <label for="password">Senha:</label>
-                        <input type="password" id="password" name="password" placeholder="Preencher...">
-                    </div>
+            </div>
 
-                    <div class="field">
-                        <label for="password_confirmation">Confirmar Senha:</label>
-                        <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Preencher...">
-                    </div>
+            <div class="dados-row">
+
+                <div class="dados-field dados-half">
+
+                    <label>Senha *</label>
+
+                    <div class="password-box">
+
+    <input
+        type="password"
+        id="password"
+        name="password"
+        required
+    >
+
+    <button
+        type="button"
+        class="toggle-password"
+        onclick="togglePassword('password', this)"
+    >
+        <img
+        src="{{ asset('icons/eye-off.svg') }}"
+        class="eye-icon"
+        alt="Mostrar senha"
+    >
+    </button>
+
+</div>
                 </div>
 
-                <div class="buttons">
-                    <button type="button" class="btn-red" onclick="window.location.href='/candidato/cadastro'">Cancelar</button>
+                <div class="dados-field dados-half">
+
+                    <label>Confirmar senha *</label>
+
+<div class="password-box">
+    <input
+        type="password"
+        id="password_confirmation"
+        name="password_confirmation"
+        required
+    >
+
+     <button
+        type="button"
+        class="toggle-password"
+        onclick="togglePassword('password_confirmation', this)"
+    >
+        <img
+        src="{{ asset('icons/eye-off.svg') }}"
+        class="eye-icon"
+        alt="Mostrar senha"
+    >
+    </button>
+
                 </div>
-            </form>
-        </div>
-    </div>
+
+            </div>
+
+            <div class="dados-row">
+
+                <div class="dados-field dados-full">
+
+                    <div
+                        id="senhaError"
+                        class="cpf-error-card"
+                    ></div>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </section>
+
+</main>
+
+<script>
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    const form = document.getElementById('formCredenciais');
+    const btn = document.getElementById('btnFinalizar');
+
+    const senha = document.getElementById('password');
+    const confirmar = document.getElementById('password_confirmation');
+
+    const erro = document.getElementById('senhaError');
+
+    function mostrarErro(msg){
+
+        erro.textContent = msg;
+        erro.classList.add('show');
+
+        senha.classList.add('cpf-invalido');
+        confirmar.classList.add('cpf-invalido');
+
+    }
+
+    function limparErro(){
+
+        erro.textContent = '';
+        erro.classList.remove('show');
+
+        senha.classList.remove('cpf-invalido');
+        confirmar.classList.remove('cpf-invalido');
+
+    }
+
+    btn.addEventListener('click', function(){
+
+        if(senha.value.length < 8){
+
+            mostrarErro(
+                'A senha deve possuir pelo menos 8 caracteres.'
+            );
+
+            return;
+        }
+
+        if(senha.value !== confirmar.value){
+
+            mostrarErro(
+                'As senhas não coincidem.'
+            );
+
+            return;
+        }
+
+        limparErro();
+
+        form.submit();
+
+    });
+
+});
+
+</script>
+
+<script>
+function togglePassword(id, button) {
+
+    const input = document.getElementById(id);
+
+    const icon = button.querySelector('img');
+
+    if (input.type === 'password') {
+
+        input.type = 'text';
+
+        icon.src = '/icons/eye.svg';
+
+    } else {
+
+        input.type = 'password';
+
+        icon.src = '/icons/eye-off.svg';
+
+    }
+}
+</script>
+
 </body>
 </html>
