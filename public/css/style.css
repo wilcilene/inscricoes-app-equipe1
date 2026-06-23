@@ -1,5 +1,231 @@
 @import url("../font/inter.css");
+/* ===== MURAL DE EDITAIS - CANDIDATO ===== */
 
+.mural-ifc-page,
+.mural-ifc-page * {
+    box-sizing: border-box !important;
+}
+
+.mural-ifc-page {
+    min-height: 100vh !important;
+    display: flex !important;
+    background: #e5e5e5 !important;
+    color: #33383d !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+}
+
+.mural-ifc-sidebar {
+    width: 260px !important;
+    min-width: 260px !important;
+    min-height: 100vh !important;
+    background: #3f3f3f !important;
+    padding: 42px 34px !important;
+    flex-shrink: 0 !important;
+    
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.mural-ifc-logo {
+    margin-bottom: 56px !important;
+}
+
+.mural-ifc-logo img {
+    width: 190px !important;
+    max-width: 190px !important;
+    height: auto !important;
+    display: block !important;
+    filter: brightness(0) invert(1) !important;
+}
+
+.mural-ifc-menu {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 36px !important;
+}
+
+.mural-ifc-menu-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 18px !important;
+    color: #d4d4d4 !important;
+    text-decoration: none !important;
+    font-size: 16px !important;
+    font-weight: 400 !important;
+}
+
+.mural-ifc-menu-item img {
+    width: 24px !important;
+    max-width: 24px !important;
+    height: 24px !important;
+    object-fit: contain !important;
+    filter: brightness(0) invert(1) !important;
+}
+
+.mural-ifc-menu-item.active,
+.mural-ifc-menu-item:hover {
+    color: #ffffff !important;
+    font-weight: 600 !important;
+}
+
+.mural-ifc-content {
+    flex: 1 !important;
+    padding: 52px 50px 60px !important;
+    overflow-x: hidden !important;
+}
+
+.mural-ifc-header {
+    max-width: 1010px !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: space-between !important;
+    gap: 24px !important;
+    margin-bottom: 30px !important;
+}
+
+.mural-ifc-header h1 {
+    margin: 0 !important;
+    color: #34383d !important;
+    font-size: 40px !important;
+    line-height: 1 !important;
+    font-weight: 800 !important;
+    letter-spacing: -1px !important;
+}
+
+.mural-ifc-header p {
+    margin: 8px 0 0 !important;
+    font-size: 18px !important;
+    color: #3f3f3f !important;
+}
+
+.mural-ifc-search {
+    width: 245px !important;
+    height: 42px !important;
+    display: flex !important;
+    align-items: center !important;
+    background: #ffffff !important;
+    border: 1px solid #c5c5c5 !important;
+    border-radius: 6px !important;
+    overflow: hidden !important;
+}
+
+.mural-ifc-search-icon {
+    font-size: 21px !important;
+    color: #666666 !important;
+    padding-left: 13px !important;
+    padding-right: 7px !important;
+}
+
+.mural-ifc-search input {
+    width: 120px !important;
+    border: none !important;
+    outline: none !important;
+    font-size: 15px !important;
+    background: transparent !important;
+}
+
+.mural-ifc-divider {
+    width: 1px !important;
+    height: 28px !important;
+    background: #d0d0d0 !important;
+    margin: 0 8px !important;
+}
+
+.mural-ifc-search button {
+    border: none !important;
+    background: transparent !important;
+    color: #666666 !important;
+    font-size: 14px !important;
+    cursor: pointer !important;
+}
+
+.mural-ifc-grid {
+    max-width: 1010px !important;
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 18px 16px !important;
+}
+
+.mural-ifc-card {
+    position: relative !important;
+    min-height: 245px !important;
+    background: #ffffff !important;
+    border-radius: 9px !important;
+    padding: 24px 22px 20px !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.mural-ifc-card-bar {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    height: 7px !important;
+    width: 100% !important;
+    background: #2d9f44 !important;
+}
+
+.mural-ifc-card h2 {
+    margin: 0 0 8px !important;
+    font-size: 34px !important;
+    line-height: 1 !important;
+    color: #33383d !important;
+    font-weight: 800 !important;
+    letter-spacing: -1px !important;
+}
+
+.mural-ifc-card h3 {
+    margin: 0 0 13px !important;
+    font-size: 17px !important;
+    color: #33383d !important;
+    font-weight: 800 !important;
+}
+
+.mural-ifc-date {
+    display: inline-flex !important;
+    align-items: center !important;
+    align-self: flex-start !important;
+    gap: 7px !important;
+    background: #eeeeee !important;
+    border-radius: 6px !important;
+    padding: 5px 8px !important;
+    margin-bottom: 12px !important;
+    color: #333333 !important;
+}
+
+.mural-ifc-date p {
+    margin: 0 !important;
+    font-size: 14px !important;
+}
+
+.mural-ifc-text {
+    margin: 0 !important;
+    color: #333333 !important;
+    font-size: 15px !important;
+    line-height: 1.05 !important;
+}
+
+.mural-ifc-btn {
+    margin-top: auto !important;
+    margin-left: auto !important;
+    min-width: 205px !important;
+    height: 38px !important;
+    background: #2b9d42 !important;
+    border-radius: 20px !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 7px !important;
+    font-size: 14px !important;
+    font-weight: 800 !important;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.35) !important;
+}
+.mural-ifc-page {
+    display: flex !important;
+}
 :root {
     /* Fonte */
     --fonte-principal: Inter;
@@ -285,7 +511,8 @@ body {
 /*MENU LATERAL*/
 
 .menu-lateral {
-      position: fixed;
+
+	position: fixed;
 
     top: 0;
     left: 0;
@@ -563,22 +790,1628 @@ textarea:focus {
 /* ==========================================
    ESTILOS ESPECÍFICOS DA TELA DE LOGIN
    ========================================== */
-.body-login { 
-    background-image: url("../img/ifccampus.jpg"); 
-    background-size: cover; 
-    background-position: center; 
+
+body.login {
+    background-image: url("../img/ifccampus.jpg");
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    height: 100vh; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
 
-.login-container { 
-    width: 100%; 
-    max-width: 400px; 
-    padding: 20px; 
-    background: rgba(255, 255, 255, 0.9); 
-    border-radius: 8px; 
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================================
+   ESTILOS ESPECÍFICOS DA TELA DE CADASTRO
+   ========================================== */
+
+.cadastro-page {
+    min-height: 100vh;
+    padding: 55px 70px;
+    background: var(--cor-fundo);
+    color: var(--cor-texto);
+    font-family: var(--fonte-principal), Arial, Helvetica, sans-serif;
+}
+
+.cadastro-header {
+    margin-bottom: 30px;
+}
+
+.cadastro-titulo {
+    font-size: 44px;
+    margin: 0;
+    font-weight: 800;
+}
+
+.cadastro-subtitulo {
+    font-size: 20px;
+    margin-top: 6px;
+    margin-bottom: 25px;
+    color: #333333;
+}
+
+.cadastro-top-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 35px;
+}
+
+.cadastro-progress {
+    display: flex;
+    align-items: center;
+}
+
+.cadastro-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #777777;
+    border: 4px solid #555555;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.cadastro-circle.done {
+    background: #22b14c;
+}
+
+.cadastro-circle.active {
+    background: var(--cor-vermelho);
+}
+
+.cadastro-line {
+    width: 120px;
+    height: 4px;
+    background: #777777;
+}
+
+.cadastro-line.done {
+    background: #22b14c;
+}
+
+.cadastro-btn-next {
+    position: absolute;
+    right: 90px;
+    padding: 12px 65px;
+    font-size: 16px;
+    border-radius: 7px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.35);
+}
+
+.cadastro-form-box {
+    background: var(--cor-branco);
+    width: 82%;
+    min-height: 430px;
+    margin: 0 auto;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.cadastro-section-title {
+    font-size: 22px;
+    font-weight: bold;
+    padding: 15px 25px 10px;
+    border-bottom: 1px solid #cccccc;
+}
+
+.cadastro-form {
+    padding: 20px 25px 30px;
+}
+
+.cadastro-row {
+    display: flex;
+    gap: 35px;
+    margin-bottom: 18px;
+    align-items: flex-end;
+}
+
+.cadastro-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.cadastro-field label {
+    font-size: 16px;
+    margin-bottom: 6px;
+}
+
+.cadastro-field input {
+    height: 34px;
+    border: 1px solid #aaaaaa;
+    border-radius: 4px;
+    padding: 6px 10px;
+    font-size: 16px;
+}
+
+.cadastro-small {
+    width: 190px;
+}
+
+.cadastro-flex-grow {
+    flex: 1;
+}
+
+.cadastro-buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 70px;
+}
+
+.cadastro-btn-cancelar {
+    font-size: 16px;
+    border-radius: 7px;
+    padding: 12px 55px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.35);
+}
+
+.cadastro-error-box {
+    background: #ffdede;
+    border: 1px solid var(--cor-vermelho);
+    color: #900000;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+@media (max-width: 900px) {
+    .cadastro-page {
+        padding: 35px 25px;
+    }
+
+    .cadastro-form-box {
+        width: 100%;
+    }
+
+    .cadastro-row {
+        flex-direction: column;
+        gap: 18px;
+        align-items: stretch;
+    }
+
+    .cadastro-small {
+        width: 100%;
+    }
+
+    .cadastro-top-area {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .cadastro-btn-next {
+        position: static;
+    }
+}
+
+/* ==========================================
+   ESTILOS ESPECÍFICOS DA TELA DE CREDENCIAIS
+   ========================================== */
+
+.credenciais-page {
+    min-height: 100vh;
+    padding: 55px 70px;
+    background: var(--cor-fundo);
+    color: var(--cor-texto);
+    font-family: var(--fonte-principal), Arial, Helvetica, sans-serif;
+}
+
+.credenciais-header {
+    margin-bottom: 30px;
+}
+
+.credenciais-titulo {
+    font-size: 44px;
+    margin: 0;
+    font-weight: 800;
+}
+
+.credenciais-subtitulo {
+    font-size: 20px;
+    margin-top: 6px;
+    margin-bottom: 25px;
+    color: #333333;
+}
+
+.credenciais-top-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 35px;
+}
+
+.credenciais-progress {
+    display: flex;
+    align-items: center;
+}
+
+.credenciais-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #777777;
+    border: 4px solid #555555;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.credenciais-circle.done {
+    background: #22b14c;
+}
+
+.credenciais-circle.active {
+    background: var(--cor-vermelho);
+}
+
+.credenciais-line {
+    width: 120px;
+    height: 4px;
+    background: #777777;
+}
+
+.credenciais-line.done {
+    background: #22b14c;
+}
+
+.credenciais-btn-finalizar {
+    position: absolute;
+    right: 90px;
+    padding: 12px 65px;
+    font-size: 16px;
+    border-radius: 7px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.35);
+}
+
+.credenciais-form-box {
+    background: var(--cor-branco);
+    width: 82%;
+    min-height: 430px;
+    margin: 0 auto;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.credenciais-section-title {
+    font-size: 22px;
+    font-weight: bold;
+    padding: 15px 25px 10px;
+    border-bottom: 1px solid #cccccc;
+}
+
+.credenciais-form {
+    padding: 25px 35px 30px;
+}
+
+.credenciais-row {
+    display: flex;
+    gap: 45px;
+    margin-bottom: 35px;
+}
+
+.credenciais-field {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.credenciais-field label {
+    font-size: 16px;
+    margin-bottom: 6px;
+}
+
+.credenciais-field input {
+    height: 34px;
+    border: 1px solid #aaaaaa;
+    border-radius: 4px;
+    padding: 6px 10px;
+    font-size: 16px;
+}
+
+.credenciais-buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 145px;
+}
+
+.credenciais-btn-cancelar {
+    font-size: 16px;
+    border-radius: 7px;
+    padding: 12px 55px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.35);
+}
+
+.admin-mural-btn {
+    min-width: 92px  ;
+    height: 36px  ;
+    border: none !important;
+    border-radius: 18px !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 14px !important;
+    font-weight: 800 !important;
+    cursor: pointer !important;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.25) !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+}
+
+.admin-mural-btn.edit {
+    background: #2b9d42 !important;
+}
+
+.admin-mural-btn.delete {
+    background: #d93645 !important;
+}
+.admin-mural-actions {
+    display: flex;
+    gap: 10px; /* espaço entre os botões */
+    align-items: center;
+}
+
+
+.credenciais-error-box {
+    background: #ffdede;
+    border: 1px solid var(--cor-vermelho);
+    color: #900000;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+@media (max-width: 900px) {
+    .credenciais-page {
+        padding: 35px 25px;
+    }
+
+    .credenciais-form-box {
+        width: 100%;
+    }
+
+    .credenciais-row {
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .credenciais-top-area {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .credenciais-btn-finalizar {
+        position: static;
+    }
+}
+
+/* ==========================================
+   ESTILOS ESPECÍFICOS DA TELA DE DADOS PESSOAIS
+   ========================================== */
+
+.dados-page {
+    min-height: 100vh;
+    padding: 55px 70px;
+    background: var(--cor-fundo);
+    color: var(--cor-texto);
+    font-family: var(--fonte-principal), Arial, Helvetica, sans-serif;
+}
+
+.dados-header {
+    margin-bottom: 30px;
+}
+
+.dados-titulo {
+    font-size: 44px;
+    margin: 0;
+    font-weight: 800;
+}
+
+.dados-subtitulo {
+    font-size: 20px;
+    margin-top: 6px;
+    margin-bottom: 25px;
+    color: #333333;
+}
+
+.dados-top-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 35px;
+}
+
+.dados-progress {
+    display: flex;
+    align-items: center;
+}
+
+.dados-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #777777;
+    border: 4px solid #555555;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.dados-circle.active {
+    background: var(--cor-vermelho);
+}
+
+.dados-line {
+    width: 120px;
+    height: 4px;
+    background: #b8b8b8;
+}
+
+.dados-btn-next {
+    position: absolute;
+    right: 90px;
+    padding: 12px 65px;
+    font-size: 16px;
+    border-radius: 7px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.35);
+}
+
+.dados-form-box {
+    background: var(--cor-branco);
+    width: 82%;
+    min-height: 430px;
+    margin: 0 auto;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.dados-section-title {
+    font-size: 22px;
+    font-weight: bold;
+    padding: 15px 25px 10px;
+    border-bottom: 1px solid #cccccc;
+}
+
+.dados-form {
+    padding: 20px 25px 30px;
+}
+
+.dados-row {
+    display: flex;
+    gap: 35px;
+    margin-bottom: 18px;
+    align-items: flex-end;
+}
+
+.dados-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.dados-field label {
+    font-size: 16px;
+    margin-bottom: 6px;
+}
+
+.dados-field input,
+.dados-field select {
+    height: 40px;
+    border: 1px solid #aaaaaa;
+    border-radius: 4px;
+    padding: 6px 10px;
+    font-size: 16px;
+    background: #ffffff;
+    font-family: var(--fonte-principal), Arial, Helvetica, sans-serif;
+}
+
+.dados-full {
+    width: 100%;
+}
+
+.dados-half {
+    flex: 1;
+}
+
+.dados-medium {
+    flex: 1;
+    min-width: 180px;
+}
+
+@media (max-width: 900px) {
+    .dados-page {
+        padding: 35px 25px;
+    }
+
+    .dados-form-box {
+        width: 100%;
+    }
+
+    .dados-row {
+        flex-direction: column;
+        gap: 18px;
+        align-items: stretch;
+    }
+
+    .dados-top-area {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .dados-btn-next {
+        position: static;
+    }
+}
+
+.login-form {
+    width: 100%;
+}
+
+.login-field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 34px;
+}
+
+.login-field label {
+    font-size: 21px;
+    color: #333333;
+    margin-bottom: 7px;
+}
+
+.login-field input {
+    height: 40px;
+    border: 1px solid #b7b7b7;
+    border-radius: 4px;
+    padding: 6px 14px;
+    font-size: 22px;
+    color: #333333;
+}
+
+.login-field input::placeholder {
+    color: #777777;
+}
+
+.login-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 8px;
+}
+
+/* ==========================================
+   TELA DE LOGIN
+   ========================================== */
+
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.login-card {
+    width: 745px;
+    min-height: 510px;
+    background: #ffffff;
+    border: 1px solid #b8b8b8;
+    border-radius: 4px;
+    padding: 36px 95px 42px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.login-title {
+    text-align: center;
+    font-size: 44px;
+    font-weight: 800;
+    color: #383838;
+    margin: 0 0 28px;
+    letter-spacing: -1px;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.login-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-bottom: 30px;
+}
+
+.login-tab {
+    width: 155px;
+    height: 41px;
+    border: 1px solid #b5b5b5;
+    border-radius: 9px;
+    background: #eeeeee;
+    color: #3d3d3d;
+    font-size: 18px;
+    font-weight: 400;
+    cursor: pointer;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.25);
+}
+
+.login-tab-active {
+    background: #a6a6a6;
+}
+
+.login-form {
+    width: 100%;
+}
+
+.login-field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 34px;
+}
+
+.login-field label {
+    font-size: 21px;
+    color: #333333;
+    margin-bottom: 7px;
+}
+
+.login-field input {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #b7b7b7;
+    border-radius: 4px;
+    padding: 6px 14px;
+    font-size: 22px;
+    color: #333333;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.login-field input::placeholder {
+    color: #777777;
+}
+
+.login-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 8px;
+}
+
+.login-btn {
+    width: 252px;
+    height: 52px;
+    border: 1px solid #555555;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 21px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 7px rgba(0, 0, 0, 0.35);
+}
+
+.login-btn-cadastrar {
+    background: #6973df;
+}
+
+.login-btn-entrar {
+    background: #2e9e43;
+}
+
+.login-btn:hover,
+.login-tab:hover {
+    filter: brightness(0.96);
+}
+
+@media (max-width: 900px) {
+    .login-page {
+        padding: 25px;
+    }
+
+    .login-card {
+        width: 100%;
+        min-height: auto;
+        padding: 30px;
+    }
+
+    .login-title {
+        font-size: 34px;
+        white-space: normal;
+    }
+
+    .login-tabs {
+        gap: 20px;
+    }
+
+    .login-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .login-btn {
+        width: 100%;
+    }
+}
+
+.login-btn {
+    width: 252px;
+    height: 52px;
+    border: 1px solid #555555;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 21px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 7px rgba(0, 0, 0, 0.35);
+}
+
+.login-btn-cadastrar {
+    background: #6973df;
+}
+
+.login-btn-entrar {
+    background: #2e9e43;
+}
+
+@media (max-width: 1000px) {
+    .login-page {
+        padding: 30px;
+    }
+
+    .login-card {
+        width: 100%;
+        padding: 30px;
+    }
+
+    .login-title {
+        font-size: 38px;
+    }
+
+    .login-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+}/* ==========================================
+   TELA CANDIDATURAS - ADMIN
+   ========================================== */
+
+.admin-cand-page {
+    min-height: 100vh;
+    display: flex;
+    background: #e6e6e6;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #333333;
+}
+
+.admin-cand-sidebar {
+    width: 360px;
+    min-height: 100vh;
+    background: #3f3f3f;
+    padding: 48px 48px 40px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-cand-logo {
+    margin-bottom: 72px;
+}
+
+.admin-cand-logo img {
+    width: 215px;
+    height: auto;
+    display: block;
+    filter: brightness(0) invert(1);
+}
+
+.admin-cand-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 42px;
+}
+
+.admin-cand-menu-item,
+.admin-cand-sair {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    color: #d8d8d8;
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: 400;
+}
+
+.admin-cand-menu-item img,
+.admin-cand-sair img {
+    width: 31px;
+    height: 31px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+}
+
+.admin-cand-menu-item.active,
+.admin-cand-menu-item:hover {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.admin-cand-sair {
+    margin-top: auto;
+    background: #242424;
+    padding: 14px 20px;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 18px;
+}
+
+.admin-cand-sair:hover {
+    background: #1f1f1f;
+}
+
+.admin-cand-logo img {
+    width: 215px;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 70px;
+
+}
+
+.admin-cand-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 42px;
+}
+
+.admin-cand-menu-item,
+.admin-cand-sair {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: #d8d8d8;
+    text-decoration: none;
+    font-size: 22px;
+}
+
+.admin-cand-menu-item:hover,
+.admin-cand-menu-item.active {
+    color: #ffffff;
+}
+
+.admin-cand-icon {
+    width: 32px;
+    font-size: 32px;
+    line-height: 1;
+    text-align: center;
+    color: #d8d8d8;
+}
+
+.admin-cand-sair {
+    margin-top: auto;
+    background: #242424;
+    padding: 14px 20px;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 18px;
+}
+
+.admin-cand-content {
+    flex: 1;
+    padding: 72px 70px;
+    overflow-x: hidden;
+}
+
+.admin-cand-header {
+    margin-bottom: 32px;
+}
+
+.admin-cand-header h1 {
+    font-size: 44px;
+    font-weight: 800;
+    margin: 0 0 8px;
+    color: #34383d;
+}
+
+.admin-cand-header p {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+    color: #555555;
+}
+
+.admin-cand-card {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 30px;
+    width: 100%;
+    max-width: 1040px;
+    box-sizing: border-box;
+    overflow-x: auto;
+}
+
+.admin-cand-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 16px;
+    color: #000000;
+}
+
+.admin-cand-table thead tr {
+    background: #c4c4c4;
+}
+
+.admin-cand-table th {
+    padding: 15px 16px;
+    text-align: left;
+    font-weight: 700;
+}
+
+.admin-cand-table th:first-child {
+    border-radius: 7px 0 0 7px;
+}
+
+.admin-cand-table th:last-child {
+    border-radius: 0 7px 7px 0;
+    text-align: center;
+}
+
+.admin-cand-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #dddddd;
+    vertical-align: middle;
+}
+
+.admin-cand-table td:last-child {
+    text-align: center;
+}
+
+.admin-cand-status {
+    display: inline-block;
+    min-width: 100px;
+    padding: 8px 10px;
+    border-radius: 7px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.admin-cand-status.gray {
+    background: #808080;
+}
+
+.admin-cand-status.green {
+    background: #28a745;
+}
+
+.admin-cand-status.red {
+    background: #dc3545;
+}
+
+.admin-cand-action {
+    border: none;
+    background: transparent;
+    color: #159947;
+    font-size: 22px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+@media (max-width: 1000px) {
+    .admin-cand-page {
+        flex-direction: column;
+    }
+
+    .admin-cand-sidebar {
+        width: 100%;
+        min-height: auto;
+    }
+
+    .admin-cand-content {
+        padding: 40px 25px;
+    }
+
+    .admin-cand-header h1 {
+        font-size: 38px;
+    }
+
+    .admin-cand-card {
+        max-width: 100%;
+    }
+}/* ==========================================
+   DETALHE DA CANDIDATURA - ADMIN
+   ========================================== */
+
+.cand-detalhe-content {
+    flex: 1;
+    padding: 56px 50px;
+    background: #e6e6e6;
+    overflow-x: hidden;
+}
+
+.cand-detalhe-header h1 {
+    font-size: 44px;
+    font-weight: 800;
+    margin: 0 0 44px;
+    color: #2f3338;
+    letter-spacing: -1px;
+}
+
+.cand-detalhe-summary {
+    width: 100%;
+    max-width: 1010px;
+    min-height: 82px;
+    background: #ffffff;
+    border: 1px solid #bdbdbd;
+    border-radius: 4px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 170px;
+    align-items: center;
+    gap: 20px;
+    padding: 14px 34px;
+    box-sizing: border-box;
+    margin-bottom: 24px;
+}
+
+.cand-detalhe-summary div {
+    display: flex;
+    flex-direction: column;
+}
+
+.cand-detalhe-summary span {
+    font-size: 16px;
+    color: #3f3f3f;
+    margin-bottom: 4px;
+}
+
+.cand-detalhe-summary strong {
+    font-size: 22px;
+    color: #3a3a3a;
+}
+
+.cand-detalhe-status {
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    background: #cf1b22;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.cand-detalhe-grid {
+    max-width: 1010px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 26px;
+}
+
+.cand-detalhe-left {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.cand-detalhe-card {
+    background: #ffffff;
+    border: 1px solid #bdbdbd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.cand-detalhe-card h2 {
+    font-size: 25px;
+    margin: 0 0 18px;
+    color: #3a3a3a;
+}
+
+.cand-detalhe-card.dados {
+    min-height: 180px;
+    padding: 26px 22px;
+}
+
+.cand-detalhe-dados {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 32px;
+    row-gap: 10px;
+    font-size: 14px;
+    color: #444444;
+}
+
+.cand-detalhe-dados p {
+    margin: 0;
+}
+
+.cand-detalhe-dados span {
+    font-weight: 700;
+    margin-right: 5px;
+}
+
+.cand-detalhe-card.historico {
+    min-height: 225px;
+    padding: 26px 28px;
+}
+
+.cand-historico-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.cand-historico-bolinha {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #2da04b;
+    border-radius: 50%;
+    color: #ffffff;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.cand-historico-item.completo .cand-historico-bolinha {
+    background: #2da04b;
+}
+
+.cand-historico-item h3 {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0 0 3px;
+    color: #3f3f3f;
+}
+
+.cand-historico-item p {
+    font-size: 14px;
+    margin: 0;
+    color: #4f4f4f;
+}
+
+.cand-detalhe-card.documentos {
+    min-height: 413px;
+    padding: 22px 22px;
+}
+
+.cand-documento {
+    border: 1px solid #c7c7c7;
+    border-radius: 9px;
+    padding: 16px 14px;
+    margin-bottom: 14px;
+}
+
+.cand-documento h3 {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0 0 16px;
+    color: #3f3f3f;
+}
+
+.cand-documento-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cand-pdf {
+    color: #e02222;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.cand-documento-row span {
+    color: #555555;
+    font-size: 14px;
+}
+
+.cand-documento-row button {
+    margin-left: auto;
+    min-width: 112px;
+    height: 40px;
+    border: 1px solid #d0d0d0;
+    border-radius: 9px;
+    background: #eeeeee;
+    color: #3f3f3f;
+    font-size: 15px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+}
+
+.admin-cand-action {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 1100px) {
+    .cand-detalhe-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cand-detalhe-summary {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 700px) {
+    .cand-detalhe-content {
+        padding: 35px 22px;
+    }
+
+    .cand-detalhe-header h1 {
+        font-size: 34px;
+    }
+
+    .cand-detalhe-summary {
+        grid-template-columns: 1fr;
+    }	/* ==========================================
+   MURAL DE EDITAIS - CANDIDATO PADRÃO FIGMA
+   ========================================== */
+
+.mural-ifc-page {
+    min-height: 100vh;
+    display: flex;
+    background: #e5e5e5;
+    color: #33383d;
+    font-family: Arial, Helvetica, sans-serif;
+}     /* ===== PERFIL CANDIDATO - AJUSTE FINAL ===== */
+
+.perfil-conteudo {
+flex: 1 !important;
+padding: 52px 50px 70px !important;
+overflow-x: hidden !important;
+font-family: var(--fonte-principal), Arial, Helvetica, sans-serif !important;
+}
+
+.perfil-cabecalho {
+max-width: 1010px !important;
+margin-bottom: 50px !important;
+}
+
+.perfil-cabecalho h1 {
+margin: 0 !important;
+color: #34383d !important;
+font-size: 40px !important;
+line-height: 1 !important;
+font-weight: 800 !important;
+letter-spacing: -1px !important;
+}
+
+.perfil-cabecalho p {
+margin: 10px 0 0 !important;
+color: #3f3f3f !important;
+font-size: 18px !important;
+}
+
+.perfil-formulario {
+max-width: 1010px !important;
+}
+
+.perfil-card {
+background: #ffffff !important;
+margin-bottom: 12px !important;
+padding: 0 18px 26px !important;
+}
+
+.perfil-titulo-card {
+margin: 0 -18px 18px !important;
+padding: 14px 22px 10px !important;
+border-bottom: 1px solid #cfcfcf !important;
+}
+
+.perfil-titulo-card h2 {
+margin: 0 !important;
+font-size: 18px !important;
+font-weight: 800 !important;
+color: #3b3f44 !important;
+}
+
+.perfil-linha {
+display: grid !important;
+gap: 18px 38px !important;
+margin-bottom: 14px !important;
+}
+
+.perfil-linha.duas {
+grid-template-columns: repeat(2, 1fr) !important;
+}
+
+.perfil-linha.tres {
+grid-template-columns: repeat(3, 1fr) !important;
+}
+
+.perfil-linha.quatro {
+grid-template-columns: 170px 170px 170px 170px !important;
+}
+
+.perfil-linha.endereco {
+grid-template-columns: 170px 1fr !important;
+}
+
+.perfil-campo {
+margin-bottom: 14px !important;
+}
+
+.perfil-campo.cheio {
+width: 100% !important;
+}
+
+.perfil-campo label {
+display: block !important;
+margin-bottom: 6px !important;
+color: #33383d !important;
+font-size: 15px !important;
+font-weight: 500 !important;
+}
+
+.perfil-campo input,
+.perfil-campo select {
+width: 100% !important;
+height: 30px !important;
+border: 1px solid #bfc3c7 !important;
+border-radius: 3px !important;
+background: #ffffff !important;
+color: #33383d !important;
+padding: 4px 10px !important;
+font-size: 15px !important;
+font-family: var(--fonte-principal), Arial, Helvetica, sans-serif !important;
+}
+
+.perfil-campo input::placeholder {
+color: #666666 !important;
+}
+
+.perfil-acoes {
+max-width: 1010px !important;
+display: flex !important;
+justify-content: flex-end !important;
+gap: 14px !important;
+margin-top: 18px !important;
+}
+
+.perfil-botao {
+min-width: 150px !important;
+height: 40px !important;
+border-radius: 6px !important;
+font-weight: 800 !important;
+font-size: 15px !important;
+text-decoration: none !important;
+display: inline-flex !important;
+align-items: center !important;
+justify-content: center !important;
+cursor: pointer !important;
+}
+
+.perfil-botao.cancelar {
+border: 1px solid #c8c8c8 !important;
+background: #ffffff !important;
+color: #33383d !important;
+}
+
+.perfil-botao.salvar {
+border: none !important;
+background: #2b9d42 !important;
+color: #ffffff !important;
+}/* ===== AJUSTE FINAL - PERFIL CANDIDATO ===== */
+
+.mural-ifc-page .perfil-conteudo {
+    flex: 1 !important;
+    padding: 52px 50px 70px !important;
+    overflow-x: hidden !important;
+    font-family: var(--fonte-principal), Arial, Helvetica, sans-serif !important;
+}
+
+.mural-ifc-page .perfil-cabecalho {
+    max-width: 1010px !important;
+    margin-bottom: 50px !important;
+}
+
+.mural-ifc-page .perfil-cabecalho h1 {
+    margin: 0 !important;
+    color: #34383d !important;
+    font-size: 40px !important;
+    line-height: 1 !important;
+    font-weight: 800 !important;
+    letter-spacing: -1px !important;
+}
+
+.mural-ifc-page .perfil-cabecalho p {
+    margin: 10px 0 0 !important;
+    color: #3f3f3f !important;
+    font-size: 18px !important;
+}
+
+.mural-ifc-page .perfil-formulario {
+    max-width: 1010px !important;
+}
+
+.mural-ifc-page .perfil-card {
+    background: #ffffff !important;
+    margin-bottom: 12px !important;
+    padding: 0 18px 26px !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+.mural-ifc-page .perfil-titulo-card {
+    margin: 0 -18px 18px !important;
+    padding: 14px 22px 10px !important;
+    border-bottom: 1px solid #cfcfcf !important;
+}
+
+.mural-ifc-page .perfil-titulo-card h2 {
+    margin: 0 !important;
+    font-size: 18px !important;
+    font-weight: 800 !important;
+    color: #3b3f44 !important;
+}
+
+.mural-ifc-page .perfil-linha {
+    display: grid !important;
+    gap: 18px 38px !important;
+    margin-bottom: 14px !important;
+}
+
+.mural-ifc-page .perfil-linha.duas {
+    grid-template-columns: repeat(2, 1fr) !important;
+}
+
+.mural-ifc-page .perfil-linha.tres {
+    grid-template-columns: repeat(3, 1fr) !important;
+}
+
+.mural-ifc-page .perfil-linha.quatro {
+    grid-template-columns: 170px 170px 170px 170px !important;
+}
+
+.mural-ifc-page .perfil-linha.endereco {
+    grid-template-columns: 170px 1fr !important;
+}
+
+.mural-ifc-page .perfil-campo {
+    margin-bottom: 14px !important;
+}
+
+.mural-ifc-page .perfil-campo.cheio {
+    width: 100% !important;
+}
+
+.mural-ifc-page .perfil-campo label {
+    display: block !important;
+    margin-bottom: 6px !important;
+    color: #33383d !important;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+}
+
+.mural-ifc-page .perfil-campo input,
+.mural-ifc-page .perfil-campo select {
+    width: 100% !important;
+    height: 30px !important;
+    border: 1px solid #bfc3c7 !important;
+    border-radius: 3px !important;
+    background: #ffffff !important;
+    color: #33383d !important;
+    padding: 4px 10px !important;
+    font-size: 15px !important;
+    font-family: var(--fonte-principal), Arial, Helvetica, sans-serif !important;
+}
+
+.mural-ifc-page .perfil-campo input::placeholder {
+    color: #666666 !important;
+}
+
+.mural-ifc-page .perfil-acoes {
+    max-width: 1010px !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+    gap: 14px !important;
+    margin-top: 18px !important;
+}
+
+.mural-ifc-page .perfil-botao {
+    min-width: 150px !important;
+    height: 40px !important;
+    border-radius: 6px !important;
+    font-weight: 800 !important;
+    font-size: 15px !important;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+}
+
+.mural-ifc-page .perfil-botao.cancelar {
+    border: 1px solid #c8c8c8 !important;
+    background: #ffffff !important;
+    color: #33383d !important;
+}
+
+.mural-ifc-page .perfil-botao.salvar {
+    border: none !important;
+    background: #2b9d42 !important;
+    color: #ffffff !important;
+}
+.mural-ifc-logout {
+    margin-top: auto !important;
+    padding: 14px 18px !important;
+    border-radius: 12px !important;
+    background: #2f3030 !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    font-weight: 500 !important;
+}
+
+.mural-ifc-logout:hover {
+    background: #232323 !important;
+}
+
+/*---------------VALIDAÇÃO CPF*/
+
+.cpf-error-card {
+    display: none;
+    margin-top: 8px;
+    padding: 12px;
+    border-radius: 8px;
+    background-color: #ffe5e5;
+    border: 1px solid #c20000;
+    color: #c20000;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.cpf-error-card.show {
+    display: block;
+    animation: fadeIn .2s ease-in-out;
+}
+
+.cpf-invalido {
+    border: 2px solid #c20000 !important;
+    background-color: #fff5f5 !important;
+    color: #c20000;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.password-box{
+    position: relative;
+    width: 100%;
+}
+
+.password-box input{
+    width: 100%;
+    padding-right: 45px;
+}
+
+.toggle-password {
+    background: none;
+    border: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.eye-icon{
+    width: 2px;
+    height: 2px;
+    display: block;
+}
 }
