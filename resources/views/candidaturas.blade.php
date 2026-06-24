@@ -29,9 +29,9 @@
 
         <main class="pagina">
 
-            <h1 class="titulo">Demonstração CSS Global</h1>
+            <h1 class="titulo">Candidaturas</h1>
             <p class="subtitulo">
-                Página para testar componentes, ícones, botões, formulários e utilitários.
+                Avaliação dos candidatos
             </p>
 
 
@@ -80,14 +80,34 @@
 
                                 <td>
 
-                                    @if($item->status?->status == 'Aprovado')
-                                    <span class="status status-ativo">Aprovado</span>
+                                    @php
+                                    $ultimoHistorico = $item->historico
+                                    ->sortByDesc('updated_at')
+                                    ->first();
 
-                                    @elseif( $item->status?->status  == 'Rejeitado')
-                                    <span class="status status-rejeitado">Rejeitado</span>
+                                    $status = strtolower(
+                                    $ultimoHistorico->status->status ?? 'pendente'
+                                    );
+                                    @endphp
+
+                                    @if($status == 'aprovado')
+
+                                    <span class="status status-ativo">
+                                        Aprovado
+                                    </span>
+
+                                    @elseif($status == 'rejeitado')
+
+                                    <span class="status status-rejeitado">
+                                        Rejeitado
+                                    </span>
 
                                     @else
-                                    <span class="status status-pendente">Pendente</span>
+
+                                    <span class="status status-pendente">
+                                        Pendente
+                                    </span>
+
                                     @endif
 
                                 </td>
@@ -98,7 +118,7 @@
 
 
                                         <a href="{{ route('candidaturas.detalhe', $item->id) }}">
-                                            <i class="icone editar vd"></i>
+                                            <i class="icone editar m cz"></i>
                                         </a>
 
                                     </div>
@@ -114,70 +134,64 @@
                     </table>
                     <div class="rodape-tabela flex-between">
 
-    <span class="tcz">
+                        <span class="tcz">
 
-        {{ $inscricoes->firstItem() }}
-        -
-        {{ $inscricoes->lastItem() }}
-        de
-        {{ $inscricoes->total() }}
-        candidatos
+                            {{ $inscricoes->firstItem() }}
+                            -
+                            {{ $inscricoes->lastItem() }}
+                            de
+                            {{ $inscricoes->total() }}
+                            candidatos
 
-    </span>
+                        </span>
 
-    <div class="flex gap-10">
+                        <div class="flex gap-10">
 
-        @if($inscricoes->onFirstPage())
+                            @if($inscricoes->onFirstPage())
 
-            
 
-        @else
 
-            <a
-                href="{{ $inscricoes->previousPageUrl() }}"
-                class="btn-card Br"
-            >
-                <i
-                    class="icone setaBaixo cz"
-                    style="transform:rotate(90deg)"
-                ></i>
-            </a>
+                            @else
 
-        @endif
+                            <a
+                                href="{{ $inscricoes->previousPageUrl() }}"
+                                class="btn-card Br">
+                                <i
+                                    class="icone setaBaixo cz"
+                                    style="transform:rotate(90deg)"></i>
+                            </a>
 
-        @if($inscricoes->hasMorePages())
+                            @endif
 
-            <a
-                href="{{ $inscricoes->nextPageUrl() }}"
-                class="btn-card Br"
-            >
-                <i
-                    class="icone setaBaixo cz"
-                    style="transform:rotate(-90deg)"
-                ></i>
-            </a>
+                            @if($inscricoes->hasMorePages())
 
-        @else
+                            <a
+                                href="{{ $inscricoes->nextPageUrl() }}"
+                                class="btn-card Br">
+                                <i
+                                    class="icone setaBaixo cz"
+                                    style="transform:rotate(-90deg)"></i>
+                            </a>
 
-            <button class="btn-card Br" disabled>
-                <i
-                    class="icone setaBaixo cz"
-                    style="transform:rotate(-90deg)"
-                ></i>
-            </button>
+                            @else
 
-        @endif
+                            <button class="btn-card Br" disabled>
+                                <i
+                                    class="icone setaBaixo cz"
+                                    style="transform:rotate(-90deg)"></i>
+                            </button>
 
-        <a
-            href="{{ route('candidaturas.exportar') }}"
-            class="btn-card"
-        >
-            EXPORTAR (csv)
-        </a>
+                            @endif
 
-    </div>
+                            <a
+                                href="{{ route('candidaturas.exportar') }}"
+                                class="btn-card">
+                                EXPORTAR (csv)
+                            </a>
 
-</div>
+                        </div>
+
+                    </div>
                 </div>
 
             </section>

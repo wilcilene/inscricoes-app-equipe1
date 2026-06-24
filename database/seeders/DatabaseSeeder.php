@@ -14,7 +14,8 @@ class DatabaseSeeder extends Seeder
             CandidatoSeeder::class,
             EditalSeeder::class,
             InscricaoSeeder::class,
-            InscricaoStatusSeeder::class,
+            StatusSeeder::class,
+            HistoricoInscricaoSeeder::class
             
         ]);
     }

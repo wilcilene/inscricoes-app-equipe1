@@ -8,7 +8,9 @@ use App\Http\Controllers\MinhasInscricoesController;
 use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\CandidatoController;
 use App\Http\Controllers\EditalController;
-
+use App\Http\Controllers\CandidaturaController;
+use App\Http\Controllers\HistoricoController;
+use App\Http\Controllers\DocumentoController;
 
 // ROTAS PÚBLICAS
 
@@ -75,7 +77,17 @@ Route::get(
         return view('inscricao');
     }
 );
+//ROTAS PROTEGIDAS
 
+
+
+Route::middleware('auth')->group(function () {
+
+    Route::get(
+        '/documento/{inscricao}/{campo}',
+        [DocumentoController::class, 'visualizar']
+    )->name('documento.visualizar');
+});
 
 // ÁREA CANDIDATO
 
@@ -203,91 +215,103 @@ Route::middleware([
 ])->group(function () {
 
 
-Route::get(
-    '/candidaturas/exportar',
-    [EditalController::class, 'exportar']
-)->name('candidaturas.exportar');
+    Route::get(
+        '/candidaturas/exportar',
+        [EditalController::class, 'exportar']
+    )->name('candidaturas.exportar');
 
-        // Dashboard
-        Route::get(
-            '/admin',
-            [
-                EditalController::class,
-                'mural'
-            ]
-        )->name(
-            'admin.dashboard'
-        );
+    // Dashboard
+    Route::get(
+        '/admin',
+        [
+            EditalController::class,
+            'mural'
+        ]
+    )->name(
+        'admin.dashboard'
+    );
 
 
-        // Candidaturas
-        Route::get(
-            '/candidaturas',
-            [
-                EditalController::class,
-                'candidaturas'
-            ]
-        )->name(
+    // Candidaturas
+    Route::get(
+        '/candidaturas',
+        [
+            EditalController::class,
             'candidaturas'
-        );
+        ]
+    )->name(
+        'candidaturas'
+    );
 
 
-        // Detalhe candidatura
-        Route::get(
-            '/candidaturas/{id}',
-            function ($id) {
-
-                return view(
-                    'candidatura-detalhe',
-                    [
-                        'id' => $id
-                    ]
-                );
-            }
-        )->name(
-            'candidaturas.detalhe'
-        );
+    // Detalhe candidatura
+    Route::get('/candidaturas/{id}', [CandidaturaController::class, 'show'])
+        ->name('candidaturas.detalhe');
 
 
-        // Cadastro edital
-        Route::get(
-            '/admin/editais/cadastrar',
-            function () {
-
-                return view(
-                    'cad_editais'
-                );
-            }
-        )->name(
-            'admin.editais.cadastrar'
-        );
 
 
-        // Editar edital
-        Route::get('/admin/editais/{id}/editar', function ($id) {
+    // Cadastro edital
+    Route::get(
+        '/admin/editais/cadastrar',
+        function () {
 
-            $edital = \App\Models\Edital::findOrFail($id);
+            return view(
+                'cad_editais'
+            );
+        }
+    )->name(
+        'admin.editais.cadastrar'
+    );
 
-            return view('cad_editais', compact('edital'));
-        })->name('admin.editais.editar');
+
+    // Editar edital
+    Route::get('/admin/editais/{id}/editar', function ($id) {
+
+        $edital = \App\Models\Edital::findOrFail($id);
+
+        return view('cad_editais', compact('edital'));
+    })->name('admin.editais.editar');
 
 
-        // Excluir edital
-        Route::delete(
-            '/admin/editais/{id}',
-            [
-                EditalController::class,
-                'destroy'
-            ]
-        )->name(
-            'admin.editais.excluir'
-        );
-    });
+    // Excluir edital
+    Route::delete(
+        '/admin/editais/{id}',
+        [
+            EditalController::class,
+            'destroy'
+        ]
+    )->name(
+        'admin.editais.excluir'
+    );
+
 Route::post('/editais', [EditalController::class, 'store'])
     ->name('edital.store');
 
 Route::put('/editais/{id}', [EditalController::class, 'update'])
     ->name('edital.update');
+
+Route::post(
+    '/historico/rejeitar/{id}',
+    [HistoricoController::class, 'rejeitar']
+)->name('historico.rejeitar');
+
+Route::get(
+    '/motivo/{id}',
+    [HistoricoController::class, 'formRejeitar']
+)->name('historico.formRejeitar');
+
+Route::put('/candidaturas/{id}/aprovar', [HistoricoController::class, 'aprovar'])
+    ->name('candidaturas.aprovar');
+
+
+
+
+
+
+
+});
+
 
 // CADASTRO
 

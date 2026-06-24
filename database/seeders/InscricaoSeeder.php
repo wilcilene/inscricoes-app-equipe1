@@ -20,28 +20,24 @@ class InscricaoSeeder extends Seeder
 
         foreach ($editais as $edital) {
 
+            $candidato = $candidatos->random();
 
+            Inscricao::create([
 
-            for ($i = 0; $i < 1; $i++) {
+                'edital_id' => $edital->id,
+                'candidato_id' => 1,
 
+                'caminho_ficha_inscricao'       => 'docs/test.pdf',
+                'caminho_identidade'            => 'docs/test.pdf',
+                'caminho_diploma'               => 'docs/test.pdf',
+                'caminho_curriculo_lattes'      => 'docs/test.pdf',
+                'caminho_comprovante_eleitoral' => 'docs/test.pdf',
+                'caminho_certificado_militar'   => 'docs/test.pdf',
 
-                Inscricao::create([
-                    'edital_id' => $edital->id,
-                    'candidato_id' => 1,
+                'vaga_pcd' => rand(0, 1),
+                'vaga_pniq' => rand(0, 1),
 
-                    // arquivos fictícios
-                    'caminho_ficha_inscricao' => 'docs/ficha.pdf',
-                    'caminho_identidade' => 'docs/rg.pdf',
-                    'caminho_diploma' => 'docs/diploma.pdf',
-                    'caminho_curriculo_lattes' => 'docs/lattes.pdf',
-                    'caminho_comprovante_eleitoral' => 'docs/eleitoral.pdf',
-                    'caminho_certificado_militar' => 'docs/militar.pdf',
-
-                    // vagas (simulação simples)
-                    'vaga_pcd' => rand(0, 1),
-                    'vaga_pniq' => rand(0, 1),
-                ]);
-            }
+            ]);
         }
     }
 }

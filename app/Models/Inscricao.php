@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\InscricaoStatus;
-
+use App\Models\Candidato;
+use App\Models\Edital;
 
 class Inscricao extends Model
 {
@@ -21,24 +22,40 @@ class Inscricao extends Model
         'vaga_pniq',
         'edital_id',
         'candidato_id',
+        'status_id'
+        
     ];
 
     public function candidato()
+    {
+        return $this->belongsTo(Candidato::class, 'candidato_id');
+    }
+
+    public function edital()
+    {
+        return $this->belongsTo(Edital::class, 'id');
+    }
+
+    public function historico()
 {
-    return $this->belongsTo(Candidato::class, 'candidato_id');
+    return $this->hasMany(
+        HistoricoInscricao::class,
+        'inscricao_id'
+    )->orderBy('created_at');
 }
 
-public function edital()
-{
-    return $this->belongsTo(Edital::class, 'edital_id');
-}
+    public function status()
+    {
+        return $this->belongsTo(
+            InscricaoStatus::class,
+            'id',
+            'id'
+        );
+    }
 
-public function status()
+    public function ultimoHistorico()
 {
-    return $this->belongsTo(
-        InscricaoStatus::class,
-        'id',   // coluna da tabela inscricoes
-        'id'    // coluna da tabela inscricao_statuss
-    );
+    return $this->hasOne(HistoricoInscricao::class)
+        ->latestOfMany();
 }
 }

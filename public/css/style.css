@@ -1574,6 +1574,28 @@ body.login {
    TELA CANDIDATURAS - ADMIN
    ========================================== */
 
+.avaliacao{
+    padding:24px;
+}
+
+.avaliacao-texto{
+    color:#666;
+    margin-bottom:20px;
+}
+
+.cand-avaliacao-acoes{
+    display:flex;
+    gap:15px;
+}
+
+.cand-avaliacao-acoes .Vd,
+.cand-avaliacao-acoes .Vm{
+    flex:1;
+    max-width:100px;
+    align-items: center;
+    
+}
+   
 .admin-cand-page {
     min-height: 100vh;
     display: flex;
@@ -1941,20 +1963,31 @@ body.login {
 .cand-historico-bolinha {
     width: 24px;
     height: 24px;
-    border: 2px solid #2da04b;
     border-radius: 50%;
-    color: #ffffff;
-    background: #ffffff;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 14px;
+
     flex-shrink: 0;
+    border: 2px solid transparent;
 }
 
-.cand-historico-item.completo .cand-historico-bolinha {
-    background: #2da04b;
+/* APROVADO */
+.aprovado {
+    background: var(--cor-verde);
 }
+
+/* REJEITADO */
+.rejeitado {
+    background: var(--cor-vermelho);
+}
+
+/* PENDENTE */
+.pedente {
+    background: #856404;
+}
+
 
 .cand-historico-item h3 {
     font-size: 18px;
