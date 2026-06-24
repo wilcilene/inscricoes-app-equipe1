@@ -911,6 +911,11 @@ textarea:focus {
 
 /*----------------------BOTÕES*/
 
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
 .btn-card {
 
     margin-top: auto;

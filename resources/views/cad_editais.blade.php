@@ -118,14 +118,16 @@ $edital = $edital ?? null;
               id="dataFim"
               name="data_fim_inscr"
               value="{{ isset($edital) ? \Carbon\Carbon::parse($edital->data_fim_inscr)->format('Y-m-d') : '' }}"
-              required>
+              required
+              onchange="validarDatas()">
+              <small id="erroData" class="erro"></small>
           </div>
 
         </div>
 
         <div class="mt-20">
 
-          <button type="submit" class="btn-card">
+          <button type="submit" class="btn-card" id="btnSalvar">
 
             <span class="icone adicionar wt"></span>
 
@@ -156,17 +158,17 @@ $edital = $edital ?? null;
     // Atualiza cabeçalho
     function atualizarCabecalho() {
 
-  const numeroValor = (numero.value || "").padStart(3, "0") || "000";
+      const numeroValor = (numero.value || "").padStart(3, "0") || "000";
 
-  let ano = "";
+      let ano = "";
 
-  if (data && data.value) {
-    ano = new Date(data.value).getFullYear();
-  }
+      if (data && data.value) {
+        ano = new Date(data.value).getFullYear();
+      }
 
-  header.textContent = ano ? `${numeroValor}/${ano}` : numeroValor;
-  document.getElementById("headerNumero2").value = `${numeroValor}/${ano}`;
-}
+      header.textContent = ano ? `${numeroValor}/${ano}` : numeroValor;
+      document.getElementById("headerNumero2").value = `${numeroValor}/${ano}`;
+    }
 
     numero.addEventListener("input", atualizarCabecalho);
     data.addEventListener("change", atualizarCabecalho);
@@ -179,7 +181,27 @@ $edital = $edital ?? null;
 
 
     atualizarCabecalho();
+
+    function validarDatas() {
+
+    dataFim.classList.remove("input-erro");
+    erroData.textContent = "";
+
+    btnSalvar.disabled = false;
+
+    if (dataFim.value <= dataInicio.value) {
+
+        erroData.textContent = "Data inválida.";
+        dataFim.classList.add("input-erro");
+
+        btnSalvar.disabled = true;
+    }
+}
+
+dataInicio.addEventListener("change", validarDatas);
+dataFim.addEventListener("change", validarDatas);
   </script>
+
 
 </body>
 
