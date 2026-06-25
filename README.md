@@ -21,6 +21,9 @@ Este projeto PHP tem como objetivo criar um sistema dedicado a preenchimento de 
 - Modificar em .env ```SESSION_DRIVER=database```  para ```SESSION_DRIVER=file```
 - Modificar em .env ```CACHE_STORE=database```  para ```CACHE_STORE=file```
 - Rodar as seeder ```php artisan migrate:fresh --seed```
+# Credenciais
+- Administrativo: admin@email.com Senha: 123456
+  
 # Escopo 
 ## Auth 
 - Seleção de Perfil
