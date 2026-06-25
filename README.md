@@ -18,6 +18,8 @@ Este projeto PHP tem como objetivo criar um sistema dedicado a preenchimento de 
 - Usar o branches _Compilado_, utilizando o comando ```git clone --compilado --single-branch https://github.com/wilcilene/inscricoes-app-equipe1.git```
 # Passo a passo de como executar
 - Dois cliques (executar) o ```setup.bat``` e seguir as instruções ali apresentadas
+- Modificar em .env ```SESSION_DRIVER=database```  para ```SESSION_DRIVER=file```
+- - Modificar em .env ```CACHE_STORE=database```  para ```CACHE_STORE=file```
 # Escopo 
 ## Auth 
 - Seleção de Perfil
