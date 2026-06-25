@@ -20,6 +20,7 @@ Este projeto PHP tem como objetivo criar um sistema dedicado a preenchimento de 
 - Dois cliques (executar) o ```setup.bat``` e seguir as instruções ali apresentadas
 - Modificar em .env ```SESSION_DRIVER=database```  para ```SESSION_DRIVER=file```
 - Modificar em .env ```CACHE_STORE=database```  para ```CACHE_STORE=file```
+- Ligar o MySQL pelo _XAMPP_ ou por outro gestor
 - Rodar as seeder ```php artisan migrate:fresh --seed```
 # Credenciais
 - Administrativo: admin@email.com Senha: 123456
