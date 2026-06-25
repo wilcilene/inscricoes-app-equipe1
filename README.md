@@ -19,7 +19,7 @@ Este projeto PHP tem como objetivo criar um sistema dedicado a preenchimento de 
 # Passo a passo de como executar
 - Dois cliques (executar) o ```setup.bat``` e seguir as instruções ali apresentadas
 - Modificar em .env ```SESSION_DRIVER=database```  para ```SESSION_DRIVER=file```
-- - Modificar em .env ```CACHE_STORE=database```  para ```CACHE_STORE=file```
+- Modificar em .env ```CACHE_STORE=database```  para ```CACHE_STORE=file```
 # Escopo 
 ## Auth 
 - Seleção de Perfil
