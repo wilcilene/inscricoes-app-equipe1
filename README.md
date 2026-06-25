@@ -14,11 +14,10 @@
 Este projeto PHP tem como objetivo criar um sistema dedicado a preenchimento de dados para Editais de Processo do sistema de ensino _Instituto Federal Catarinense_, com Anexos PDF e demais dados pessoais dos incritos. 
 
 # Modo de Uso
+- Garantir a priori que está instalado os seguintes pacotes (instalação está presente em cada item):  [git](https://git-scm.com/install/windows), [composer](https://getcomposer.org/download/), [npm](https://getcomposer.org/download/), [Microsoft Visual C++ Redistributable](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170)
 - Usar o branches _Compilado_, utilizando o comando ```git clone --compilado --single-branch (https://github.com/wilcilene/inscricoes-app-equipe1.git```
 # Passo a passo de como executar
 - Dois cliques (executar) o ```setup.bat``` e seguir as instruções ali apresentadas
-- Mude no .env em ```SESSION_DRIVER=database```  para ```SESSION_DRIVER=file```
-- Mude no .env em ```CACHE_STORE=database```  para ```CACHE_STORE=file```
 # Escopo 
 ## Auth 
 - Seleção de Perfil
