@@ -169,6 +169,34 @@
 
                     </div>
 
+                    <div class="campo" style="
+                        background:var(--cor-branco);
+                        padding:20px;
+                        border-radius:5px;
+                        box-shadow:0 2px 4px rgba(0,0,0,0.05);
+                        margin-bottom:20px;
+                    ">
+                        <div
+                            style="
+                            font-weight:700;
+                            font-size:18px;
+                            color:var(--cor-texto);
+                            border-bottom:1px solid #ddd;
+                            padding-bottom:8px;
+                            margin-bottom:20px;
+                        ">
+                            Tipo de Vaga
+                        </div>
+
+                        <select name="tipo_vaga" id="tipo_vaga" required>
+                            <option value="">Selecione</option>
+                            <option value="pcd">PcD</option>
+                            <option value="pniq">PNIQ</option>
+                            <option value="ampla">Ampla Concorrência</option>
+                        </select>
+                    </div>
+
+
                     {{-- DOCUMENTOS --}}
 
                     <div
@@ -361,6 +389,9 @@
                                 </div>
 
                             </div>
+
+
+
 
 
                             {{-- DOCUMENTO DE IDENTIFICAÇÃO --}}

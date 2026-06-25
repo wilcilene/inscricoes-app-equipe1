@@ -70,10 +70,18 @@
 
                                 <td>
                                     {{ $item->edital->nome }}
+
                                 </td>
 
                                 <td>
                                     {{ $item->candidato->user->name ?? 'Sem nome' }}
+                                    @if(!empty($item->vaga_pcd))
+                                    <span class="badge-pcd">PcD</span>
+                                    @endif
+                                    @if(!empty($item->vaga_pniq))
+                                    <span class="badge-PNIQ">PNIQ</span>
+                                    @endif
+
                                 </td>
 
                                 <td>
@@ -129,7 +137,7 @@
                                         </a>
 
                                         @endif
-                                        
+
 
                                     </div>
 

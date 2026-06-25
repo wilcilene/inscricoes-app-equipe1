@@ -105,6 +105,14 @@
 
                             <h2>Dados do Candidato</h2>
 
+                            @if(!empty($candidatura->vaga_pcd))
+                            <span class="badge-pcd">PcD</span>
+                            @endif
+
+                            @if(!empty($candidatura->vaga_pniq))
+                            <span class="badge-PNIQ">PNIQ</span>
+                            @endif
+
                             <div class="cand-detalhe-dados">
 
                                 <p><span>Nome:</span> {{ $candidatura->candidato->user->name ?? '-' }}</p>
@@ -207,9 +215,19 @@
                             $status = strtolower(
                             trim($ultimoHistorico->status->status ?? '')
                             );
+
+
+                            $agora = now();
+
+                            $dentroRevisao = $agora->between(
+                            $candidatura->edital->data_inicio_rev,
+                            $candidatura->edital->data_fim_rev
+                            );
+
+                            $podeAvaliar =$dentroRevisao;
                             @endphp
 
-                            @if(!in_array($status, ['aprovado', 'rejeitado']))
+                            @if(!in_array($status, ['aprovado', 'rejeitado'])&&$podeAvaliar)
 
                             <p class="avaliacao-texto">
                                 Selecione o resultado da análise desta candidatura.
@@ -234,10 +252,18 @@
                             </div>
 
                             @else
+                            @if($podeAvaliar)
 
                             <p class="avaliacao-texto">
                                 Avaliação realizada.
                             </p>
+                            @else
+                            <p class="avaliacao-texto">
+                                Não está no periodo de avaliação.
+                            </p>
+
+                            @endif
+
 
                             @endif
 
@@ -267,7 +293,13 @@
                         @php
                         $agora = now();
 
-                        $statusAtual = strtolower($candidatura->status->status ?? 'pendente');
+                        $ultimoHistorico = $candidatura->historico
+                        ->sortByDesc('id')
+                        ->first();
+
+                        $statusAtual = strtolower(
+                        $ultimoHistorico->status->status ?? 'pendente'
+                        );
 
                         $dentroRevisao = $agora->between(
                         $candidatura->edital->data_inicio_rev,

@@ -46,7 +46,7 @@ class InscreverController extends Controller
                 'erro' => 'Você já possui uma inscrição neste edital.'
             ]);
         }
-
+        $tipoVaga = $request->input('tipo_vaga');
         // Cria a inscrição
         $inscricao = Inscricao::create([
             'edital_id'     => $request->edital_id,
@@ -57,8 +57,8 @@ class InscreverController extends Controller
             'caminho_curriculo_lattes' => '',
             'caminho_comprovante_eleitoral' => '',
             'caminho_certificado_militar' => '',
-            'vaga_pcd' => 0,
-            'vaga_pniq' => 0,
+            'vaga_pcd' => $tipoVaga === 'pcd' ? 1 : 0,
+            'vaga_pniq' => $tipoVaga === 'pniq' ? 1 : 0,
 
         ]);
 

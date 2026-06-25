@@ -1028,9 +1028,24 @@ button:disabled {
     background: #3d3d3d;
 }
 
-
-
-
+.badge-pcd {
+    background: #2551e4 !important;
+    color: #fff !important;
+    padding: 2px 6px !important;
+    font-size: 11px !important;
+    border-radius: 6px !important;
+    display: inline-block;
+    line-height: 1 !important;
+}
+.badge-PNIQ {
+    background: #6e0572 !important;
+    color: #fff !important;
+    padding: 2px 6px !important;
+    font-size: 11px !important;
+    border-radius: 6px !important;
+    display: inline-block;
+    line-height: 1 !important;
+}
 
 
 
