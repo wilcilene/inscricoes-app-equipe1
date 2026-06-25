@@ -13,6 +13,10 @@
 ## Introdução
 Este projeto PHP tem como objetivo criar um sistema dedicado a preenchimento de dados para Editais de Processo do sistema de ensino _Instituto Federal Catarinense_, com Anexos PDF e demais dados pessoais dos incritos. 
 
+# modo de uso
+- Usar o branches Compilado
+  https://github.com/wilcilene/inscricoes-app-equipe1/tree/compilado
+
 # Escopo 
 ## Auth 
 - Seleção de Perfil
