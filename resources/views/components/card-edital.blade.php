@@ -153,7 +153,7 @@
         {{-- ENCERRADO --}}
         @else
 
-            <div class="status status-rejeitado">
+            <div class="btn-card eqc">
                 Inscrições encerradas
             </div>
 
