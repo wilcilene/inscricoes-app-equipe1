@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Middleware\NoCache;
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\MinhasInscricoesController;
@@ -11,25 +12,26 @@ use App\Http\Controllers\EditalController;
 use App\Http\Controllers\CandidaturaController;
 use App\Http\Controllers\HistoricoController;
 use App\Http\Controllers\DocumentoController;
+use App\Http\Controllers\InscreverController;
 
 // ROTAS PÚBLICAS
 
 // Página inicial
-/*Route::get(
-'/',
-[
-EditalController::class,
-'index'
-]
-)->name('home');
-*/
-
 Route::get(
     '/',
-    function () {
-        return view('cad_editais');
-    }
-);
+    [
+        EditalController::class,
+        'index'
+    ]
+)->name('home');
+
+
+// Route::get(
+//     '/',
+//     function () {
+//         return view('cad_editais');
+//     }
+// );
 
 // Login
 Route::get(
@@ -77,7 +79,6 @@ Route::get(
         return view('inscricao');
     }
 );
-//ROTAS PROTEGIDAS
 
 
 
@@ -160,19 +161,22 @@ Route::middleware([
         )->name(
             'arquivo'
         );
-
-
-        // Minhas inscrições
+        // Minhas inscriçoes
         Route::get(
-            '/minhas-inscricoes',
+            '/MinhasInscricoes',
             [
-                MinhasInscricoesController::class,
-                'index'
+                EditalController::class,
+                'candidaturas'
             ]
         )->name(
-            'inscricoes.index'
+            'MinhasInscricoes'
         );
 
+        //Inscrever
+        Route::post(
+            '/candidato/inscricao',
+            [InscreverController::class, 'enviarInscricao']
+        )->name('candidato.inscricao.enviar');
 
         // Tela inscrição
         Route::get(
@@ -189,20 +193,17 @@ Route::middleware([
 
 
         // Detalhe inscrição
+
         Route::get(
             '/minhas-inscricoes/{id}',
-            function ($id) {
+            [CandidaturaController::class, 'show']
+        )->name('minhas-inscricoes.detalhe');
 
-                return view(
-                    'minhas-inscricoes-detalhe',
-                    [
-                        'id' => $id
-                    ]
-                );
-            }
-        )->name(
-            'minhas-inscricoes.detalhe'
-        );
+        Route::put('/documento/{inscricao}/{campo}', [DocumentoController::class, 'update'])
+            ->name('documento.editar');
+
+        Route::put('/candidatura/{id}/reset', [HistoricoController::class, 'reset'])
+            ->name('candidatura.reset');
     });
 
 
@@ -285,31 +286,24 @@ Route::middleware([
         'admin.editais.excluir'
     );
 
-Route::post('/editais', [EditalController::class, 'store'])
-    ->name('edital.store');
+    Route::post('/editais', [EditalController::class, 'store'])
+        ->name('edital.store');
 
-Route::put('/editais/{id}', [EditalController::class, 'update'])
-    ->name('edital.update');
+    Route::put('/editais/{id}', [EditalController::class, 'update'])
+        ->name('edital.update');
 
-Route::post(
-    '/historico/rejeitar/{id}',
-    [HistoricoController::class, 'rejeitar']
-)->name('historico.rejeitar');
+    Route::post(
+        '/historico/rejeitar/{id}',
+        [HistoricoController::class, 'rejeitar']
+    )->name('historico.rejeitar');
 
-Route::get(
-    '/motivo/{id}',
-    [HistoricoController::class, 'formRejeitar']
-)->name('historico.formRejeitar');
+    Route::get(
+        '/motivo/{id}',
+        [HistoricoController::class, 'formRejeitar']
+    )->name('historico.formRejeitar');
 
-Route::put('/candidaturas/{id}/aprovar', [HistoricoController::class, 'aprovar'])
-    ->name('candidaturas.aprovar');
-
-
-
-
-
-
-
+    Route::put('/candidaturas/{id}/aprovar', [HistoricoController::class, 'aprovar'])
+        ->name('candidaturas.aprovar');
 });
 
 
@@ -399,15 +393,7 @@ Route::get(
 );
 
 
-Route::post(
-    '/candidato/inscricao',
-    [
-        CandidatoController::class,
-        'enviarInscricao'
-    ]
-)->name(
-    'candidato.inscricao.enviar'
-);
+
 
 
 // EDITAIS

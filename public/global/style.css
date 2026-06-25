@@ -1019,6 +1019,15 @@ button:disabled {
     background: #3d3d3d4b;
 }
 
+.cz {
+    background: #555;
+    color: #ffffff;
+}
+
+.cz:hover {
+    background: #3d3d3d;
+}
+
 
 
 

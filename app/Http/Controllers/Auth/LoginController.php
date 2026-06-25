@@ -42,4 +42,5 @@ class LoginController extends Controller
                 'email'=>'Login inválido'
             ]);
     }
+
 }

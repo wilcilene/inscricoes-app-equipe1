@@ -1,384 +1,212 @@
 @props([
-'editais',
-'tipoUsuarioId',
-'minhasInscricoes' => []
+    'editais',
+    'tipoUsuarioId',
+    'minhasInscricoes' => []
 ])
 
 <div class="editais-topo">
-@if(session('erro'))
 
-<div class="alert-topo" data-alerta-topo>
+    @if(session('erro'))
+        <div class="alert-topo" data-alerta-topo>
+            <i class="icone alerta"></i>
+            <strong>Atenção!</strong>
+            {{ session('erro') }}
+        </div>
+    @endif
 
-<i class="icone alerta"></i>
+    @if(session('sucesso'))
+        <div class="alert-topo sucesso" data-alerta-topo>
+            <i class="icone check"></i>
+            {{ session('sucesso') }}
+        </div>
+    @endif
 
-<strong>Atenção!</strong>
-
-{{ session('erro') }}
-
-</div>
-
-@endif
-
-
-@if(session('sucesso'))
-
-<div class="alert-topo sucesso" data-alerta-topo>
-
-<i class="icone check"></i>
-
-{{ session('sucesso') }}
-
-</div>
-
-@endif
     <div class="busca-container">
-
         <i class="icone buscar cz"></i>
-
-        <input
-            type="text"
-            id="filtroEdital"
-            class="busca-edital"
-            placeholder="Buscar Editais...">
-
+        <input type="text" id="filtroEdital" class="busca-edital" placeholder="Buscar Editais...">
     </div>
 
-    <select
-        id="filtroStatus"
-        class="filtro-select">
-
-        <option value="todos">
-            Todos
-        </option>
-
-        <option value="abertos">
-            Inscrições abertas
-        </option>
-
-        <option value="encerrados">
-            Encerrados
-        </option>
-
+    <select id="filtroStatus" class="filtro-select">
+        <option value="todos">Todos</option>
+        <option value="abertos">Inscrições abertas</option>
+        <option value="encerrados">Encerrados</option>
     </select>
 
 </div>
 
-
 <div class="grid-editais">
 
-    @foreach($editais as $edital)
+@foreach($editais as $edital)
 
-    @php
+@php
+    $bloqueado = now()->gt($edital->data_fim_inscr);
 
-    $bloqueado =
-    now()->gt(
-    $edital->data_fim_inscr
-    );
-
+    $candidato = null;
+    $inscricao = null;
     $inscrito = false;
 
-    if(
-    auth()->check()
-    &&
-    $tipoUsuarioId == 2
-    ){
+    if (auth()->check() && $tipoUsuarioId == 2) {
 
-    $candidato =
-    \App\Models\Candidato::where(
-    'user_id',
-    auth()->id()
-    )
-    ->first();
+        $candidato = \App\Models\Candidato::where('user_id', auth()->id())->first();
 
-    if($candidato){
+        if ($candidato) {
 
-    $inscrito =
-    \App\Models\Inscricao::where(
-    'edital_id',
-    $edital->id
-    )
-    ->where(
-    'candidato_id',
-    $candidato->id
-    )
-    ->exists();
+            $inscricao = \App\Models\Inscricao::where('edital_id', $edital->id)
+                ->where('candidato_id', $candidato->id)
+                ->first();
 
+            $inscrito = $inscricao ? true : false;
+        }
     }
+@endphp
 
-    }
+<div class="card-edital {{ $bloqueado ? 'card-bloqueado' : '' }}"
+     data-nome="{{ strtolower($edital->nome) }}">
 
-    @endphp
+    <div class="card-topo"></div>
 
+    <div class="card-corpo">
 
+        <h2>EDITAL {{ $edital->nome }}</h2>
 
-    <div
-        class="
-card-edital
-{{ $bloqueado ? 'card-bloqueado' : '' }}
-"
-        data-nome="{{ strtolower($edital->nome) }}">
-        
-        <div class="card-topo"></div>
+        <h3>{{ strtoupper($edital->descricao) }}</h3>
 
+        <div class="card-data">
+            <i class="icone calendario bk"></i>
+            Data Limite: {{ \Carbon\Carbon::parse($edital->data_fim_inscr)->format('d/m/Y') }}
+            &nbsp;&nbsp;|&nbsp;&nbsp;
+            <i class="icone usuario p bk"></i>
+            {{ $edital->inscricoes_count }}
+        </div>
 
-        <div class="card-corpo">
+        <p>{{ $edital->resumo }}</p>
 
-            <h2>
+        {{-- SE ABERTO --}}
+        @if(!$bloqueado)
 
-                EDITAL
-
-                {{ $edital->nome }}
-
-            </h2>
-
-
-            <h3>
-
-                {{ strtoupper($edital->descricao) }}
-
-            </h3>
-
-
-            <div class="card-data">
-
-                <i class="icone calendario bk"></i>
-
-                Data Limite:
-
-                {{ \Carbon\Carbon::parse(
-$edital->data_fim_inscr
-)->format('d/m/Y') }}
-
-                &nbsp;&nbsp;|&nbsp;&nbsp;
-
-                <i class="icone usuario p bk"></i>
-
-                {{ $edital->inscricoes_count }}
-
-            </div>
-
-
-            <p>
-
-                {{ $edital->resumo }}
-
-            </p>
-
-
-            @if(!$bloqueado)
-
+            {{-- NÃO LOGADO --}}
             @if(!auth()->check())
 
-            <a
-                href="{{ route('login') }}"
-                class="btn-card">
-
-                <i class="icone adicionar wt"></i>
-
-                REALIZAR INSCRIÇÃO
-
-            </a>
+                <a href="{{ route('login') }}" class="btn-card">
+                    <i class="icone adicionar wt"></i>
+                    REALIZAR INSCRIÇÃO
+                </a>
 
             @endif
 
+            {{-- CANDIDATO LOGADO --}}
             @if(auth()->check() && $tipoUsuarioId == 2)
 
-            @if($inscrito)
+                {{-- JÁ INSCRITO --}}
+                @if($inscrito && $inscricao)
 
-            <a href="{{ route('minhas-inscricoes.detalhe',['id' => $edital->id]) }}" class="btn-card eqc">
+                    <a href="{{ route('minhas-inscricoes.detalhe', $inscricao->id) }}"
+                       class="btn-card eqc">
 
-                <i class="icone olho m cz"></i>
+                        <i class="icone olho m cz"></i>
+                        VER INSCRIÇÃO
+                    </a>
 
-                VER INSCRIÇÃO
+                {{-- NÃO INSCRITO --}}
+                @else
 
-            </a>
+                    <a href="{{ route('inscrever', ['edital' => $edital->id]) }}"
+                       class="btn-card">
 
-            @else
+                        <i class="icone adicionar wt"></i>
+                        REALIZAR INSCRIÇÃO
+                    </a>
 
-            <a
-                href="{{ route('inscrever', ['edital' => $edital->id]) }}"
-                class="btn-card">
-
-                <i class="icone adicionar wt"></i>
-
-                REALIZAR INSCRIÇÃO
-
-            </a>
-
-            @endif
+                @endif
 
             @endif
 
-
-
+            {{-- ADMIN --}}
             @if(auth()->check() && $tipoUsuarioId == 1)
 
-            <div class="acoes-admin">
+                <div class="acoes-admin">
 
-                 <a
-                href="{{ route('admin.editais.editar', ['id' => $edital->id]) }}"
-                class="btn-card Br">
+                    <a href="{{ route('admin.editais.editar', ['id' => $edital->id]) }}"
+                       class="btn-card Br">
 
-                <i class="icone editar cz"></i>
+                        <i class="icone editar cz"></i>
+                        EDITAR
+                    </a>
 
-                EDITAR
+                    <form method="POST"
+                          action="{{ route('edital.destroy', $edital->id) }}">
 
-            </a>
+                        @csrf
+                        @method('DELETE')
 
+                        <button class="btn-card Vm">
+                            <i class="icone excluir wt"></i>
+                            REMOVER
+                        </button>
 
-                <form
-                    method="POST"
-                    action="{{ route(
-                    'edital.destroy',
-                    $edital->id
-                ) }}">
+                    </form>
 
-                    @csrf
-
-                    @method('DELETE')
-
-                    <button
-                        class="btn-card Vm">
-
-                        <i class="icone excluir wt"></i>
-
-                        REMOVER
-
-                    </button>
-
-                </form>
-
-            </div>
+                </div>
 
             @endif
 
-            @else
+        {{-- ENCERRADO --}}
+        @else
 
             <div class="status status-rejeitado">
-
                 Inscrições encerradas
-
             </div>
 
-            @endif
-
-
-        </div>
+        @endif
 
     </div>
 
-    @endforeach
+</div>
+
+@endforeach
 
 </div>
 
-
 <script>
-    const campoBusca =
-        document.getElementById(
-            'filtroEdital'
-        );
+const campoBusca = document.getElementById('filtroEdital');
+const filtro = document.getElementById('filtroStatus');
+const cards = document.querySelectorAll('.card-edital');
 
-    const filtro =
-        document.getElementById(
-            'filtroStatus'
-        );
+function filtrarEditais() {
 
-    const cards =
-        document.querySelectorAll(
-            '.card-edital'
-        );
+    const texto = campoBusca.value.toLowerCase().trim();
+    const tipo = filtro.value;
 
+    cards.forEach((card) => {
 
-    function filtrarEditais() {
+        const nome = (card.dataset.nome || '').toLowerCase();
+        const bloqueado = card.classList.contains('card-bloqueado');
 
-        const texto =
-            campoBusca.value
-            .toLowerCase()
-            .trim();
+        let mostrar = nome.includes(texto);
 
-        const tipo =
-            filtro.value;
+        if (tipo === 'abertos') {
+            mostrar = mostrar && !bloqueado;
+        }
 
+        if (tipo === 'encerrados') {
+            mostrar = mostrar && bloqueado;
+        }
 
-        cards.forEach((card) => {
+        card.style.display = mostrar ? '' : 'none';
+    });
+}
 
-            const nome =
-                (
-                    card.dataset.nome ||
-                    ''
-                )
-                .toLowerCase();
+campoBusca.addEventListener('input', filtrarEditais);
+filtro.addEventListener('change', filtrarEditais);
 
-            const bloqueado =
-                card.classList.contains(
-                    'card-bloqueado'
-                );
+filtrarEditais();
 
-            let mostrar =
-                nome.includes(
-                    texto
-                );
-
-            if (
-                tipo === 'abertos'
-            ) {
-
-                mostrar =
-                    mostrar &&
-                    !bloqueado;
-
-            }
-
-            if (
-                tipo === 'encerrados'
-            ) {
-
-                mostrar =
-                    mostrar &&
-                    bloqueado;
-
-            }
-
-            card.style.display =
-                mostrar ?
-                '' :
-                'none';
-
-        });
-
-    }
-
-
-    campoBusca
-        .addEventListener(
-            'input',
-            filtrarEditais
-        );
-
-    filtro
-        .addEventListener(
-            'change',
-            filtrarEditais
-        );
-
-    filtrarEditais();
-
-
-    setTimeout(() => {
-
-    const alerta =
-        document.querySelector('[data-alerta-topo]');
-
-    if(alerta){
+setTimeout(() => {
+    const alerta = document.querySelector('[data-alerta-topo]');
+    if (alerta) {
         alerta.style.transition = '0.5s';
         alerta.style.opacity = '0';
-
-        setTimeout(() => {
-            alerta.remove();
-        }, 1000);
+        setTimeout(() => alerta.remove(), 1000);
     }
-
 }, 3000);
-
-
 </script>

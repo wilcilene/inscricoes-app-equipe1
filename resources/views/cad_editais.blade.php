@@ -120,11 +120,47 @@ $edital = $edital ?? null;
               value="{{ isset($edital) ? \Carbon\Carbon::parse($edital->data_fim_inscr)->format('Y-m-d') : '' }}"
               required
               onchange="validarDatas()">
-              <small id="erroData" class="erro"></small>
+            <small id="erroData" class="erro"></small>
+          </div>
+
+          <!-- data de revisão -->
+          <div class="campo">
+            <label for="dataInicio">Data de Inicio da Revisão</label>
+            <input
+              type="date"
+              id="dataInicio1"
+              name="data_inicio_rev"
+              value="{{ isset($edital) ? \Carbon\Carbon::parse($edital->data_inicio_rev)->format('Y-m-d') : '' }}"
+              required>
+          </div>
+
+          <div class="campo">
+            <label for="dataFim">Data de Encerramento da Revisão</label>
+            <input
+              type="date"
+              id="dataFim1"
+              name="data_fim_rev"
+              value="{{ isset($edital) ? \Carbon\Carbon::parse($edital->data_fim_rev)->format('Y-m-d') : '' }}"
+              required
+              onchange="validarDatas()">
+            <small id="erroData" class="erro"></small>
           </div>
 
         </div>
-
+        <div class="datas">
+          <div class="campo">
+            <label for="dataFim">Data da Prova</label>
+            <input
+              type="date"
+              id="dataProva"
+              name="data_prova"
+              value="{{ isset($edital) ? \Carbon\Carbon::parse($edital->data_prova)->format('Y-m-d') : '' }}"
+              required
+              onchange="validarDatas()">
+            <small id="erroData" class="erro"></small>
+          </div>
+        </div>
+        
         <div class="mt-20">
 
           <button type="submit" class="btn-card" id="btnSalvar">
@@ -184,22 +220,54 @@ $edital = $edital ?? null;
 
     function validarDatas() {
 
-    dataFim.classList.remove("input-erro");
-    erroData.textContent = "";
+      let valido = true;
 
-    btnSalvar.disabled = false;
+      // limpar erros
+      dataFim.classList.remove("input-erro");
+      dataFim1.classList.remove("input-erro");
+      dataProva.classList.remove("input-erro");
 
-    if (dataFim.value <= dataInicio.value) {
+      erroData.textContent = "";
 
-        erroData.textContent = "Data inválida.";
+      // Data Fim > Data Inicio
+      if (dataFim.value <= dataInicio.value) {
         dataFim.classList.add("input-erro");
+        erroData.textContent = "Data fim deve ser maior que a data início.";
+        valido = false;
+      }
 
-        btnSalvar.disabled = true;
+      // Data Fim < Data Inicio1
+      if (valido && dataFim.value >= dataInicio1.value) {
+        dataFim.classList.add("input-erro");
+        erroData.textContent =
+          "Data fim deve ser menor que a segunda data de início.";
+        valido = false;
+      }
+
+      // Data Fim1 > Data Inicio1
+      if (valido && dataFim1.value <= dataInicio1.value) {
+        dataFim1.classList.add("input-erro");
+        erroData.textContent =
+          "Segunda data fim deve ser maior que a segunda data início.";
+        valido = false;
+      }
+
+      // Data Prova > Data Fim1
+      if (valido && dataProva.value <= dataFim1.value) {
+        dataProva.classList.add("input-erro");
+        erroData.textContent =
+          "Data da prova deve ser maior que a segunda data fim.";
+        valido = false;
+      }
+
+      btnSalvar.disabled = !valido;
     }
-}
 
-dataInicio.addEventListener("change", validarDatas);
-dataFim.addEventListener("change", validarDatas);
+    // eventos
+    [dataInicio, dataFim, dataInicio1, dataFim1, dataProva]
+    .forEach(campo =>
+      campo.addEventListener("change", validarDatas)
+    );
   </script>
 
 

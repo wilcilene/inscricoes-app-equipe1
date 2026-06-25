@@ -16,7 +16,8 @@ class Edital extends Model
         'data_inicio_inscr',
         'data_fim_inscr',
         'data_inicio_rev',
-        'data_fim_rev'
+        'data_fim_rev',
+        'data_prova'
     ];
 
     protected $appends = [
@@ -27,7 +28,8 @@ class Edital extends Model
         'data_inicio_inscr' => 'datetime',
         'data_fim_inscr' => 'datetime',
         'data_inicio_rev' => 'datetime',
-        'data_fim_rev' => 'datetime'
+        'data_fim_rev' => 'datetime',
+        'data_prova' => 'datetime'
     ];
 
     /*

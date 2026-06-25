@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CandidatoController;
+use App\Http\Controllers\InscreverController;
 
 // === FLUXO DE CADASTRO EM 3 ETAPAS ===
 
@@ -32,9 +33,10 @@ Route::post('/candidato/cadastro/finalizar', [CandidatoController::class, 'store
 Route::get('/candidato/inscricao', [CandidatoController::class, 'inscricao'])
     ->name('candidato.inscricao');
 
-Route::post('/candidato/inscricao', [CandidatoController::class, 'enviarInscricao'])
-    ->name('candidato.inscricao.enviar');
-
+ Route::post(
+            '/candidato/inscricao',
+            [InscreverController::class, 'enviarInscricao']
+        )->name('candidato.inscricao.enviar');
 
 // === ÁREA LOGADA DO CANDIDATO ===
 

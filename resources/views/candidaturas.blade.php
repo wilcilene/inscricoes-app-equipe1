@@ -5,7 +5,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Demonstração CSS Global</title>
 
 
     <link rel="stylesheet" href="{{ asset('global/style.css') }}">
@@ -29,10 +28,13 @@
 
         <main class="pagina">
 
+            @if(auth()->user()->tipo_usuario_id == 1)
             <h1 class="titulo">Candidaturas</h1>
-            <p class="subtitulo">
-                Avaliação dos candidatos
-            </p>
+            <p class="subtitulo">Avaliação dos candidatos</p>
+            @else
+            <h1 class="titulo">Minhas Inscrições</h1>
+            <p class="subtitulo">Acompanhe suas candidaturas</p>
+            @endif
 
 
 
@@ -116,10 +118,18 @@
 
                                     <div class="tabela-acoes">
 
-
+                                        @if(auth()->user()->tipo_usuario_id == 1)
                                         <a href="{{ route('candidaturas.detalhe', $item->id) }}">
                                             <i class="icone editar m cz"></i>
                                         </a>
+
+                                        @elseif(auth()->user()->tipo_usuario_id == 2)
+                                        <a href="{{ route('minhas-inscricoes.detalhe', $item->id) }}">
+                                            <i class="icone editar m cz"></i>
+                                        </a>
+
+                                        @endif
+                                        
 
                                     </div>
 
@@ -182,13 +192,13 @@
                             </button>
 
                             @endif
-
+                            @if(auth()->user()->tipo_usuario_id == 1)
                             <a
                                 href="{{ route('candidaturas.exportar') }}"
                                 class="btn-card">
                                 EXPORTAR (csv)
                             </a>
-
+                            @endif
                         </div>
 
                     </div>

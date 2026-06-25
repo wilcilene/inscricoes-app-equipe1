@@ -34,13 +34,13 @@
 
             <a
                 href="{{ route('login') }}"
-                class="btn eq">
+                class="btn-card eq">
                 Login
             </a>
 
             <a
                 href="{{ route('candidato.dados') }}"
-                class="btn Br">
+                class="btn-card Br">
                 Cadastro
             </a>
 
@@ -119,6 +119,13 @@ Ainda não existem editais publicados.
         </div>
 
     </main>
+
+<script>
+window.history.pushState(null, "", window.location.href);
+window.onpopstate = function () {
+    window.history.pushState(null, "", window.location.href);
+};
+</script>
 
 </body>
 

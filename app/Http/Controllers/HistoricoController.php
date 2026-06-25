@@ -32,20 +32,29 @@ class HistoricoController extends Controller
         ]);
 
         return redirect()
-            ->route('candidaturas.detalhe', $id)
+            ->route('candidaturas')
             ->with('success', 'Candidatura rejeitada com sucesso.');
     }
 
-public function aprovar($id)
-{
-     $candidatura = Inscricao::findOrFail($id);
+    public function aprovar($id)
+    {
+        $candidatura = Inscricao::findOrFail($id);
 
-     HistoricoInscricao::create([
+        HistoricoInscricao::create([
             'inscricao_id' => $id,
             'inscricao_status_id' => 1,
             'observacao' => 'Submissão Completa',
         ]);
 
-    return redirect()->back()->with('success', 'Candidatura aprovada com sucesso!');
-}
+        return redirect()->route('candidaturas')->with('success', 'Candidatura aprovada com sucesso!');
+    }
+    public function reset($id)
+    {
+        HistoricoInscricao::create([
+            'inscricao_id' => $id,
+            'inscricao_status_id' => 3,
+            'observacao' => 'Retornado para revisão',
+        ]);
+        return redirect()->route('minhas-inscricoes.detalhe', $id)->with('success', 'Candidatura Enviada para analize');
+    }
 }

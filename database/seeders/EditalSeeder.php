@@ -21,7 +21,8 @@ class EditalSeeder extends Seeder
                 'data_inicio_inscr' => $inicio,
                 'data_fim_inscr' => $inicio->copy()->addDays(15),
                 'data_inicio_rev' => $inicio->copy()->addDays(20),
-                'data_fim_rev' => $inicio->copy()->addDays(30),
+                'data_fim_rev' => $inicio->copy()->addDays(35),
+                'data_prova' => $inicio->copy()->addDays(40),
             ]);
         }
     }

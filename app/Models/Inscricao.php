@@ -21,8 +21,7 @@ class Inscricao extends Model
         'vaga_pcd',
         'vaga_pniq',
         'edital_id',
-        'candidato_id',
-        'status_id'
+        'candidato_id'
         
     ];
 
@@ -32,9 +31,12 @@ class Inscricao extends Model
     }
 
     public function edital()
-    {
-        return $this->belongsTo(Edital::class, 'id');
-    }
+{
+    return $this->belongsTo(
+        Edital::class,
+        'edital_id'
+    );
+}
 
     public function historico()
 {
@@ -45,13 +47,12 @@ class Inscricao extends Model
 }
 
     public function status()
-    {
-        return $this->belongsTo(
-            InscricaoStatus::class,
-            'id',
-            'id'
-        );
-    }
+{
+    return $this->belongsTo(
+        InscricaoStatus::class,
+        'status_id'
+    );
+}
 
     public function ultimoHistorico()
 {

@@ -1,67 +1,66 @@
+<link rel="icon" href="global/img/icones/favicon-light.svg" media="(prefers-color-scheme:dark )">
+<link rel="icon" href="global/img/icones/favicon-dark.svg" media="(prefers-color-scheme:light )">
 
-    <link rel="icon" href="global/img/icones/favicon-light.svg" media="(prefers-color-scheme:dark )">
-    <link rel="icon" href="global/img/icones/favicon-dark.svg" media="(prefers-color-scheme:light )">
-
-    <title>Editais IFC - Equipe 1</title>
+<title>Editais IFC - Equipe 1</title>
 
 <link rel="stylesheet" href="{{ asset('global/style.css') }}">
 
 
 
-        <!-- MENU LATERAL -->
+<!-- MENU LATERAL -->
 
-        <aside class="menu-lateral">
+<aside class="menu-lateral">
 
-            <div class="flex-center p-20">
-                <div class="IFCfull wt"></div>
-            </div>
+    <div class="flex-center p-20">
+        <div class="IFCfull wt"></div>
+    </div>
 
-            <nav class="menu">
+    <nav class="menu">
 
-                <a href="/candidato" class="item-menu ativo">
-                    <i class="icone inicio wt m"></i>
-                    <span>Início</span>
-                </a>
+        <a href="/candidato" class="item-menu ativo">
+            <i class="icone inicio wt m"></i>
+            <span>Início</span>
+        </a>
 
-                <a href="{{ route('perfil.index') }}" class="item-menu">
-                    <i class="icone usuario wt m"></i>
-                    <span>Meu Perfil</span>
-                </a>
+        <a href="{{ route('perfil.index') }}" class="item-menu">
+            <i class="icone usuario wt m"></i>
+            <span>Meu Perfil</span>
+        </a>
 
-                <a href="{{ route('inscricoes.index') }}" class="item-menu">
+        <a href="{{ route('MinhasInscricoes') }}" class="item-menu">
                     <i class="icone lista wt m"></i>
                     <span>Minhas Inscrições</span>
                 </a>
 
-                <a href="/candidato" class="item-menu" onclick="abrirSobre(event)">
-    <i class="icone sobre wt m"></i>
-    <span>Sobre</span>
-</a>
+        <a href="/candidato" class="item-menu" onclick="abrirSobre(event)">
+            <i class="icone sobre wt m"></i>
+            <span>Sobre</span>
+        </a>
 
-                
 
-            </nav>
 
-            <div class="rodape-menu">
+    </nav>
 
-                <a href="/login" class="item-menu">
-                    <i class="icone saida wt m"></i>
-                    <span>Sair</span>
-                </a>
+    <div class="rodape-menu">
 
-            </div>
+        <a href="/login" class="item-menu">
+            <i class="icone saida wt m"></i>
+            <span>Sair</span>
+        </a>
 
-        </aside>
+    </div>
+
+</aside>
 </div>
 
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function() {
 
-    const modal = document.createElement("div");
-    modal.className = "modal";
+        const modal = document.createElement("div");
+        modal.className = "modal";
 
-    modal.innerHTML = `
+        modal.innerHTML = `
         
     <div class="modal-conteudo">
             <h1 class="titulo">Sobre o Sistema</h1>
@@ -95,24 +94,31 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
     `;
 
-    document.body.appendChild(modal);
+        document.body.appendChild(modal);
 
-    window.abrirSobre = function (event) {
-        event.preventDefault();
-        modal.classList.add("ativo");
-    };
+        window.abrirSobre = function(event) {
+            event.preventDefault();
+            modal.classList.add("ativo");
+        };
 
-    function fechar() {
-        modal.classList.remove("ativo");
-    }
-
-    modal.querySelector("#fecharSobreBtn").addEventListener("click", fechar);
-
-    modal.addEventListener("click", function (event) {
-        if (event.target === modal) {
-            fechar();
+        function fechar() {
+            modal.classList.remove("ativo");
         }
-    });
 
-});
+        modal.querySelector("#fecharSobreBtn").addEventListener("click", fechar);
+
+        modal.addEventListener("click", function(event) {
+            if (event.target === modal) {
+                fechar();
+            }
+        });
+
+    });
+</script>
+
+<script>
+    window.history.pushState(null, "", window.location.href);
+    window.onpopstate = function() {
+        window.history.pushState(null, "", window.location.href);
+    };
 </script>

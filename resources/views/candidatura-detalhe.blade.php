@@ -11,7 +11,13 @@
     <link rel="stylesheet" href="{{ asset('global/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
+    @if(auth()->user()->tipo_usuario_id == 1)
     @include('global.sidebarAdmin')
+
+    @elseif(auth()->user()->tipo_usuario_id == 2)
+    @include('global.sidebarCandidato')
+
+    @endif
 </head>
 
 <body>
@@ -187,6 +193,8 @@
 
                         </section>
 
+                        @if(auth()->user()->tipo_usuario_id == 1)
+
                         <section class="cand-detalhe-card avaliacao">
 
                             <h2>Avaliação</h2>
@@ -234,17 +242,67 @@
                             @endif
 
                         </section>
+                        @elseif(auth()->user()->tipo_usuario_id == 2)
+
+
+                        @endif
+
+
 
 
 
                     </div>
-
                     {{-- DOCUMENTOS --}}
+
+
+
+
+
                     <section class="cand-detalhe-card documentos">
 
                         <h2>Documentos</h2>
 
-                        @php $documentosEncontrados = false; @endphp
+
+
+                        @php
+                        $agora = now();
+
+                        $statusAtual = strtolower($candidatura->status->status ?? 'pendente');
+
+                        $dentroRevisao = $agora->between(
+                        $candidatura->edital->data_inicio_rev,
+                        $candidatura->edital->data_fim_rev
+                        );
+
+                        $podeEditar =
+                        auth()->user()->tipo_usuario_id == 2
+                        && $statusAtual === 'rejeitado'
+                        && $dentroRevisao;
+                        @endphp
+
+                        @if($podeEditar)
+                        @if(auth()->user()->tipo_usuario_id == 2)
+
+                        <form action="{{ route('candidatura.reset', $candidatura->id) }}"
+                            method="POST"
+                            onsubmit="return confirm('Deseja reenviar sua candidatura para análise?');">
+
+                            @csrf
+                            @method('PUT')
+
+                            <button class="btn-card Br">
+                                Atualizar todos os documentos
+                            </button>
+
+                        </form>
+
+
+                        @endif
+
+
+
+
+                        @endif
 
                         @foreach($candidatura->getAttributes() as $campo => $valor)
 
@@ -257,6 +315,8 @@
                         ?? ucwords(str_replace(['caminho_', '_'], ['', ' '], $campo));
                         @endphp
 
+
+
                         <div class="cand-documento">
 
                             <h3>{{ $titulo }}</h3>
@@ -265,17 +325,36 @@
 
                                 <span>{{ basename($valor) }}</span>
 
+                                {{-- VISUALIZAR --}}
                                 <a href="{{ route('documento.visualizar', [
-                                        'inscricao' => $candidatura->id,
-                                        'campo' => $campo
-                                    ]) }}"
-                                    target="_blank">
-
+                        'inscricao' => $candidatura->id,
+                        'campo' => $campo
+                    ]) }}" target="_blank">
                                     <span class="icone documento m cz"></span>
-
                                 </a>
 
+                                {{-- EDITAR DOCUMENTO --}}
+                                @if($podeEditar)
+
+                                <form action="{{ route('documento.editar', [
+                            'inscricao' => $candidatura->id,
+                            'campo' => $campo
+                        ]) }}"
+                                    method="POST"
+                                    enctype="multipart/form-data">
+
+                                    @csrf
+                                    @method('PUT')
+
+                                    <input type="file" name="documento" required>
+
+
+                                </form>
+
+                                @endif
+
                             </div>
+
                         </div>
 
                         @endif

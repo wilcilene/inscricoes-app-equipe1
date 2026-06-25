@@ -62,19 +62,36 @@ public function exportar()
     );
 }
 
-    public function candidaturas()
+  public function candidaturas()
 {
-   $inscricoes = Inscricao::with([
-    'candidato.user',
-    'edital',
-    'status'
-])->paginate(10);
+    $query = Inscricao::with([
+        'candidato.user',
+        'edital',
+        'historico.status'
+    ]);
+
+    // Se for candidato (tipo_usuario_id = 2)
+    if (Auth::user()->tipo_usuario_id == 2) {
+
+        $candidato = Candidato::where(
+            'user_id',
+            Auth::id()
+        )->first();
+
+        $query->where(
+            'candidato_id',
+            $candidato->id
+        );
+    }
+
+    // Admin vê tudo
+    $inscricoes = $query
+        ->orderByDesc('created_at')
+        ->paginate(10);
 
     return view(
         'candidaturas',
-        compact(
-            'inscricoes'
-        )
+        compact('inscricoes')
     );
 }
     private function buscarEditais(Request $request)
@@ -135,11 +152,6 @@ public function exportar()
     public function update(Request $request, $id)
     {
         $edital = Edital::findOrFail($id);
-        $dataInicioRev = Carbon::parse($request->data_fim_inscr)->addDays(2);
-
-        $dataFimRev = $dataInicioRev->copy()->addDays(15);
-
-
 
         $edital->update([
             'nome' => $request->titulo,
@@ -147,8 +159,9 @@ public function exportar()
             'resumo' => $request->resumo,
             'data_inicio_inscr' => $request->data_inicio_inscr,
             'data_fim_inscr' => $request->data_fim_inscr,
-            'data_inicio_rev' => $dataInicioRev,
-            'data_fim_rev' => $dataFimRev,
+            'data_inicio_rev' => $request->data_inicio_rev,
+            'data_fim_rev' => $request->data_fim_rev,
+            'data_prova'=> $request->data_prova,
         ]);
 
         
@@ -163,18 +176,16 @@ public function exportar()
     public function store(Request $request)
 
     {
-        $dataInicioRev = Carbon::parse($request->data_fim_inscr)->addDays(2);
-
-        $dataFimRev = $dataInicioRev->copy()->addDays(15);
-
+    
         Edital::create([
             'nome' => $request->titulo,
             'descricao' => $request->descricao,
             'resumo' => $request->resumo,
             'data_inicio_inscr' => $request->data_inicio_inscr,
             'data_fim_inscr' => $request->data_fim_inscr,
-            'data_inicio_rev' => $dataInicioRev,
-            'data_fim_rev' => $dataFimRev,
+            'data_inicio_rev' => $request->data_inicio_rev,
+            'data_fim_rev' => $request->data_fim_rev,
+            'data_prova'=> $request->data_prova,
         ]);
 
         return redirect()
