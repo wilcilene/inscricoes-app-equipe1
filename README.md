@@ -22,7 +22,7 @@ Este projeto PHP tem como objetivo criar um sistema dedicado a preenchimento de 
 - Modificar em .env ```CACHE_STORE=database```  para ```CACHE_STORE=file```
 - Mudar no .env para ```mysql``` no *DB_CONNECTION*
 - Ligar o MySQL pelo _XAMPP_ ou por outro gestor
-- Rodar as seeder ```php artisan migrate:fresh --seed```
+- Rodar ```php artisan migrate:fresh --seed``` e ```php artisan migrate --seed```
 # Credenciais
 - Administrativo: admin@email.com Senha: 123456
   
