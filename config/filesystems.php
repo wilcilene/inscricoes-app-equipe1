@@ -38,10 +38,15 @@ return [
             'report' => false,
         ],
 
+        'docs' => [
+            'driver' => 'local',
+            'root' => storage_path('app/docs'),
+        ],
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => rtrim(env('APP_URL', 'http://localhost'), '/').'/storage',
+            'url' => rtrim(env('APP_URL', 'http://localhost'), '/') . '/storage',
             'visibility' => 'public',
             'throw' => false,
             'report' => false,

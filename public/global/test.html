@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demonstração CSS Global</title>
+
+
+    <link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body>
+
+    <div class="layout">
+
+
+        <!-- MENU LATERAL -->
+
+        <aside class="menu-lateral">
+
+            <div class="flex-center p-20">
+                <div class="IFCfull wt"></div>
+            </div>
+
+            <nav class="menu">
+
+                <a href="#" class="item-menu ativo">
+                    <i class="icone inicio wt m"></i>
+                    <span>Início</span>
+                </a>
+
+                <a href="#" class="item-menu">
+                    <i class="icone lista wt m"></i>
+                    <span>Editais</span>
+                </a>
+
+                <a href="#" class="item-menu">
+                    <i class="icone usuario wt m"></i>
+                    <span>Usuários</span>
+                </a>
+
+                <a href="#" class="item-menu">
+                    <i class="icone sobre wt m"></i>
+                    <span>Sobre</span>
+                </a>
+
+            </nav>
+
+            <div class="rodape-menu">
+
+                <a href="#" class="item-menu">
+                    <i class="icone saida wt m"></i>
+                    <span>Sair</span>
+                </a>
+
+            </div>
+
+        </aside>
+
+        <!-- CONTEÚDO -->
+
+        <main class="pagina">
+
+            <h1 class="titulo">Demonstração CSS Global</h1>
+            <p class="subtitulo">
+                Página para testar componentes, ícones, botões, formulários e utilitários.
+            </p>
+
+            <!-- PAINEL -->
+
+            <section class="painel">
+
+                <div class="painel-cabecalho">
+                    Exemplo de Formulário
+                </div>
+
+                <div class="formulario">
+
+                    <div class="campo">
+                        <label>Edital</label>
+                        <input type="number" placeholder="Digite numero do edital" required>
+                    </div>
+
+                    <div class="campo">
+                        <label>Título</label>
+                        <input type="text" placeholder="Digite um título">
+                    </div>
+
+                    <div class="campo">
+                        <label>Descrição</label>
+                        <textarea placeholder="Digite uma descrição"></textarea>
+                    </div>
+
+                    <div class="datas">
+
+                        <div class="campo">
+                            <label>Data Inicial</label>
+                            <input type="date" id="dataInicial">
+                        </div>
+
+                        <div class="campo">
+                            <label>Data Final</label>
+                            <input type="date" id="dataFinal" onchange="validarDatas()">
+                            <small id="erroData" class="erro"></small>
+                        </div>
+
+
+
+                        <script>
+                            function validarDatas() {
+
+                                dataFinal.classList.remove("input-erro");
+                                erroData.textContent = "";
+
+                                if (dataFinal.value <= dataInicial.value) {
+
+                                    erroData.textContent = "Data inválida.";
+                                    dataFinal.classList.add("input-erro");
+                                }
+                            }
+                        </script>
+
+                    </div>
+
+                    <div class="flex gap-15 mt-20">
+
+                        <button type="submit" class="btn Vd">
+                            Salvar
+                        </button>
+
+                        <button class="btn Vm">
+                            <!--<i class=" wt m icone excluir"></i>-->
+                            Excluir
+                        </button>
+
+                        <button class="btn Br">
+                            Cancelar
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- ÍCONES -->
+
+            <section class="mt-20">
+
+                <h2>Ícones Pequenos</h2>
+
+                <div class="flex gap-15 mt-10">
+                    <i class="bk p icone IFC"></i>
+                    <i class="bk p icone adicionar"></i>
+                    <i class="bk p icone adicionarDocumento"></i>
+                    <i class="bk p icone baixar"></i>
+                    <i class="bk p icone buscar"></i>
+                    <i class="bk p icone calendario"></i>
+                    <i class="bk p icone check"></i>
+                    <i class="bk p icone documento"></i>
+                    <i class="bk p icone editar"></i>
+                    <i class="bk p icone inicio"></i>
+                    <i class="bk p icone lista"></i>
+                    <i class="bk p icone saida"></i>
+                    <i class="bk p icone setaBaixo"></i>
+                    <i class="bk p icone sobre"></i>
+                    <i class="bk p icone usuario"></i>
+                    <i class="bk p icone excluir"></i>
+                </div>
+
+            </section>
+
+            <section class="mt-20">
+
+                <h2>Ícones Médios</h2>
+
+                <div class="flex gap-15 mt-10">
+
+                    <i class="bk m icone IFC"></i>
+                    <i class="bk m icone adicionar"></i>
+                    <i class="bk m icone adicionarDocumento"></i>
+                    <i class="bk m icone baixar"></i>
+                    <i class="bk m icone buscar"></i>
+                    <i class="bk m icone calendario"></i>
+                    <i class="bk m icone check"></i>
+                    <i class="bk m icone documento"></i>
+                    <i class="bk m icone editar"></i>
+                    <i class="bk m icone inicio"></i>
+                    <i class="bk m icone lista"></i>
+                    <i class="bk m icone saida"></i>
+                    <i class="bk m icone setaBaixo"></i>
+                    <i class="bk m icone sobre"></i>
+                    <i class="bk m icone usuario"></i>
+                    <i class="bk m icone excluir"></i>
+
+                </div>
+
+            </section>
+
+            <section class="mt-20">
+
+                <h2>Ícones Grandes</h2>
+
+                <div class="flex gap-15 mt-10">
+
+                    <i class="bk g icone IFC"></i>
+                    <i class="bk g icone adicionar"></i>
+                    <i class="bk g icone adicionarDocumento"></i>
+                    <i class="bk g icone baixar"></i>
+                    <i class="bk g icone buscar"></i>
+                    <i class="bk g icone calendario"></i>
+                    <i class="bk g icone check"></i>
+                    <i class="bk g icone documento"></i>
+                    <i class="bk g icone editar"></i>
+                    <i class="bk g icone inicio"></i>
+                    <i class="bk g icone lista"></i>
+                    <i class="bk g icone saida"></i>
+                    <i class="bk g icone setaBaixo"></i>
+                    <i class="bk g icone sobre"></i>
+                    <i class="bk g icone usuario"></i>
+                    <i class="bk g icone excluir"></i>
+
+                </div>
+
+            </section>
+
+            <section class="mt-20">
+
+                <h2>Ícones Gigantes</h2>
+
+                <div class="flex gap-15 mt-10">
+
+                    <i class="bk gg icone IFC"></i>
+                    <i class="bk gg icone adicionar"></i>
+                    <i class="bk gg icone adicionarDocumento"></i>
+                    <i class="bk gg icone baixar"></i>
+                    <i class="bk gg icone buscar"></i>
+                    <i class="bk gg icone calendario"></i>
+                    <i class="bk gg icone check"></i>
+                    <i class="bk gg icone documento"></i>
+                    <i class="bk gg icone editar"></i>
+                    <i class="bk gg icone inicio"></i>
+                    <i class="bk gg icone lista"></i>
+                    <i class="bk gg icone saida"></i>
+                    <i class="bk gg icone setaBaixo"></i>
+                    <i class="bk gg icone sobre"></i>
+                    <i class="bk gg icone usuario"></i>
+
+                </div>
+
+            </section>
+
+            <!-- UTILITÁRIOS -->
+
+            <section class="mt-20">
+
+                <h2>Utilitários Flex</h2>
+
+                <div class="flex-between p-15" style="border:1px solid #ccc; background:#fff;">
+
+                    <span>Item Esquerda</span>
+                    <span> <button class="btn Vd">
+                            Salvar
+                        </button></span>
+
+                </div>
+
+            </section>
+
+            <!-- TABELA -->
+
+            <section class="mt-20">
+
+                <h2>Tabela de Exemplo</h2>
+
+                <div class="tabela-container">
+
+                    <table class="tabela">
+
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Edital</th>
+                                <th>Status</th>
+                                <th>Data</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>001</td>
+                                <td>João Silva</td>
+                                <td>4789/2026</td>
+                                <td>
+                                    <span class="status status-ativo">
+                                        Ativo
+                                    </span>
+                                </td>
+                                <td>04/06/2026</td>
+                                <td>
+                                    <div class="tabela-acoes">
+
+                                        <i class="vd p icone editar "></i>
+
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>002</td>
+                                <td>Maria Souza</td>
+                                <td>4789/2026</td>
+                                <td>
+                                    <span class="status status-pendente">
+                                        Pendente
+                                    </span>
+                                </td>
+                                <td>03/06/2026</td>
+                                <td>
+                                    <div class="tabela-acoes">
+
+                                        <i class="vd p icone editar "></i>
+
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>003</td>
+                                <td>Carlos Lima</td>
+                                <td>8745/2026</td>
+                                <td>
+                                    <span class="status status-rejeitado">
+                                        Rejeitado
+                                    </span>
+                                </td>
+                                <td>01/06/2026</td>
+                                <td>
+                                    <div class="tabela-acoes">
+
+                                        <i class="vd p icone editar "></i>
+
+
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+        </main>
+
+
+    </div>
+
+</body>
+
+</html>

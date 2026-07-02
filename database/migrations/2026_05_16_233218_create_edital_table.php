@@ -10,11 +10,13 @@ return new class extends Migration {
         Schema::create('editals', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
+            $table->string('resumo');
             $table->string('descricao');
             $table->date('data_inicio_inscr');
             $table->date('data_fim_inscr');
             $table->date('data_inicio_rev');
             $table->date('data_fim_rev');
+            $table->date('data_prova');
             $table->timestamps();
         });
     }
