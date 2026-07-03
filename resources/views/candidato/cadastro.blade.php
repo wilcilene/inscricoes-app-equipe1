@@ -6,6 +6,7 @@
     <title>Cadastro - Endereço e Contato</title>
 
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('global/style.css') }}">
 </head>
 
 <body>
@@ -66,6 +67,7 @@
                     <label>CEP *</label>
 
                     <input
+                        class="somente-numeros"
                         type="text"
                         name="cep"
                         id="cep"
@@ -94,6 +96,7 @@
                     <label>Número *</label>
 
                     <input
+                        class="somente-numeros"
                         type="text"
                         name="numero"
                         value="{{ old('numero') }}"
@@ -187,6 +190,7 @@
                         type="text"
                         name="telefone"
                         value="{{ old('telefone') }}"
+
                     >
 
                 </div>
@@ -199,11 +203,18 @@
                         type="text"
                         name="celular"
                         value="{{ old('celular') }}"
+                        class="telefone"
                         required
                     >
 
                 </div>
 
+            </div>
+
+                        <div class="flex">
+                <a href="{{ route('login') }}" class="btn-card Vm">
+                    Cancelar
+                </a>
             </div>
 
         </form>
@@ -222,6 +233,58 @@ document.addEventListener('DOMContentLoaded', function () {
     btnProximo.addEventListener('click', function () {
 
         form.submit();
+
+    });
+
+});
+
+// Apenas números
+document.querySelectorAll(".somente-numeros").forEach(function(campo){
+
+    campo.addEventListener("input", function(){
+
+        this.value = this.value.replace(/\D/g, "");
+
+    });
+
+});
+
+
+// Máscara de telefone
+document.querySelectorAll(".telefone").forEach(function(campo){
+
+    campo.addEventListener("input", function(){
+
+        let valor = this.value.replace(/\D/g, "");
+
+        // Limita a 11 números
+        valor = valor.substring(0, 11);
+
+        if (valor.length > 10) {
+            // Celular: (99) 99999-9999
+            valor = valor.replace(
+                /^(\d{2})(\d{5})(\d{4})$/,
+                "($1) $2-$3"
+            );
+        } else if (valor.length > 6) {
+            // Fixo: (99) 9999-9999
+            valor = valor.replace(
+                /^(\d{2})(\d{4})(\d{0,4})$/,
+                "($1) $2-$3"
+            );
+        } else if (valor.length > 2) {
+            valor = valor.replace(
+                /^(\d{2})(\d+)$/,
+                "($1) $2"
+            );
+        } else if (valor.length > 0) {
+            valor = valor.replace(
+                /^(\d+)$/,
+                "($1"
+            );
+        }
+
+        this.value = valor;
 
     });
 

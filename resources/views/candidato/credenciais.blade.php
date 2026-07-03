@@ -7,6 +7,7 @@
     <title>Cadastro - Credenciais</title>
 
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('global/style.css') }}">
 
 </head>
 <body>
@@ -176,6 +177,13 @@
                 </div>
 
             </div>
+
+            <div class="flex">
+                <a href="{{ route('login') }}" class="btn-card Vm">
+                    Cancelar
+                </a>
+            </div>
+
 
         </form>
 

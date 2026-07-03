@@ -6,6 +6,8 @@
     <title>Cadastro - Dados Pessoais</title>
 
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('global/style.css') }}">
+
 </head>
 
 <body>
@@ -71,6 +73,7 @@
                         name="nome_completo"
                         value="{{ old('nome_completo') }}"
                         placeholder="Digite seu nome completo"
+                        class="somente-letras"
                         required
                     >
 
@@ -94,6 +97,7 @@
                         type="text"
                         name="nome_social"
                         value="{{ old('nome_social') }}"
+                        class="somente-letras"
                         placeholder="Opcional"
                     >
 
@@ -200,6 +204,7 @@
                         type="text"
                         name="mae"
                         value="{{ old('mae') }}"
+                        class="somente-letras"
                         required
                     >
 
@@ -213,6 +218,8 @@
                         type="text"
                         name="pai"
                         value="{{ old('pai') }}"
+                        class="somente-letras"
+                        required
                     >
 
                 </div>
@@ -236,6 +243,12 @@
 
             </div>
 
+            <div class="flex">
+                <a href="{{ route('login') }}" class="btn-card Vm">
+                    Cancelar
+                </a>
+            </div>
+
         </form>
 
     </section>
@@ -254,6 +267,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const dataNascimento = document.getElementById('data_nascimento');
     const idadeCard = document.getElementById('idadeErrorCard');
+
+
+    //input só letra
+
+    document.querySelectorAll(".somente-letras").forEach(function(campo){
+
+    campo.addEventListener("input", function(){
+
+        this.value = this.value.replace(/[^A-Za-zÀ-ÿ\s]/g, "");
+
+    });
+
+});
 
     // Máscara CPF
 
