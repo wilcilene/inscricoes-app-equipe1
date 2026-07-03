@@ -190,7 +190,7 @@
                         type="text"
                         name="telefone"
                         value="{{ old('telefone') }}"
-
+                        class="telefone"
                     >
 
                 </div>
@@ -287,6 +287,43 @@ document.querySelectorAll(".telefone").forEach(function(campo){
         this.value = valor;
 
     });
+
+});
+
+const campoCep = document.getElementById("cep");
+
+campoCep.addEventListener("input", function () {
+
+    let cep = this.value.replace(/\D/g, "").substring(0,8);
+
+    // Máscara
+    if (cep.length > 5) {
+        this.value = cep.replace(/(\d{5})(\d)/, "$1-$2");
+    } else {
+        this.value = cep;
+    }
+
+    // Consulta somente quando houver 8 números
+    if (cep.length === 8) {
+
+        fetch(`https://viacep.com.br/ws/${cep}/json/`)
+            .then(res => res.json())
+            .then(data => {
+
+                if (data.erro) {
+                    alert("CEP não encontrado.");
+                    return;
+                }
+
+                document.getElementById("logradouro").value = data.logradouro ?? "";
+                document.getElementById("bairro").value = data.bairro ?? "";
+                document.getElementById("cidade").value = data.localidade ?? "";
+                document.getElementById("estado").value = data.uf ?? "";
+
+                document.querySelector('input[name="numero"]').focus();
+            });
+
+    }
 
 });
 

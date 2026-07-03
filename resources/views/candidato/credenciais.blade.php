@@ -122,17 +122,11 @@
         required
     >
 
-    <button
-        type="button"
-        class="toggle-password"
-        onclick="togglePassword('password', this)"
-    >
-        <img
-        src="{{ asset('icons/eye-off.svg') }}"
-        class="eye-icon"
-        alt="Mostrar senha"
-    >
-    </button>
+
+
+
+    <i class="icone olho-off cz" onclick="togglePassword('password', this)"></i>
+   
 
 </div>
                 </div>
@@ -149,17 +143,7 @@
         required
     >
 
-     <button
-        type="button"
-        class="toggle-password"
-        onclick="togglePassword('password_confirmation', this)"
-    >
-        <img
-        src="{{ asset('icons/eye-off.svg') }}"
-        class="eye-icon"
-        alt="Mostrar senha"
-    >
-    </button>
+     <i class="icone olho-off cz" onclick="togglePassword('password_confirmation', this)"></i>
 
                 </div>
 
@@ -251,28 +235,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-</script>
-
-<script>
-function togglePassword(id, button) {
+function togglePassword(id, icon) {
 
     const input = document.getElementById(id);
 
-    const icon = button.querySelector('img');
+    if (input.type === "password") {
 
-    if (input.type === 'password') {
+        input.type = "text";
 
-        input.type = 'text';
-
-        icon.src = '/icons/eye.svg';
+        icon.classList.remove("olho-off");
+        icon.classList.add("olho");
 
     } else {
 
-        input.type = 'password';
+        input.type = "password";
 
-        icon.src = '/icons/eye-off.svg';
+        icon.classList.remove("olho");
+        icon.classList.add("olho-off");
 
     }
+
 }
 </script>
 
