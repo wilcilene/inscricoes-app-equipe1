@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 use Illuminate\Support\Facades\Auth;
 use App\Http\Middleware\NoCache;
 
@@ -426,3 +427,4 @@ Route::delete(
 // ROTAS EXTERNAS
 
 require __DIR__ . '/candidato.php';
+
